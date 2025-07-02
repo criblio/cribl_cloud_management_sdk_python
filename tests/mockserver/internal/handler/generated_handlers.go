@@ -6,9 +6,12 @@ import (
 	"context"
 	"mockserver/internal/logging"
 	"mockserver/internal/tracking"
+	"net/http"
 )
 
 // GeneratedHandlers returns all generated handlers.
 func GeneratedHandlers(ctx context.Context, dir *logging.HTTPFileDirectory, rt *tracking.RequestTracker) []*GeneratedHandler {
-	return []*GeneratedHandler{}
+	return []*GeneratedHandler{
+		NewGeneratedHandler(ctx, http.MethodGet, "/status", pathGetStatus(dir, rt)),
+	}
 }

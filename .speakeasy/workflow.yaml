@@ -17,3 +17,5 @@ targets:
             labelOverride:
                 fixedValue: Python (SDK)
             blocking: false
+        testing:
+            enabled: true
