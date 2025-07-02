@@ -26,6 +26,9 @@ in-project = true
 [tool.poetry.group.dev.dependencies]
 mypy = "==1.15.0"
 pylint = "==3.2.3"
+pytest = "^8.4.0"
+pytest-asyncio = "^1.0.0"
+pytest-xdist = "^3.7.0"
 
 [build-system]
 requires = ["poetry-core"]
