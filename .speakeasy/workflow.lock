@@ -1,0 +1,37 @@
+speakeasyVersion: 1.574.1
+sources:
+    Cribl Cloud Management API:
+        sourceNamespace: cribl-cloud-management-api
+        sourceRevisionDigest: sha256:44d25740de05e3fa54f0b8c928603009224227739ad60a417d18daa640bbae45
+        sourceBlobDigest: sha256:18c1f7d56bd1c39b6e2189633792f792baa9eaf47d7238b10160cb64bf123cb7
+        tags:
+            - latest
+            - 0.0.1
+targets:
+    cribl-mgmt-plane:
+        source: Cribl Cloud Management API
+        sourceNamespace: cribl-cloud-management-api
+        sourceRevisionDigest: sha256:44d25740de05e3fa54f0b8c928603009224227739ad60a417d18daa640bbae45
+        sourceBlobDigest: sha256:18c1f7d56bd1c39b6e2189633792f792baa9eaf47d7238b10160cb64bf123cb7
+        codeSamplesNamespace: cribl-cloud-management-api-python-code-samples
+        codeSamplesRevisionDigest: sha256:d8d0b3c56940e340887c3f2bd4f9eaf75f811692ee565fa2e5ba8c14724542c4
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        Cribl Cloud Management API:
+            inputs:
+                - location: ./openapi.yml
+            output: .speakeasy/out.openapi.yaml
+            registry:
+                location: registry.speakeasyapi.dev/cribl/cribl/cribl-cloud-management-api
+    targets:
+        cribl-mgmt-plane:
+            target: python
+            source: Cribl Cloud Management API
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/cribl/cribl/cribl-cloud-management-api-python-code-samples
+                labelOverride:
+                    fixedValue: Python (SDK)
+                blocking: false

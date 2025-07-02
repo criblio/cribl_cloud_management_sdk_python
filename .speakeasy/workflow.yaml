@@ -1,0 +1,19 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    Cribl Cloud Management API:
+        inputs:
+            - location: ./openapi.yml
+        output: .speakeasy/out.openapi.yaml
+        registry:
+            location: registry.speakeasyapi.dev/cribl/cribl/cribl-cloud-management-api
+targets:
+    cribl-mgmt-plane:
+        target: python
+        source: Cribl Cloud Management API
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/cribl/cribl/cribl-cloud-management-api-python-code-samples
+            labelOverride:
+                fixedValue: Python (SDK)
+            blocking: false
