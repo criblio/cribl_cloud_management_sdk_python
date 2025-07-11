@@ -11,6 +11,9 @@ targets:
     cribl-mgmt-plane:
         target: python
         source: Cribl Cloud Management API
+        publish:
+            pypi:
+                token: $pypi_token
         codeSamples:
             registry:
                 location: registry.speakeasyapi.dev/cribl/cribl/cribl-cloud-management-api-python-code-samples
