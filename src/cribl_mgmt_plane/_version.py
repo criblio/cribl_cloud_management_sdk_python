@@ -5,8 +5,8 @@ import importlib.metadata
 __title__: str = "cribl-mgmt-plane"
 __version__: str = "0.0.1"
 __openapi_doc_version__: str = "0.0.1"
-__gen_version__: str = "2.647.2"
-__user_agent__: str = "speakeasy-sdk/python 0.0.1 2.647.2 0.0.1 cribl-mgmt-plane"
+__gen_version__: str = "2.656.5"
+__user_agent__: str = "speakeasy-sdk/python 0.0.1 2.656.5 0.0.1 cribl-mgmt-plane"
 
 try:
     if __package__ is not None:
