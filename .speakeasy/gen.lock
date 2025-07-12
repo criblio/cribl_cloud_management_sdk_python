@@ -3,14 +3,15 @@ id: 897b2045-55e2-49ca-a37b-2daf10d4e6ea
 management:
   docChecksum: 5931799d36141c722b6ae4e871d2fcbc
   docVersion: 0.0.1
-  speakeasyVersion: 1.575.0
-  generationVersion: 2.647.2
+  speakeasyVersion: 1.581.0
+  generationVersion: 2.656.5
   releaseVersion: 0.0.1
   configChecksum: 68d01ea66d71d44be686fab0ce444c3b
+  published: true
 features:
   python:
     additionalDependencies: 1.0.0
-    core: 5.19.3
+    core: 5.19.4
     defaultEnabledRetries: 0.2.0
     devContainers: 3.0.0
     envVarSecurityUsage: 0.3.2
@@ -23,13 +24,12 @@ features:
     responseFormat: 1.0.1
     retries: 3.0.2
     sdkHooks: 1.1.0
-    tests: 1.19.0
+    tests: 1.19.1
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
   - .devcontainer/setup.sh
   - .gitattributes
-  - .python-version
   - .vscode/settings.json
   - USAGE.md
   - docs/models/security.md
@@ -73,6 +73,7 @@ generatedFiles:
   - src/cribl_mgmt_plane/utils/retries.py
   - src/cribl_mgmt_plane/utils/security.py
   - src/cribl_mgmt_plane/utils/serializers.py
+  - src/cribl_mgmt_plane/utils/unmarshal_json_response.py
   - src/cribl_mgmt_plane/utils/url.py
   - src/cribl_mgmt_plane/utils/values.py
   - tests/__init__.py
