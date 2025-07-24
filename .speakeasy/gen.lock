@@ -5,8 +5,10 @@ management:
   docVersion: 0.0.1
   speakeasyVersion: 1.585.0
   generationVersion: 2.660.0
-  releaseVersion: 0.0.3
-  configChecksum: 3d9481a5746a62a406b5b9accd63407e
+  releaseVersion: 0.0.4
+  configChecksum: 9235c926a3398b58f56747db2ffde640
+  repoURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
+  installationURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   published: true
 features:
   python:
@@ -39,6 +41,7 @@ generatedFiles:
   - py.typed
   - pylintrc
   - pyproject.toml
+  - scripts/prepare_readme.py
   - scripts/publish.sh
   - src/cribl_mgmt_plane/__init__.py
   - src/cribl_mgmt_plane/_hooks/__init__.py
