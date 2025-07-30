@@ -3,7 +3,7 @@ speakeasyVersion: 1.596.1
 sources:
     Cribl Cloud Management API:
         inputs:
-            - location: https://raw.githubusercontent.com/criblio/cribl-openapi-spec/main/specs/mgmt-plane.yml
+            - location: ./openapi.yml
         output: .speakeasy/out.openapi.yaml
         registry:
             location: registry.speakeasyapi.dev/cribl/cribl/cribl-cloud-management-api
