@@ -21,8 +21,8 @@ generation:
     oAuth2PasswordEnabled: true
   sdkHooksConfigAccess: true
   tests:
-    generateTests: true
-    generateNewTests: true
+    generateTests: false
+    generateNewTests: false
     skipResponseBodyAssertions: false
 python:
   version: 0.0.4
