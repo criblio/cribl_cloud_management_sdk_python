@@ -21,11 +21,11 @@ generation:
     oAuth2PasswordEnabled: true
   sdkHooksConfigAccess: true
   tests:
-    generateTests: false
+    generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
 python:
-  version: 0.0.4
+  version: 0.0.5
   additionalDependencies:
     dev: {}
     main: {}

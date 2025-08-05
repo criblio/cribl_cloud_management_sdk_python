@@ -14,6 +14,7 @@ Service status
 
 ### Example Usage
 
+<!-- UsageSnippet language="python" operationID="dummyServiceStatus" method="get" path="/status" -->
 ```python
 from cribl_mgmt_plane import CriblMgmtPlane
 import os
