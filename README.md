@@ -2,7 +2,7 @@
 <!-- Start Summary [summary] -->
 ## Summary
 
-Cribl Cloud Management API: Lorem Ipsum
+Cribl.Cloud Public API: Serves as a public API for the Cribl.Cloud platform and powers the Speakeasy SDK
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
@@ -16,6 +16,7 @@ Cribl Cloud Management API: Lorem Ipsum
   * [Available Resources and Operations](#available-resources-and-operations)
   * [Retries](#retries)
   * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
   * [Custom HTTP Client](#custom-http-client)
   * [Resource Management](#resource-management)
   * [Debugging](#debugging)
@@ -97,16 +98,19 @@ Generally, the SDK will work well with most IDEs out of the box. However, when u
 
 ```python
 # Synchronous Example
-from cribl_mgmt_plane import CriblMgmtPlane
+from cribl_mgmt_plane import CriblMgmtPlane, models
 import os
 
 
 with CriblMgmtPlane(
-    server_url="https://api.example.com",
-    bearer_auth=os.getenv("CRIBLMGMTPLANE_BEARER_AUTH", ""),
+    security=models.Security(
+        client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
+        client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
+        audience="https://publicapi.cribl.cloud",
+    ),
 ) as cmp_client:
 
-    cmp_client.dummy_service_status()
+    cmp_client.health.get_health_status()
 
     # Use the SDK ...
 ```
@@ -117,17 +121,20 @@ The same SDK client can also be used to make asychronous requests by importing a
 ```python
 # Asynchronous Example
 import asyncio
-from cribl_mgmt_plane import CriblMgmtPlane
+from cribl_mgmt_plane import CriblMgmtPlane, models
 import os
 
 async def main():
 
     async with CriblMgmtPlane(
-        server_url="https://api.example.com",
-        bearer_auth=os.getenv("CRIBLMGMTPLANE_BEARER_AUTH", ""),
+        security=models.Security(
+            client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
+            client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
+            audience="https://publicapi.cribl.cloud",
+        ),
     ) as cmp_client:
 
-        await cmp_client.dummy_service_status_async()
+        await cmp_client.health.get_health_status_async()
 
         # Use the SDK ...
 
@@ -140,26 +147,52 @@ asyncio.run(main())
 
 ### Per-Client Security Schemes
 
-This SDK supports the following security scheme globally:
+This SDK supports the following security schemes globally:
 
-| Name          | Type | Scheme      | Environment Variable         |
-| ------------- | ---- | ----------- | ---------------------------- |
-| `bearer_auth` | http | HTTP Bearer | `CRIBLMGMTPLANE_BEARER_AUTH` |
+| Name            | Type   | Scheme       | Environment Variable           |
+| --------------- | ------ | ------------ | ------------------------------ |
+| `client_id`     | oauth2 | OAuth2 token | `CRIBLMGMTPLANE_CLIENT_ID`     |
+| `client_secret` | oauth2 | OAuth2 token | `CRIBLMGMTPLANE_CLIENT_SECRET` |
+| `audience`      | oauth2 | OAuth2 token | `CRIBLMGMTPLANE_AUDIENCE`      |
 
-To authenticate with the API the `bearer_auth` parameter must be set when initializing the SDK client instance. For example:
+You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```python
-from cribl_mgmt_plane import CriblMgmtPlane
+from cribl_mgmt_plane import CriblMgmtPlane, models
 import os
 
 
 with CriblMgmtPlane(
-    server_url="https://api.example.com",
-    bearer_auth=os.getenv("CRIBLMGMTPLANE_BEARER_AUTH", ""),
+    security=models.Security(
+        client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
+        client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
+        audience="https://publicapi.cribl.cloud",
+    ),
 ) as cmp_client:
 
-    cmp_client.dummy_service_status()
+    cmp_client.health.get_health_status()
 
     # Use the SDK ...
+
+```
+
+### Per-Operation Security Schemes
+
+Some operations in this SDK require the security scheme to be specified at the request level. For example:
+```python
+from cribl_mgmt_plane import CriblMgmtPlane, models
+
+
+with CriblMgmtPlane() as cmp_client:
+
+    res = cmp_client.workspaces.v1_workspaces_create_workspace(security=models.V1WorkspacesCreateWorkspaceSecurity(
+
+    ), organization_id="<id>", workspace_id="main", region=models.WorkspaceCreateRequestDTORegion.US_WEST_2, alias="Production Environment", description="Main production workspace for customer data processing", tags=[
+        "production",
+        "customer-data",
+    ])
+
+    # Handle response
+    print(res)
 
 ```
 <!-- End Authentication [security] -->
@@ -170,9 +203,18 @@ with CriblMgmtPlane(
 <details open>
 <summary>Available methods</summary>
 
-### [CriblMgmtPlane SDK](docs/sdks/criblmgmtplane/README.md)
 
-* [dummy_service_status](docs/sdks/criblmgmtplane/README.md#dummy_service_status) - Service status
+### [health](docs/sdks/health/README.md)
+
+* [get_health_status](docs/sdks/health/README.md#get_health_status) - Get the health status of the application
+
+### [workspaces](docs/sdks/workspaces/README.md)
+
+* [v1_workspaces_create_workspace](docs/sdks/workspaces/README.md#v1_workspaces_create_workspace) - Create a new workspace
+* [v1_workspaces_list_workspaces](docs/sdks/workspaces/README.md#v1_workspaces_list_workspaces) - List all workspaces for an organization
+* [v1_workspaces_update_workspace](docs/sdks/workspaces/README.md#v1_workspaces_update_workspace) - Update an existing workspace
+* [v1_workspaces_delete_workspace](docs/sdks/workspaces/README.md#v1_workspaces_delete_workspace) - Delete a workspace
+* [v1_workspaces_get_workspace](docs/sdks/workspaces/README.md#v1_workspaces_get_workspace) - Get a specific workspace by ID
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -184,17 +226,20 @@ Some of the endpoints in this SDK support retries. If you use the SDK without an
 
 To change the default retry strategy for a single API call, simply provide a `RetryConfig` object to the call:
 ```python
-from cribl_mgmt_plane import CriblMgmtPlane
+from cribl_mgmt_plane import CriblMgmtPlane, models
 from cribl_mgmt_plane.utils import BackoffStrategy, RetryConfig
 import os
 
 
 with CriblMgmtPlane(
-    server_url="https://api.example.com",
-    bearer_auth=os.getenv("CRIBLMGMTPLANE_BEARER_AUTH", ""),
+    security=models.Security(
+        client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
+        client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
+        audience="https://publicapi.cribl.cloud",
+    ),
 ) as cmp_client:
 
-    cmp_client.dummy_service_status(,
+    cmp_client.health.get_health_status(,
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
     # Use the SDK ...
@@ -203,18 +248,21 @@ with CriblMgmtPlane(
 
 If you'd like to override the default retry strategy for all operations that support retries, you can use the `retry_config` optional parameter when initializing the SDK:
 ```python
-from cribl_mgmt_plane import CriblMgmtPlane
+from cribl_mgmt_plane import CriblMgmtPlane, models
 from cribl_mgmt_plane.utils import BackoffStrategy, RetryConfig
 import os
 
 
 with CriblMgmtPlane(
-    server_url="https://api.example.com",
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
-    bearer_auth=os.getenv("CRIBLMGMTPLANE_BEARER_AUTH", ""),
+    security=models.Security(
+        client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
+        client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
+        audience="https://publicapi.cribl.cloud",
+    ),
 ) as cmp_client:
 
-    cmp_client.dummy_service_status()
+    cmp_client.health.get_health_status()
 
     # Use the SDK ...
 
@@ -236,18 +284,21 @@ with CriblMgmtPlane(
 
 ### Example
 ```python
-from cribl_mgmt_plane import CriblMgmtPlane, errors
+from cribl_mgmt_plane import CriblMgmtPlane, errors, models
 import os
 
 
 with CriblMgmtPlane(
-    server_url="https://api.example.com",
-    bearer_auth=os.getenv("CRIBLMGMTPLANE_BEARER_AUTH", ""),
+    security=models.Security(
+        client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
+        client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
+        audience="https://publicapi.cribl.cloud",
+    ),
 ) as cmp_client:
 
     try:
 
-        cmp_client.dummy_service_status()
+        cmp_client.health.get_health_status()
 
         # Use the SDK ...
 
@@ -281,6 +332,33 @@ with CriblMgmtPlane(
 
 </details>
 <!-- End Error Handling [errors] -->
+
+<!-- Start Server Selection [server] -->
+## Server Selection
+
+### Override Server URL Per-Client
+
+The default server can be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+```python
+from cribl_mgmt_plane import CriblMgmtPlane, models
+import os
+
+
+with CriblMgmtPlane(
+    server_url="https://publicapi.cribl.cloud",
+    security=models.Security(
+        client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
+        client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
+        audience="https://publicapi.cribl.cloud",
+    ),
+) as cmp_client:
+
+    cmp_client.health.get_health_status()
+
+    # Use the SDK ...
+
+```
+<!-- End Server Selection [server] -->
 
 <!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
@@ -371,13 +449,16 @@ The `CriblMgmtPlane` class implements the context manager protocol and registers
 [context-manager]: https://docs.python.org/3/reference/datamodel.html#context-managers
 
 ```python
-from cribl_mgmt_plane import CriblMgmtPlane
+from cribl_mgmt_plane import CriblMgmtPlane, models
 import os
 def main():
 
     with CriblMgmtPlane(
-        server_url="https://api.example.com",
-        bearer_auth=os.getenv("CRIBLMGMTPLANE_BEARER_AUTH", ""),
+        security=models.Security(
+            client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
+            client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
+            audience="https://publicapi.cribl.cloud",
+        ),
     ) as cmp_client:
         # Rest of application here...
 
@@ -386,8 +467,11 @@ def main():
 async def amain():
 
     async with CriblMgmtPlane(
-        server_url="https://api.example.com",
-        bearer_auth=os.getenv("CRIBLMGMTPLANE_BEARER_AUTH", ""),
+        security=models.Security(
+            client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
+            client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
+            audience="https://publicapi.cribl.cloud",
+        ),
     ) as cmp_client:
         # Rest of application here...
 ```
@@ -404,7 +488,7 @@ from cribl_mgmt_plane import CriblMgmtPlane
 import logging
 
 logging.basicConfig(level=logging.DEBUG)
-s = CriblMgmtPlane(server_url="https://example.com", debug_logger=logging.getLogger("cribl_mgmt_plane"))
+s = CriblMgmtPlane(debug_logger=logging.getLogger("cribl_mgmt_plane"))
 ```
 
 You can also enable a default debug logger by setting an environment variable `CRIBLMGMTPLANE_DEBUG` to true.
