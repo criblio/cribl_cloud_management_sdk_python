@@ -5,9 +5,9 @@
 
 ### Available Operations
 
-* [get_health_status](#get_health_status) - Get the health status of the application
+* [get](#get) - Get the health status of the application
 
-## get_health_status
+## get
 
 Get the health status of the application
 
@@ -27,7 +27,7 @@ with CriblMgmtPlane(
     ),
 ) as cmp_client:
 
-    cmp_client.health.get_health_status()
+    cmp_client.health.get()
 
     # Use the SDK ...
 

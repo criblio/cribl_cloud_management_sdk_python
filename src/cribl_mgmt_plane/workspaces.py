@@ -10,7 +10,7 @@ from typing import List, Mapping, Optional, Union
 
 
 class Workspaces(BaseSDK):
-    def v1_workspaces_create_workspace(
+    def create(
         self,
         *,
         security: Union[
@@ -124,7 +124,7 @@ class Workspaces(BaseSDK):
 
         raise errors.APIError("Unexpected response received", http_res)
 
-    async def v1_workspaces_create_workspace_async(
+    async def create_async(
         self,
         *,
         security: Union[
@@ -238,7 +238,7 @@ class Workspaces(BaseSDK):
 
         raise errors.APIError("Unexpected response received", http_res)
 
-    def v1_workspaces_list_workspaces(
+    def list(
         self,
         *,
         security: Union[
@@ -328,7 +328,7 @@ class Workspaces(BaseSDK):
 
         raise errors.APIError("Unexpected response received", http_res)
 
-    async def v1_workspaces_list_workspaces_async(
+    async def list_async(
         self,
         *,
         security: Union[
@@ -418,7 +418,7 @@ class Workspaces(BaseSDK):
 
         raise errors.APIError("Unexpected response received", http_res)
 
-    def v1_workspaces_update_workspace(
+    def update(
         self,
         *,
         security: Union[
@@ -529,7 +529,7 @@ class Workspaces(BaseSDK):
 
         raise errors.APIError("Unexpected response received", http_res)
 
-    async def v1_workspaces_update_workspace_async(
+    async def update_async(
         self,
         *,
         security: Union[
@@ -640,7 +640,7 @@ class Workspaces(BaseSDK):
 
         raise errors.APIError("Unexpected response received", http_res)
 
-    def v1_workspaces_delete_workspace(
+    def delete(
         self,
         *,
         security: Union[
@@ -733,7 +733,7 @@ class Workspaces(BaseSDK):
 
         raise errors.APIError("Unexpected response received", http_res)
 
-    async def v1_workspaces_delete_workspace_async(
+    async def delete_async(
         self,
         *,
         security: Union[
@@ -826,7 +826,7 @@ class Workspaces(BaseSDK):
 
         raise errors.APIError("Unexpected response received", http_res)
 
-    def v1_workspaces_get_workspace(
+    def get(
         self,
         *,
         security: Union[
@@ -919,7 +919,7 @@ class Workspaces(BaseSDK):
 
         raise errors.APIError("Unexpected response received", http_res)
 
-    async def v1_workspaces_get_workspace_async(
+    async def get_async(
         self,
         *,
         security: Union[
