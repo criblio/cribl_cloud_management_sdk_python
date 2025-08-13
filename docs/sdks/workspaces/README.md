@@ -5,13 +5,13 @@
 
 ### Available Operations
 
-* [v1_workspaces_create_workspace](#v1_workspaces_create_workspace) - Create a new workspace
-* [v1_workspaces_list_workspaces](#v1_workspaces_list_workspaces) - List all workspaces for an organization
-* [v1_workspaces_update_workspace](#v1_workspaces_update_workspace) - Update an existing workspace
-* [v1_workspaces_delete_workspace](#v1_workspaces_delete_workspace) - Delete a workspace
-* [v1_workspaces_get_workspace](#v1_workspaces_get_workspace) - Get a specific workspace by ID
+* [create](#create) - Create a new workspace
+* [list](#list) - List all workspaces for an organization
+* [update](#update) - Update an existing workspace
+* [delete](#delete) - Delete a workspace
+* [get](#get) - Get a specific workspace by ID
 
-## v1_workspaces_create_workspace
+## create
 
 Create a new workspace
 
@@ -25,7 +25,7 @@ import os
 
 with CriblMgmtPlane() as cmp_client:
 
-    res = cmp_client.workspaces.v1_workspaces_create_workspace(security=models.V1WorkspacesCreateWorkspaceSecurity(
+    res = cmp_client.workspaces.create(security=models.V1WorkspacesCreateWorkspaceSecurity(
         oauth2=models.SchemeOauth2(
             client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
             client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
@@ -65,7 +65,7 @@ with CriblMgmtPlane() as cmp_client:
 | --------------- | --------------- | --------------- |
 | errors.APIError | 4XX, 5XX        | \*/\*           |
 
-## v1_workspaces_list_workspaces
+## list
 
 List all workspaces for an organization
 
@@ -79,7 +79,7 @@ import os
 
 with CriblMgmtPlane() as cmp_client:
 
-    res = cmp_client.workspaces.v1_workspaces_list_workspaces(security=models.V1WorkspacesListWorkspacesSecurity(
+    res = cmp_client.workspaces.list(security=models.V1WorkspacesListWorkspacesSecurity(
         oauth2=models.SchemeOauth2(
             client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
             client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
@@ -111,7 +111,7 @@ with CriblMgmtPlane() as cmp_client:
 | --------------- | --------------- | --------------- |
 | errors.APIError | 4XX, 5XX        | \*/\*           |
 
-## v1_workspaces_update_workspace
+## update
 
 Update an existing workspace
 
@@ -125,7 +125,7 @@ import os
 
 with CriblMgmtPlane() as cmp_client:
 
-    res = cmp_client.workspaces.v1_workspaces_update_workspace(security=models.V1WorkspacesUpdateWorkspaceSecurity(
+    res = cmp_client.workspaces.update(security=models.V1WorkspacesUpdateWorkspaceSecurity(
         oauth2=models.SchemeOauth2(
             client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
             client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
@@ -164,7 +164,7 @@ with CriblMgmtPlane() as cmp_client:
 | --------------- | --------------- | --------------- |
 | errors.APIError | 4XX, 5XX        | \*/\*           |
 
-## v1_workspaces_delete_workspace
+## delete
 
 Delete a workspace
 
@@ -178,7 +178,7 @@ import os
 
 with CriblMgmtPlane() as cmp_client:
 
-    cmp_client.workspaces.v1_workspaces_delete_workspace(security=models.V1WorkspacesDeleteWorkspaceSecurity(
+    cmp_client.workspaces.delete(security=models.V1WorkspacesDeleteWorkspaceSecurity(
         oauth2=models.SchemeOauth2(
             client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
             client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
@@ -206,7 +206,7 @@ with CriblMgmtPlane() as cmp_client:
 | --------------- | --------------- | --------------- |
 | errors.APIError | 4XX, 5XX        | \*/\*           |
 
-## v1_workspaces_get_workspace
+## get
 
 Get a specific workspace by ID
 
@@ -220,7 +220,7 @@ import os
 
 with CriblMgmtPlane() as cmp_client:
 
-    res = cmp_client.workspaces.v1_workspaces_get_workspace(security=models.V1WorkspacesGetWorkspaceSecurity(
+    res = cmp_client.workspaces.get(security=models.V1WorkspacesGetWorkspaceSecurity(
         oauth2=models.SchemeOauth2(
             client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
             client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),

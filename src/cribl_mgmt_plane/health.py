@@ -9,7 +9,7 @@ from typing import Mapping, Optional
 
 
 class Health(BaseSDK):
-    def get_health_status(
+    def get(
         self,
         *,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -87,7 +87,7 @@ class Health(BaseSDK):
 
         raise errors.APIError("Unexpected response received", http_res)
 
-    async def get_health_status_async(
+    async def get_async(
         self,
         *,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
