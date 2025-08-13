@@ -1,16 +1,19 @@
 <!-- Start SDK Example Usage [usage] -->
 ```python
 # Synchronous Example
-from cribl_mgmt_plane import CriblMgmtPlane
+from cribl_mgmt_plane import CriblMgmtPlane, models
 import os
 
 
 with CriblMgmtPlane(
-    server_url="https://api.example.com",
-    bearer_auth=os.getenv("CRIBLMGMTPLANE_BEARER_AUTH", ""),
+    security=models.Security(
+        client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
+        client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
+        audience="https://publicapi.cribl.cloud",
+    ),
 ) as cmp_client:
 
-    cmp_client.dummy_service_status()
+    cmp_client.health.get_health_status()
 
     # Use the SDK ...
 ```
@@ -21,17 +24,20 @@ The same SDK client can also be used to make asychronous requests by importing a
 ```python
 # Asynchronous Example
 import asyncio
-from cribl_mgmt_plane import CriblMgmtPlane
+from cribl_mgmt_plane import CriblMgmtPlane, models
 import os
 
 async def main():
 
     async with CriblMgmtPlane(
-        server_url="https://api.example.com",
-        bearer_auth=os.getenv("CRIBLMGMTPLANE_BEARER_AUTH", ""),
+        security=models.Security(
+            client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
+            client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
+            audience="https://publicapi.cribl.cloud",
+        ),
     ) as cmp_client:
 
-        await cmp_client.dummy_service_status_async()
+        await cmp_client.health.get_health_status_async()
 
         # Use the SDK ...
 
