@@ -8,18 +8,47 @@ from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class SecurityTypedDict(TypedDict):
-    bearer_auth: NotRequired[str]
+    client_id: NotRequired[str]
+    client_secret: NotRequired[str]
+    token_url: NotRequired[str]
+    audience: NotRequired[str]
 
 
 class Security(BaseModel):
-    bearer_auth: Annotated[
+    client_id: Annotated[
         Optional[str],
         FieldMetadata(
             security=SecurityMetadata(
                 scheme=True,
-                scheme_type="http",
-                sub_type="bearer",
-                field_name="Authorization",
+                scheme_type="oauth2",
+                sub_type="client_credentials",
+                field_name="clientID",
+            )
+        ),
+    ] = None
+
+    client_secret: Annotated[
+        Optional[str],
+        FieldMetadata(
+            security=SecurityMetadata(
+                scheme=True,
+                scheme_type="oauth2",
+                sub_type="client_credentials",
+                field_name="clientSecret",
+            )
+        ),
+    ] = None
+
+    token_url: Optional[str] = "https://login.cribl.cloud/oauth2/token"
+
+    audience: Annotated[
+        Optional[str],
+        FieldMetadata(
+            security=SecurityMetadata(
+                scheme=True,
+                scheme_type="oauth2",
+                sub_type="client_credentials",
+                field_name="audience",
             )
         ),
     ] = None
