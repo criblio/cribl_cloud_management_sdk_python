@@ -13,7 +13,7 @@ with CriblMgmtPlane(
     ),
 ) as cmp_client:
 
-    cmp_client.health.get_health_status()
+    cmp_client.health.get()
 
     # Use the SDK ...
 ```
@@ -37,7 +37,7 @@ async def main():
         ),
     ) as cmp_client:
 
-        await cmp_client.health.get_health_status_async()
+        await cmp_client.health.get_async()
 
         # Use the SDK ...
 
