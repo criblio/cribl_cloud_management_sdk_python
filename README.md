@@ -110,7 +110,7 @@ with CriblMgmtPlane(
     ),
 ) as cmp_client:
 
-    cmp_client.health.get_health_status()
+    cmp_client.health.get()
 
     # Use the SDK ...
 ```
@@ -134,7 +134,7 @@ async def main():
         ),
     ) as cmp_client:
 
-        await cmp_client.health.get_health_status_async()
+        await cmp_client.health.get_async()
 
         # Use the SDK ...
 
@@ -169,7 +169,7 @@ with CriblMgmtPlane(
     ),
 ) as cmp_client:
 
-    cmp_client.health.get_health_status()
+    cmp_client.health.get()
 
     # Use the SDK ...
 
@@ -184,7 +184,7 @@ from cribl_mgmt_plane import CriblMgmtPlane, models
 
 with CriblMgmtPlane() as cmp_client:
 
-    res = cmp_client.workspaces.v1_workspaces_create_workspace(security=models.V1WorkspacesCreateWorkspaceSecurity(
+    res = cmp_client.workspaces.create(security=models.V1WorkspacesCreateWorkspaceSecurity(
 
     ), organization_id="<id>", workspace_id="main", region=models.WorkspaceCreateRequestDTORegion.US_WEST_2, alias="Production Environment", description="Main production workspace for customer data processing", tags=[
         "production",
@@ -206,15 +206,15 @@ with CriblMgmtPlane() as cmp_client:
 
 ### [health](docs/sdks/health/README.md)
 
-* [get_health_status](docs/sdks/health/README.md#get_health_status) - Get the health status of the application
+* [get](docs/sdks/health/README.md#get) - Get the health status of the application
 
 ### [workspaces](docs/sdks/workspaces/README.md)
 
-* [v1_workspaces_create_workspace](docs/sdks/workspaces/README.md#v1_workspaces_create_workspace) - Create a new workspace
-* [v1_workspaces_list_workspaces](docs/sdks/workspaces/README.md#v1_workspaces_list_workspaces) - List all workspaces for an organization
-* [v1_workspaces_update_workspace](docs/sdks/workspaces/README.md#v1_workspaces_update_workspace) - Update an existing workspace
-* [v1_workspaces_delete_workspace](docs/sdks/workspaces/README.md#v1_workspaces_delete_workspace) - Delete a workspace
-* [v1_workspaces_get_workspace](docs/sdks/workspaces/README.md#v1_workspaces_get_workspace) - Get a specific workspace by ID
+* [create](docs/sdks/workspaces/README.md#create) - Create a new workspace
+* [list](docs/sdks/workspaces/README.md#list) - List all workspaces for an organization
+* [update](docs/sdks/workspaces/README.md#update) - Update an existing workspace
+* [delete](docs/sdks/workspaces/README.md#delete) - Delete a workspace
+* [get](docs/sdks/workspaces/README.md#get) - Get a specific workspace by ID
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -239,7 +239,7 @@ with CriblMgmtPlane(
     ),
 ) as cmp_client:
 
-    cmp_client.health.get_health_status(,
+    cmp_client.health.get(,
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
     # Use the SDK ...
@@ -262,7 +262,7 @@ with CriblMgmtPlane(
     ),
 ) as cmp_client:
 
-    cmp_client.health.get_health_status()
+    cmp_client.health.get()
 
     # Use the SDK ...
 
@@ -298,7 +298,7 @@ with CriblMgmtPlane(
 
     try:
 
-        cmp_client.health.get_health_status()
+        cmp_client.health.get()
 
         # Use the SDK ...
 
@@ -353,7 +353,7 @@ with CriblMgmtPlane(
     ),
 ) as cmp_client:
 
-    cmp_client.health.get_health_status()
+    cmp_client.health.get()
 
     # Use the SDK ...
 

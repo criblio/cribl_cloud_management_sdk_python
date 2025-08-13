@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 897b2045-55e2-49ca-a37b-2daf10d4e6ea
 management:
-  docChecksum: 092d25eefe129dbe6756c4ac03fe85d8
+  docChecksum: 37fc7e3a855098153f60e35f034d4f01
   docVersion: "1.0"
   speakeasyVersion: 1.596.1
   generationVersion: 2.672.0
-  releaseVersion: 0.0.6
-  configChecksum: 4df9cb0303c671163ed8242ea8da3eca
+  releaseVersion: 0.0.7
+  configChecksum: 42b5cbbef74d44ccdaa3ac898a18908e
   repoURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   installationURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   published: true
@@ -23,8 +23,10 @@ features:
     globalSecurity: 3.0.3
     globalSecurityCallbacks: 1.0.0
     globalServerURLs: 3.1.1
+    groups: 3.0.0
     methodArguments: 1.0.2
     methodSecurity: 3.0.1
+    nameOverrides: 3.0.1
     oauth2ClientCredentials: 1.2.1
     openEnums: 1.0.1
     responseFormat: 1.0.1
@@ -68,7 +70,6 @@ generatedFiles:
   - scripts/publish.sh
   - src/cribl_mgmt_plane/__init__.py
   - src/cribl_mgmt_plane/_hooks/__init__.py
-  - src/cribl_mgmt_plane/_hooks/clientcredentials.py
   - src/cribl_mgmt_plane/_hooks/sdkhooks.py
   - src/cribl_mgmt_plane/_hooks/types.py
   - src/cribl_mgmt_plane/_version.py
