@@ -15,6 +15,12 @@ from pydantic import Field
 from typing import Callable, Dict, Optional, Tuple, Union
 
 
+SERVERS = [
+    "https://publicapi.cribl.cloud",
+]
+"""Contains the list of servers available to the SDK"""
+
+
 @dataclass
 class SDKConfiguration:
     client: Union[HttpClient, None]
@@ -22,8 +28,9 @@ class SDKConfiguration:
     async_client: Union[AsyncHttpClient, None]
     async_client_supplied: bool
     debug_logger: Logger
-    server_url: str
     security: Optional[Union[models.Security, Callable[[], models.Security]]] = None
+    server_url: Optional[str] = ""
+    server_idx: Optional[int] = 0
     language: str = "python"
     openapi_doc_version: str = __openapi_doc_version__
     sdk_version: str = __version__
@@ -33,4 +40,9 @@ class SDKConfiguration:
     timeout_ms: Optional[int] = None
 
     def get_server_details(self) -> Tuple[str, Dict[str, str]]:
-        return remove_suffix(self.server_url, "/"), {}
+        if self.server_url is not None and self.server_url:
+            return remove_suffix(self.server_url, "/"), {}
+        if self.server_idx is None:
+            self.server_idx = 0
+
+        return SERVERS[self.server_idx], {}
