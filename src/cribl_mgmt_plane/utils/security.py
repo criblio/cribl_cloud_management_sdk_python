@@ -65,16 +65,27 @@ def get_security_from_env(security: Any, security_class: Any) -> Optional[BaseMo
     security_dict: Any = {}
 
     if os.getenv("CRIBLMGMTPLANE_CLIENT_ID"):
-        security_dict["client_id"] = os.getenv("CRIBLMGMTPLANE_CLIENT_ID")
+        security_dict.setdefault("client_oauth", {})["client_id"] = os.getenv(
+            "CRIBLMGMTPLANE_CLIENT_ID"
+        )
 
     if os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET"):
-        security_dict["client_secret"] = os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET")
+        security_dict.setdefault("client_oauth", {})["client_secret"] = os.getenv(
+            "CRIBLMGMTPLANE_CLIENT_SECRET"
+        )
 
     if os.getenv("CRIBLMGMTPLANE_TOKEN_URL"):
-        security_dict["token_url"] = os.getenv("CRIBLMGMTPLANE_TOKEN_URL")
+        security_dict.setdefault("client_oauth", {})["token_url"] = os.getenv(
+            "CRIBLMGMTPLANE_TOKEN_URL"
+        )
 
     if os.getenv("CRIBLMGMTPLANE_AUDIENCE"):
-        security_dict["audience"] = os.getenv("CRIBLMGMTPLANE_AUDIENCE")
+        security_dict.setdefault("client_oauth", {})["audience"] = os.getenv(
+            "CRIBLMGMTPLANE_AUDIENCE"
+        )
+
+    if os.getenv("CRIBLMGMTPLANE_BEARER_AUTH"):
+        security_dict["bearer_auth"] = os.getenv("CRIBLMGMTPLANE_BEARER_AUTH")
 
     return security_class(**security_dict) if security_dict else None
 
