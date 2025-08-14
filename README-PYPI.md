@@ -104,9 +104,12 @@ import os
 
 with CriblMgmtPlane(
     security=models.Security(
-        client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
-        client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
-        audience="https://publicapi.cribl.cloud",
+        client_oauth=models.SchemeClientOauth(
+            client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
+            client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
+            token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
+            audience="https://publicapi.cribl.cloud",
+        ),
     ),
 ) as cmp_client:
 
@@ -128,9 +131,12 @@ async def main():
 
     async with CriblMgmtPlane(
         security=models.Security(
-            client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
-            client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
-            audience="https://publicapi.cribl.cloud",
+            client_oauth=models.SchemeClientOauth(
+                client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
+                client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
+                token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
+                audience="https://publicapi.cribl.cloud",
+            ),
         ),
     ) as cmp_client:
 
@@ -149,11 +155,10 @@ asyncio.run(main())
 
 This SDK supports the following security schemes globally:
 
-| Name            | Type   | Scheme       | Environment Variable           |
-| --------------- | ------ | ------------ | ------------------------------ |
-| `client_id`     | oauth2 | OAuth2 token | `CRIBLMGMTPLANE_CLIENT_ID`     |
-| `client_secret` | oauth2 | OAuth2 token | `CRIBLMGMTPLANE_CLIENT_SECRET` |
-| `audience`      | oauth2 | OAuth2 token | `CRIBLMGMTPLANE_AUDIENCE`      |
+| Name           | Type   | Scheme       | Environment Variable          |
+| -------------- | ------ | ------------ | ----------------------------- |
+| `client_oauth` | oauth2 | OAuth2 token | `CRIBLMGMTPLANE_CLIENT_OAUTH` |
+| `bearer_auth`  | http   | HTTP Bearer  | `CRIBLMGMTPLANE_BEARER_AUTH`  |
 
 You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
 ```python
@@ -163,36 +168,18 @@ import os
 
 with CriblMgmtPlane(
     security=models.Security(
-        client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
-        client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
-        audience="https://publicapi.cribl.cloud",
+        client_oauth=models.SchemeClientOauth(
+            client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
+            client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
+            token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
+            audience="https://publicapi.cribl.cloud",
+        ),
     ),
 ) as cmp_client:
 
     cmp_client.health.get()
 
     # Use the SDK ...
-
-```
-
-### Per-Operation Security Schemes
-
-Some operations in this SDK require the security scheme to be specified at the request level. For example:
-```python
-from cribl_mgmt_plane import CriblMgmtPlane, models
-
-
-with CriblMgmtPlane() as cmp_client:
-
-    res = cmp_client.workspaces.create(security=models.V1WorkspacesCreateWorkspaceSecurity(
-
-    ), organization_id="<id>", workspace_id="main", region=models.WorkspaceCreateRequestDTORegion.US_WEST_2, alias="Production Environment", description="Main production workspace for customer data processing", tags=[
-        "production",
-        "customer-data",
-    ])
-
-    # Handle response
-    print(res)
 
 ```
 <!-- End Authentication [security] -->
@@ -233,9 +220,12 @@ import os
 
 with CriblMgmtPlane(
     security=models.Security(
-        client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
-        client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
-        audience="https://publicapi.cribl.cloud",
+        client_oauth=models.SchemeClientOauth(
+            client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
+            client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
+            token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
+            audience="https://publicapi.cribl.cloud",
+        ),
     ),
 ) as cmp_client:
 
@@ -256,9 +246,12 @@ import os
 with CriblMgmtPlane(
     retry_config=RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False),
     security=models.Security(
-        client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
-        client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
-        audience="https://publicapi.cribl.cloud",
+        client_oauth=models.SchemeClientOauth(
+            client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
+            client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
+            token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
+            audience="https://publicapi.cribl.cloud",
+        ),
     ),
 ) as cmp_client:
 
@@ -290,9 +283,12 @@ import os
 
 with CriblMgmtPlane(
     security=models.Security(
-        client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
-        client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
-        audience="https://publicapi.cribl.cloud",
+        client_oauth=models.SchemeClientOauth(
+            client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
+            client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
+            token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
+            audience="https://publicapi.cribl.cloud",
+        ),
     ),
 ) as cmp_client:
 
@@ -347,9 +343,12 @@ import os
 with CriblMgmtPlane(
     server_url="https://publicapi.cribl.cloud",
     security=models.Security(
-        client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
-        client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
-        audience="https://publicapi.cribl.cloud",
+        client_oauth=models.SchemeClientOauth(
+            client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
+            client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
+            token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
+            audience="https://publicapi.cribl.cloud",
+        ),
     ),
 ) as cmp_client:
 
@@ -455,9 +454,12 @@ def main():
 
     with CriblMgmtPlane(
         security=models.Security(
-            client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
-            client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
-            audience="https://publicapi.cribl.cloud",
+            client_oauth=models.SchemeClientOauth(
+                client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
+                client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
+                token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
+                audience="https://publicapi.cribl.cloud",
+            ),
         ),
     ) as cmp_client:
         # Rest of application here...
@@ -468,9 +470,12 @@ async def amain():
 
     async with CriblMgmtPlane(
         security=models.Security(
-            client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
-            client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
-            audience="https://publicapi.cribl.cloud",
+            client_oauth=models.SchemeClientOauth(
+                client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
+                client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
+                token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
+                audience="https://publicapi.cribl.cloud",
+            ),
         ),
     ) as cmp_client:
         # Rest of application here...

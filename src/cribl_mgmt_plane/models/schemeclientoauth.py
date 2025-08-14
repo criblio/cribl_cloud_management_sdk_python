@@ -6,14 +6,14 @@ from cribl_mgmt_plane.utils import FieldMetadata, SecurityMetadata
 from typing_extensions import Annotated, TypedDict
 
 
-class SchemeOauth2TypedDict(TypedDict):
+class SchemeClientOauthTypedDict(TypedDict):
     client_id: str
     client_secret: str
     audience: str
     token_url: str
 
 
-class SchemeOauth2(BaseModel):
+class SchemeClientOauth(BaseModel):
     client_id: Annotated[
         str, FieldMetadata(security=SecurityMetadata(field_name="clientID"))
     ]

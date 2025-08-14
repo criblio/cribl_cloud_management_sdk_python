@@ -21,9 +21,12 @@ import os
 
 with CriblMgmtPlane(
     security=models.Security(
-        client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
-        client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
-        audience="https://publicapi.cribl.cloud",
+        client_oauth=models.SchemeClientOauth(
+            client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
+            client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
+            token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
+            audience="https://publicapi.cribl.cloud",
+        ),
     ),
 ) as cmp_client:
 

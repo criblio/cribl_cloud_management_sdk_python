@@ -23,16 +23,18 @@ from cribl_mgmt_plane import CriblMgmtPlane, models
 import os
 
 
-with CriblMgmtPlane() as cmp_client:
-
-    res = cmp_client.workspaces.create(security=models.V1WorkspacesCreateWorkspaceSecurity(
-        oauth2=models.SchemeOauth2(
+with CriblMgmtPlane(
+    security=models.Security(
+        client_oauth=models.SchemeClientOauth(
             client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
             client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
             token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
             audience="https://publicapi.cribl.cloud",
         ),
-    ), organization_id="<id>", workspace_id="main", region=models.WorkspaceCreateRequestDTORegion.US_WEST_2, alias="Production Environment", description="Main production workspace for customer data processing", tags=[
+    ),
+) as cmp_client:
+
+    res = cmp_client.workspaces.create(organization_id="<id>", workspace_id="main", region=models.WorkspaceCreateRequestDTORegion.US_WEST_2, alias="Production Environment", description="Main production workspace for customer data processing", tags=[
         "production",
         "customer-data",
     ])
@@ -44,16 +46,15 @@ with CriblMgmtPlane() as cmp_client:
 
 ### Parameters
 
-| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       | Example                                                                                           |
-| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `security`                                                                                        | [models.V1WorkspacesCreateWorkspaceSecurity](../../models/v1workspacescreateworkspacesecurity.md) | :heavy_check_mark:                                                                                | N/A                                                                                               |                                                                                                   |
-| `organization_id`                                                                                 | *str*                                                                                             | :heavy_check_mark:                                                                                | Organization identifier                                                                           |                                                                                                   |
-| `workspace_id`                                                                                    | *str*                                                                                             | :heavy_check_mark:                                                                                | Unique identifier for the workspace                                                               | main                                                                                              |
-| `region`                                                                                          | [models.WorkspaceCreateRequestDTORegion](../../models/workspacecreaterequestdtoregion.md)         | :heavy_check_mark:                                                                                | AWS region where the workspace is deployed                                                        | us-west-2                                                                                         |
-| `alias`                                                                                           | *Optional[str]*                                                                                   | :heavy_minus_sign:                                                                                | User-friendly alias for the workspace                                                             | Production Environment                                                                            |
-| `description`                                                                                     | *Optional[str]*                                                                                   | :heavy_minus_sign:                                                                                | Detailed description of the workspace                                                             | Main production workspace for customer data processing                                            |
-| `tags`                                                                                            | List[*str*]                                                                                       | :heavy_minus_sign:                                                                                | Tags associated with the workspace                                                                | [<br/>"production",<br/>"customer-data"<br/>]                                                     |
-| `retries`                                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                  | :heavy_minus_sign:                                                                                | Configuration to override the default retry behavior of the client.                               |                                                                                                   |
+| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               | Example                                                                                   |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `organization_id`                                                                         | *str*                                                                                     | :heavy_check_mark:                                                                        | Organization identifier                                                                   |                                                                                           |
+| `workspace_id`                                                                            | *str*                                                                                     | :heavy_check_mark:                                                                        | Unique identifier for the workspace                                                       | main                                                                                      |
+| `region`                                                                                  | [models.WorkspaceCreateRequestDTORegion](../../models/workspacecreaterequestdtoregion.md) | :heavy_check_mark:                                                                        | AWS region where the workspace is deployed                                                | us-west-2                                                                                 |
+| `alias`                                                                                   | *Optional[str]*                                                                           | :heavy_minus_sign:                                                                        | User-friendly alias for the workspace                                                     | Production Environment                                                                    |
+| `description`                                                                             | *Optional[str]*                                                                           | :heavy_minus_sign:                                                                        | Detailed description of the workspace                                                     | Main production workspace for customer data processing                                    |
+| `tags`                                                                                    | List[*str*]                                                                               | :heavy_minus_sign:                                                                        | Tags associated with the workspace                                                        | [<br/>"production",<br/>"customer-data"<br/>]                                             |
+| `retries`                                                                                 | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                          | :heavy_minus_sign:                                                                        | Configuration to override the default retry behavior of the client.                       |                                                                                           |
 
 ### Response
 
@@ -77,16 +78,18 @@ from cribl_mgmt_plane import CriblMgmtPlane, models
 import os
 
 
-with CriblMgmtPlane() as cmp_client:
-
-    res = cmp_client.workspaces.list(security=models.V1WorkspacesListWorkspacesSecurity(
-        oauth2=models.SchemeOauth2(
+with CriblMgmtPlane(
+    security=models.Security(
+        client_oauth=models.SchemeClientOauth(
             client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
             client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
             token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
             audience="https://publicapi.cribl.cloud",
         ),
-    ), organization_id="<id>")
+    ),
+) as cmp_client:
+
+    res = cmp_client.workspaces.list(organization_id="<id>")
 
     # Handle response
     print(res)
@@ -95,11 +98,10 @@ with CriblMgmtPlane() as cmp_client:
 
 ### Parameters
 
-| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
-| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `security`                                                                                      | [models.V1WorkspacesListWorkspacesSecurity](../../models/v1workspaceslistworkspacessecurity.md) | :heavy_check_mark:                                                                              | N/A                                                                                             |
-| `organization_id`                                                                               | *str*                                                                                           | :heavy_check_mark:                                                                              | Organization identifier                                                                         |
-| `retries`                                                                                       | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                | :heavy_minus_sign:                                                                              | Configuration to override the default retry behavior of the client.                             |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `organization_id`                                                   | *str*                                                               | :heavy_check_mark:                                                  | Organization identifier                                             |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 
@@ -123,16 +125,18 @@ from cribl_mgmt_plane import CriblMgmtPlane, models
 import os
 
 
-with CriblMgmtPlane() as cmp_client:
-
-    res = cmp_client.workspaces.update(security=models.V1WorkspacesUpdateWorkspaceSecurity(
-        oauth2=models.SchemeOauth2(
+with CriblMgmtPlane(
+    security=models.Security(
+        client_oauth=models.SchemeClientOauth(
             client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
             client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
             token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
             audience="https://publicapi.cribl.cloud",
         ),
-    ), organization_id="<id>", workspace_id="<id>", alias="Production Environment", description="Main production workspace for customer data processing", tags=[
+    ),
+) as cmp_client:
+
+    res = cmp_client.workspaces.update(organization_id="<id>", workspace_id="<id>", alias="Production Environment", description="Main production workspace for customer data processing", tags=[
         "production",
         "customer-data",
     ])
@@ -144,15 +148,14 @@ with CriblMgmtPlane() as cmp_client:
 
 ### Parameters
 
-| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       | Example                                                                                           |
-| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `security`                                                                                        | [models.V1WorkspacesUpdateWorkspaceSecurity](../../models/v1workspacesupdateworkspacesecurity.md) | :heavy_check_mark:                                                                                | N/A                                                                                               |                                                                                                   |
-| `organization_id`                                                                                 | *str*                                                                                             | :heavy_check_mark:                                                                                | Organization identifier                                                                           |                                                                                                   |
-| `workspace_id`                                                                                    | *str*                                                                                             | :heavy_check_mark:                                                                                | Workspace identifier                                                                              |                                                                                                   |
-| `alias`                                                                                           | *Optional[str]*                                                                                   | :heavy_minus_sign:                                                                                | User-friendly alias for the workspace                                                             | Production Environment                                                                            |
-| `description`                                                                                     | *Optional[str]*                                                                                   | :heavy_minus_sign:                                                                                | Detailed description of the workspace                                                             | Main production workspace for customer data processing                                            |
-| `tags`                                                                                            | List[*str*]                                                                                       | :heavy_minus_sign:                                                                                | Tags associated with the workspace                                                                | [<br/>"production",<br/>"customer-data"<br/>]                                                     |
-| `retries`                                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                  | :heavy_minus_sign:                                                                                | Configuration to override the default retry behavior of the client.                               |                                                                                                   |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `organization_id`                                                   | *str*                                                               | :heavy_check_mark:                                                  | Organization identifier                                             |                                                                     |
+| `workspace_id`                                                      | *str*                                                               | :heavy_check_mark:                                                  | Workspace identifier                                                |                                                                     |
+| `alias`                                                             | *Optional[str]*                                                     | :heavy_minus_sign:                                                  | User-friendly alias for the workspace                               | Production Environment                                              |
+| `description`                                                       | *Optional[str]*                                                     | :heavy_minus_sign:                                                  | Detailed description of the workspace                               | Main production workspace for customer data processing              |
+| `tags`                                                              | List[*str*]                                                         | :heavy_minus_sign:                                                  | Tags associated with the workspace                                  | [<br/>"production",<br/>"customer-data"<br/>]                       |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |                                                                     |
 
 ### Response
 
@@ -176,16 +179,18 @@ from cribl_mgmt_plane import CriblMgmtPlane, models
 import os
 
 
-with CriblMgmtPlane() as cmp_client:
-
-    cmp_client.workspaces.delete(security=models.V1WorkspacesDeleteWorkspaceSecurity(
-        oauth2=models.SchemeOauth2(
+with CriblMgmtPlane(
+    security=models.Security(
+        client_oauth=models.SchemeClientOauth(
             client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
             client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
             token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
             audience="https://publicapi.cribl.cloud",
         ),
-    ), organization_id="<id>", workspace_id="<id>")
+    ),
+) as cmp_client:
+
+    cmp_client.workspaces.delete(organization_id="<id>", workspace_id="<id>")
 
     # Use the SDK ...
 
@@ -193,12 +198,11 @@ with CriblMgmtPlane() as cmp_client:
 
 ### Parameters
 
-| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
-| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `security`                                                                                        | [models.V1WorkspacesDeleteWorkspaceSecurity](../../models/v1workspacesdeleteworkspacesecurity.md) | :heavy_check_mark:                                                                                | N/A                                                                                               |
-| `organization_id`                                                                                 | *str*                                                                                             | :heavy_check_mark:                                                                                | Organization identifier                                                                           |
-| `workspace_id`                                                                                    | *str*                                                                                             | :heavy_check_mark:                                                                                | Workspace identifier                                                                              |
-| `retries`                                                                                         | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                                  | :heavy_minus_sign:                                                                                | Configuration to override the default retry behavior of the client.                               |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `organization_id`                                                   | *str*                                                               | :heavy_check_mark:                                                  | Organization identifier                                             |
+| `workspace_id`                                                      | *str*                                                               | :heavy_check_mark:                                                  | Workspace identifier                                                |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Errors
 
@@ -218,16 +222,18 @@ from cribl_mgmt_plane import CriblMgmtPlane, models
 import os
 
 
-with CriblMgmtPlane() as cmp_client:
-
-    res = cmp_client.workspaces.get(security=models.V1WorkspacesGetWorkspaceSecurity(
-        oauth2=models.SchemeOauth2(
+with CriblMgmtPlane(
+    security=models.Security(
+        client_oauth=models.SchemeClientOauth(
             client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
             client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
             token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
             audience="https://publicapi.cribl.cloud",
         ),
-    ), organization_id="<id>", workspace_id="<id>")
+    ),
+) as cmp_client:
+
+    res = cmp_client.workspaces.get(organization_id="<id>", workspace_id="<id>")
 
     # Handle response
     print(res)
@@ -236,12 +242,11 @@ with CriblMgmtPlane() as cmp_client:
 
 ### Parameters
 
-| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `security`                                                                                  | [models.V1WorkspacesGetWorkspaceSecurity](../../models/v1workspacesgetworkspacesecurity.md) | :heavy_check_mark:                                                                          | N/A                                                                                         |
-| `organization_id`                                                                           | *str*                                                                                       | :heavy_check_mark:                                                                          | Organization identifier                                                                     |
-| `workspace_id`                                                                              | *str*                                                                                       | :heavy_check_mark:                                                                          | Workspace identifier                                                                        |
-| `retries`                                                                                   | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                            | :heavy_minus_sign:                                                                          | Configuration to override the default retry behavior of the client.                         |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `organization_id`                                                   | *str*                                                               | :heavy_check_mark:                                                  | Organization identifier                                             |
+| `workspace_id`                                                      | *str*                                                               | :heavy_check_mark:                                                  | Workspace identifier                                                |
+| `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
 
 ### Response
 

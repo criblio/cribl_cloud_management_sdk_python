@@ -3,9 +3,7 @@
 
 ## Fields
 
-| Field                         | Type                          | Required                      | Description                   | Example                       |
-| ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- | ----------------------------- |
-| `client_id`                   | *Optional[str]*               | :heavy_minus_sign:            | N/A                           |                               |
-| `client_secret`               | *Optional[str]*               | :heavy_minus_sign:            | N/A                           |                               |
-| `token_url`                   | *Optional[str]*               | :heavy_minus_sign:            | N/A                           |                               |
-| `audience`                    | *Optional[str]*               | :heavy_minus_sign:            | N/A                           | https://publicapi.cribl.cloud |
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `client_oauth`                                                       | [Optional[models.SchemeClientOauth]](../models/schemeclientoauth.md) | :heavy_minus_sign:                                                   | N/A                                                                  |
+| `bearer_auth`                                                        | *Optional[str]*                                                      | :heavy_minus_sign:                                                   | N/A                                                                  |
