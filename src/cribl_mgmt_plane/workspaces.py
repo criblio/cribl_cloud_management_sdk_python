@@ -6,17 +6,13 @@ from cribl_mgmt_plane._hooks import HookContext
 from cribl_mgmt_plane.types import OptionalNullable, UNSET
 from cribl_mgmt_plane.utils import get_security_from_env
 from cribl_mgmt_plane.utils.unmarshal_json_response import unmarshal_json_response
-from typing import List, Mapping, Optional, Union
+from typing import List, Mapping, Optional
 
 
 class Workspaces(BaseSDK):
     def create(
         self,
         *,
-        security: Union[
-            models.V1WorkspacesCreateWorkspaceSecurity,
-            models.V1WorkspacesCreateWorkspaceSecurityTypedDict,
-        ],
         organization_id: str,
         workspace_id: str,
         region: models.WorkspaceCreateRequestDTORegion,
@@ -30,7 +26,6 @@ class Workspaces(BaseSDK):
     ) -> models.WorkspaceSchema:
         r"""Create a new workspace
 
-        :param security:
         :param organization_id: Organization identifier
         :param workspace_id: Unique identifier for the workspace
         :param region: AWS region where the workspace is deployed
@@ -75,9 +70,7 @@ class Workspaces(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=utils.get_pydantic_model(
-                security, models.V1WorkspacesCreateWorkspaceSecurity
-            ),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request.workspace_create_request_dto,
                 False,
@@ -106,7 +99,9 @@ class Workspaces(BaseSDK):
                 base_url=base_url or "",
                 operation_id="v1.workspaces.createWorkspace",
                 oauth2_scopes=[],
-                security_source=get_security_from_env(security, models.Security),
+                security_source=get_security_from_env(
+                    self.sdk_configuration.security, models.Security
+                ),
             ),
             request=req,
             error_status_codes=["4XX", "500", "5XX"],
@@ -127,10 +122,6 @@ class Workspaces(BaseSDK):
     async def create_async(
         self,
         *,
-        security: Union[
-            models.V1WorkspacesCreateWorkspaceSecurity,
-            models.V1WorkspacesCreateWorkspaceSecurityTypedDict,
-        ],
         organization_id: str,
         workspace_id: str,
         region: models.WorkspaceCreateRequestDTORegion,
@@ -144,7 +135,6 @@ class Workspaces(BaseSDK):
     ) -> models.WorkspaceSchema:
         r"""Create a new workspace
 
-        :param security:
         :param organization_id: Organization identifier
         :param workspace_id: Unique identifier for the workspace
         :param region: AWS region where the workspace is deployed
@@ -189,9 +179,7 @@ class Workspaces(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=utils.get_pydantic_model(
-                security, models.V1WorkspacesCreateWorkspaceSecurity
-            ),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request.workspace_create_request_dto,
                 False,
@@ -220,7 +208,9 @@ class Workspaces(BaseSDK):
                 base_url=base_url or "",
                 operation_id="v1.workspaces.createWorkspace",
                 oauth2_scopes=[],
-                security_source=get_security_from_env(security, models.Security),
+                security_source=get_security_from_env(
+                    self.sdk_configuration.security, models.Security
+                ),
             ),
             request=req,
             error_status_codes=["4XX", "500", "5XX"],
@@ -241,10 +231,6 @@ class Workspaces(BaseSDK):
     def list(
         self,
         *,
-        security: Union[
-            models.V1WorkspacesListWorkspacesSecurity,
-            models.V1WorkspacesListWorkspacesSecurityTypedDict,
-        ],
         organization_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -253,7 +239,6 @@ class Workspaces(BaseSDK):
     ) -> models.WorkspacesListResponseDTO:
         r"""List all workspaces for an organization
 
-        :param security:
         :param organization_id: Organization identifier
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -286,9 +271,7 @@ class Workspaces(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=utils.get_pydantic_model(
-                security, models.V1WorkspacesListWorkspacesSecurity
-            ),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
 
@@ -310,7 +293,9 @@ class Workspaces(BaseSDK):
                 base_url=base_url or "",
                 operation_id="v1.workspaces.listWorkspaces",
                 oauth2_scopes=[],
-                security_source=get_security_from_env(security, models.Security),
+                security_source=get_security_from_env(
+                    self.sdk_configuration.security, models.Security
+                ),
             ),
             request=req,
             error_status_codes=["4XX", "500", "5XX"],
@@ -331,10 +316,6 @@ class Workspaces(BaseSDK):
     async def list_async(
         self,
         *,
-        security: Union[
-            models.V1WorkspacesListWorkspacesSecurity,
-            models.V1WorkspacesListWorkspacesSecurityTypedDict,
-        ],
         organization_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
@@ -343,7 +324,6 @@ class Workspaces(BaseSDK):
     ) -> models.WorkspacesListResponseDTO:
         r"""List all workspaces for an organization
 
-        :param security:
         :param organization_id: Organization identifier
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -376,9 +356,7 @@ class Workspaces(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=utils.get_pydantic_model(
-                security, models.V1WorkspacesListWorkspacesSecurity
-            ),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
 
@@ -400,7 +378,9 @@ class Workspaces(BaseSDK):
                 base_url=base_url or "",
                 operation_id="v1.workspaces.listWorkspaces",
                 oauth2_scopes=[],
-                security_source=get_security_from_env(security, models.Security),
+                security_source=get_security_from_env(
+                    self.sdk_configuration.security, models.Security
+                ),
             ),
             request=req,
             error_status_codes=["4XX", "500", "5XX"],
@@ -421,10 +401,6 @@ class Workspaces(BaseSDK):
     def update(
         self,
         *,
-        security: Union[
-            models.V1WorkspacesUpdateWorkspaceSecurity,
-            models.V1WorkspacesUpdateWorkspaceSecurityTypedDict,
-        ],
         organization_id: str,
         workspace_id: str,
         alias: Optional[str] = None,
@@ -437,7 +413,6 @@ class Workspaces(BaseSDK):
     ) -> models.WorkspaceSchema:
         r"""Update an existing workspace
 
-        :param security:
         :param organization_id: Organization identifier
         :param workspace_id: Workspace identifier
         :param alias: User-friendly alias for the workspace
@@ -480,9 +455,7 @@ class Workspaces(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=utils.get_pydantic_model(
-                security, models.V1WorkspacesUpdateWorkspaceSecurity
-            ),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request.workspace_patch_request_dto,
                 False,
@@ -511,7 +484,9 @@ class Workspaces(BaseSDK):
                 base_url=base_url or "",
                 operation_id="v1.workspaces.updateWorkspace",
                 oauth2_scopes=[],
-                security_source=get_security_from_env(security, models.Security),
+                security_source=get_security_from_env(
+                    self.sdk_configuration.security, models.Security
+                ),
             ),
             request=req,
             error_status_codes=["4XX", "500", "5XX"],
@@ -532,10 +507,6 @@ class Workspaces(BaseSDK):
     async def update_async(
         self,
         *,
-        security: Union[
-            models.V1WorkspacesUpdateWorkspaceSecurity,
-            models.V1WorkspacesUpdateWorkspaceSecurityTypedDict,
-        ],
         organization_id: str,
         workspace_id: str,
         alias: Optional[str] = None,
@@ -548,7 +519,6 @@ class Workspaces(BaseSDK):
     ) -> models.WorkspaceSchema:
         r"""Update an existing workspace
 
-        :param security:
         :param organization_id: Organization identifier
         :param workspace_id: Workspace identifier
         :param alias: User-friendly alias for the workspace
@@ -591,9 +561,7 @@ class Workspaces(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=utils.get_pydantic_model(
-                security, models.V1WorkspacesUpdateWorkspaceSecurity
-            ),
+            security=self.sdk_configuration.security,
             get_serialized_body=lambda: utils.serialize_request_body(
                 request.workspace_patch_request_dto,
                 False,
@@ -622,7 +590,9 @@ class Workspaces(BaseSDK):
                 base_url=base_url or "",
                 operation_id="v1.workspaces.updateWorkspace",
                 oauth2_scopes=[],
-                security_source=get_security_from_env(security, models.Security),
+                security_source=get_security_from_env(
+                    self.sdk_configuration.security, models.Security
+                ),
             ),
             request=req,
             error_status_codes=["4XX", "500", "5XX"],
@@ -643,10 +613,6 @@ class Workspaces(BaseSDK):
     def delete(
         self,
         *,
-        security: Union[
-            models.V1WorkspacesDeleteWorkspaceSecurity,
-            models.V1WorkspacesDeleteWorkspaceSecurityTypedDict,
-        ],
         organization_id: str,
         workspace_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -656,7 +622,6 @@ class Workspaces(BaseSDK):
     ):
         r"""Delete a workspace
 
-        :param security:
         :param organization_id: Organization identifier
         :param workspace_id: Workspace identifier
         :param retries: Override the default retry configuration for this method
@@ -691,9 +656,7 @@ class Workspaces(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="*/*",
             http_headers=http_headers,
-            security=utils.get_pydantic_model(
-                security, models.V1WorkspacesDeleteWorkspaceSecurity
-            ),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
 
@@ -715,7 +678,9 @@ class Workspaces(BaseSDK):
                 base_url=base_url or "",
                 operation_id="v1.workspaces.deleteWorkspace",
                 oauth2_scopes=[],
-                security_source=get_security_from_env(security, models.Security),
+                security_source=get_security_from_env(
+                    self.sdk_configuration.security, models.Security
+                ),
             ),
             request=req,
             error_status_codes=["4XX", "500", "5XX"],
@@ -736,10 +701,6 @@ class Workspaces(BaseSDK):
     async def delete_async(
         self,
         *,
-        security: Union[
-            models.V1WorkspacesDeleteWorkspaceSecurity,
-            models.V1WorkspacesDeleteWorkspaceSecurityTypedDict,
-        ],
         organization_id: str,
         workspace_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -749,7 +710,6 @@ class Workspaces(BaseSDK):
     ):
         r"""Delete a workspace
 
-        :param security:
         :param organization_id: Organization identifier
         :param workspace_id: Workspace identifier
         :param retries: Override the default retry configuration for this method
@@ -784,9 +744,7 @@ class Workspaces(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="*/*",
             http_headers=http_headers,
-            security=utils.get_pydantic_model(
-                security, models.V1WorkspacesDeleteWorkspaceSecurity
-            ),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
 
@@ -808,7 +766,9 @@ class Workspaces(BaseSDK):
                 base_url=base_url or "",
                 operation_id="v1.workspaces.deleteWorkspace",
                 oauth2_scopes=[],
-                security_source=get_security_from_env(security, models.Security),
+                security_source=get_security_from_env(
+                    self.sdk_configuration.security, models.Security
+                ),
             ),
             request=req,
             error_status_codes=["4XX", "500", "5XX"],
@@ -829,10 +789,6 @@ class Workspaces(BaseSDK):
     def get(
         self,
         *,
-        security: Union[
-            models.V1WorkspacesGetWorkspaceSecurity,
-            models.V1WorkspacesGetWorkspaceSecurityTypedDict,
-        ],
         organization_id: str,
         workspace_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -842,7 +798,6 @@ class Workspaces(BaseSDK):
     ) -> models.WorkspaceSchema:
         r"""Get a specific workspace by ID
 
-        :param security:
         :param organization_id: Organization identifier
         :param workspace_id: Workspace identifier
         :param retries: Override the default retry configuration for this method
@@ -877,9 +832,7 @@ class Workspaces(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=utils.get_pydantic_model(
-                security, models.V1WorkspacesGetWorkspaceSecurity
-            ),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
 
@@ -901,7 +854,9 @@ class Workspaces(BaseSDK):
                 base_url=base_url or "",
                 operation_id="v1.workspaces.getWorkspace",
                 oauth2_scopes=[],
-                security_source=get_security_from_env(security, models.Security),
+                security_source=get_security_from_env(
+                    self.sdk_configuration.security, models.Security
+                ),
             ),
             request=req,
             error_status_codes=["4XX", "500", "5XX"],
@@ -922,10 +877,6 @@ class Workspaces(BaseSDK):
     async def get_async(
         self,
         *,
-        security: Union[
-            models.V1WorkspacesGetWorkspaceSecurity,
-            models.V1WorkspacesGetWorkspaceSecurityTypedDict,
-        ],
         organization_id: str,
         workspace_id: str,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
@@ -935,7 +886,6 @@ class Workspaces(BaseSDK):
     ) -> models.WorkspaceSchema:
         r"""Get a specific workspace by ID
 
-        :param security:
         :param organization_id: Organization identifier
         :param workspace_id: Workspace identifier
         :param retries: Override the default retry configuration for this method
@@ -970,9 +920,7 @@ class Workspaces(BaseSDK):
             user_agent_header="user-agent",
             accept_header_value="application/json",
             http_headers=http_headers,
-            security=utils.get_pydantic_model(
-                security, models.V1WorkspacesGetWorkspaceSecurity
-            ),
+            security=self.sdk_configuration.security,
             timeout_ms=timeout_ms,
         )
 
@@ -994,7 +942,9 @@ class Workspaces(BaseSDK):
                 base_url=base_url or "",
                 operation_id="v1.workspaces.getWorkspace",
                 oauth2_scopes=[],
-                security_source=get_security_from_env(security, models.Security),
+                security_source=get_security_from_env(
+                    self.sdk_configuration.security, models.Security
+                ),
             ),
             request=req,
             error_status_codes=["4XX", "500", "5XX"],
