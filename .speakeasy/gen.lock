@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 897b2045-55e2-49ca-a37b-2daf10d4e6ea
 management:
-  docChecksum: ed3a691b3bbb76c9367641dc92a71ced
+  docChecksum: 94447a2798f674f4d9b678d00210b1ac
   docVersion: "1.0"
   speakeasyVersion: 1.613.0
   generationVersion: 2.696.0
-  releaseVersion: 0.0.11
-  configChecksum: 984a4c149c8076c698804a77c88263e2
+  releaseVersion: 0.0.12
+  configChecksum: 7add5bef1a147e4b279a83f88f4b0187
   repoURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   installationURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   published: true
