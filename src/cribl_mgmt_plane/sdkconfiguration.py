@@ -16,7 +16,7 @@ from typing import Callable, Dict, Optional, Tuple, Union
 
 
 SERVERS = [
-    "https://publicapi.cribl.cloud",
+    "https://gateway.cribl.cloud",
 ]
 """Contains the list of servers available to the SDK"""
 
