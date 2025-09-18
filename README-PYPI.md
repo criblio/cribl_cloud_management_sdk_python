@@ -116,7 +116,7 @@ with CriblMgmtPlane(
             client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
             client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
             token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
-            audience="https://publicapi.cribl.cloud",
+            audience="https://api.cribl.cloud",
         ),
     ),
 ) as cmp_client:
@@ -143,7 +143,7 @@ async def main():
                 client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
                 client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
                 token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
-                audience="https://publicapi.cribl.cloud",
+                audience="https://api.cribl.cloud",
             ),
         ),
     ) as cmp_client:
@@ -180,7 +180,7 @@ with CriblMgmtPlane(
             client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
             client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
             token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
-            audience="https://publicapi.cribl.cloud",
+            audience="https://api.cribl.cloud",
         ),
     ),
 ) as cmp_client:
@@ -232,7 +232,7 @@ with CriblMgmtPlane(
             client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
             client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
             token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
-            audience="https://publicapi.cribl.cloud",
+            audience="https://api.cribl.cloud",
         ),
     ),
 ) as cmp_client:
@@ -258,7 +258,7 @@ with CriblMgmtPlane(
             client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
             client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
             token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
-            audience="https://publicapi.cribl.cloud",
+            audience="https://api.cribl.cloud",
         ),
     ),
 ) as cmp_client:
@@ -295,7 +295,7 @@ with CriblMgmtPlane(
             client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
             client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
             token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
-            audience="https://publicapi.cribl.cloud",
+            audience="https://api.cribl.cloud",
         ),
     ),
 ) as cmp_client:
@@ -349,13 +349,13 @@ import os
 
 
 with CriblMgmtPlane(
-    server_url="https://publicapi.cribl.cloud",
+    server_url="https://gateway.cribl.cloud",
     security=models.Security(
         client_oauth=models.SchemeClientOauth(
             client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
             client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
             token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
-            audience="https://publicapi.cribl.cloud",
+            audience="https://api.cribl.cloud",
         ),
     ),
 ) as cmp_client:
@@ -466,7 +466,7 @@ def main():
                 client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
                 client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
                 token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
-                audience="https://publicapi.cribl.cloud",
+                audience="https://api.cribl.cloud",
             ),
         ),
     ) as cmp_client:
@@ -482,7 +482,7 @@ async def amain():
                 client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
                 client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
                 token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
-                audience="https://publicapi.cribl.cloud",
+                audience="https://api.cribl.cloud",
             ),
         ),
     ) as cmp_client:
