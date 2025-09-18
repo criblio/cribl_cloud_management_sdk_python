@@ -25,7 +25,7 @@ with CriblMgmtPlane(
             client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
             client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
             token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
-            audience="https://publicapi.cribl.cloud",
+            audience="https://api.cribl.cloud",
         ),
     ),
 ) as cmp_client:
