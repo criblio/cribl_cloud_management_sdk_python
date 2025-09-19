@@ -30,9 +30,12 @@ with CriblMgmtPlane(
     ),
 ) as cmp_client:
 
-    cmp_client.health.get()
+    res = cmp_client.health.get()
 
-    # Use the SDK ...
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -41,6 +44,10 @@ with CriblMgmtPlane(
 | Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `retries`                                                           | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)    | :heavy_minus_sign:                                                  | Configuration to override the default retry behavior of the client. |
+
+### Response
+
+**[str](../../models/.md)**
 
 ### Errors
 
