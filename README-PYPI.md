@@ -121,9 +121,12 @@ with CriblMgmtPlane(
     ),
 ) as cmp_client:
 
-    cmp_client.health.get()
+    res = cmp_client.health.get()
 
-    # Use the SDK ...
+    assert res is not None
+
+    # Handle response
+    print(res)
 ```
 
 </br>
@@ -148,9 +151,12 @@ async def main():
         ),
     ) as cmp_client:
 
-        await cmp_client.health.get_async()
+        res = await cmp_client.health.get_async()
 
-        # Use the SDK ...
+        assert res is not None
+
+        # Handle response
+        print(res)
 
 asyncio.run(main())
 ```
@@ -185,9 +191,12 @@ with CriblMgmtPlane(
     ),
 ) as cmp_client:
 
-    cmp_client.health.get()
+    res = cmp_client.health.get()
 
-    # Use the SDK ...
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 <!-- End Authentication [security] -->
@@ -237,10 +246,13 @@ with CriblMgmtPlane(
     ),
 ) as cmp_client:
 
-    cmp_client.health.get(,
+    res = cmp_client.health.get(,
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
-    # Use the SDK ...
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -263,9 +275,12 @@ with CriblMgmtPlane(
     ),
 ) as cmp_client:
 
-    cmp_client.health.get()
+    res = cmp_client.health.get()
 
-    # Use the SDK ...
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 <!-- End Retries [retries] -->
@@ -299,12 +314,15 @@ with CriblMgmtPlane(
         ),
     ),
 ) as cmp_client:
-
+    res = None
     try:
 
-        cmp_client.health.get()
+        res = cmp_client.health.get()
 
-        # Use the SDK ...
+        assert res is not None
+
+        # Handle response
+        print(res)
 
 
     except errors.CriblMgmtPlaneError as e:
@@ -360,9 +378,12 @@ with CriblMgmtPlane(
     ),
 ) as cmp_client:
 
-    cmp_client.health.get()
+    res = cmp_client.health.get()
 
-    # Use the SDK ...
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 <!-- End Server Selection [server] -->
