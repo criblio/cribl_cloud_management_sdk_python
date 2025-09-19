@@ -16,9 +16,12 @@ with CriblMgmtPlane(
     ),
 ) as cmp_client:
 
-    cmp_client.health.get()
+    res = cmp_client.health.get()
 
-    # Use the SDK ...
+    assert res is not None
+
+    # Handle response
+    print(res)
 ```
 
 </br>
@@ -43,9 +46,12 @@ async def main():
         ),
     ) as cmp_client:
 
-        await cmp_client.health.get_async()
+        res = await cmp_client.health.get_async()
 
-        # Use the SDK ...
+        assert res is not None
+
+        # Handle response
+        print(res)
 
 asyncio.run(main())
 ```
