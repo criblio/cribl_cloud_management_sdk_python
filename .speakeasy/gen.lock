@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 897b2045-55e2-49ca-a37b-2daf10d4e6ea
 management:
-  docChecksum: d3d33dc8a115e8df70f0526bdacbfb60
+  docChecksum: 0d92af91f65020024afcb5ddf963eea6
   docVersion: "1.0"
   speakeasyVersion: 1.621.0
   generationVersion: 2.707.0
-  releaseVersion: 0.0.14
-  configChecksum: efd171877ff97027cdc6db574c4eccd6
+  releaseVersion: 0.0.15
+  configChecksum: dc9d38d37691f4fc4dda1b968ef49d16
   repoURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   installationURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   published: true
@@ -38,6 +38,7 @@ generatedFiles:
   - .gitattributes
   - .vscode/settings.json
   - USAGE.md
+  - docs/models/gethealthstatusresponse.md
   - docs/models/schemeclientoauth.md
   - docs/models/security.md
   - docs/models/state.md
@@ -77,6 +78,7 @@ generatedFiles:
   - src/cribl_mgmt_plane/health.py
   - src/cribl_mgmt_plane/httpclient.py
   - src/cribl_mgmt_plane/models/__init__.py
+  - src/cribl_mgmt_plane/models/gethealthstatusop.py
   - src/cribl_mgmt_plane/models/schemeclientoauth.py
   - src/cribl_mgmt_plane/models/security.py
   - src/cribl_mgmt_plane/models/v1_workspaces_createworkspaceop.py
@@ -117,7 +119,7 @@ examples:
     speakeasy-default-get-health-status:
       responses:
         "200":
-          application/json: "OK"
+          application/json: {"status": "OK"}
   v1.workspaces.createWorkspace:
     speakeasy-default-v1-workspaces-create-workspace:
       parameters:
