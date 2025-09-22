@@ -26,4 +26,4 @@ class SchemeClientOauth(BaseModel):
         str, FieldMetadata(security=SecurityMetadata(field_name="audience"))
     ]
 
-    token_url: str = "https://login.cribl.cloud/oauth2/token"
+    token_url: str = "https://login.cribl.cloud/oauth/token"

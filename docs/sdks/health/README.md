@@ -47,7 +47,7 @@ with CriblMgmtPlane(
 
 ### Response
 
-**[str](../../models/.md)**
+**[models.GetHealthStatusResponse](../../models/gethealthstatusresponse.md)**
 
 ### Errors
 
