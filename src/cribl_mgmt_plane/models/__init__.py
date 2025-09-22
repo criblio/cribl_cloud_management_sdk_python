@@ -6,6 +6,10 @@ import builtins
 import sys
 
 if TYPE_CHECKING:
+    from .gethealthstatusop import (
+        GetHealthStatusResponse,
+        GetHealthStatusResponseTypedDict,
+    )
     from .schemeclientoauth import SchemeClientOauth, SchemeClientOauthTypedDict
     from .security import Security, SecurityTypedDict
     from .v1_workspaces_createworkspaceop import (
@@ -49,6 +53,8 @@ if TYPE_CHECKING:
     )
 
 __all__ = [
+    "GetHealthStatusResponse",
+    "GetHealthStatusResponseTypedDict",
     "SchemeClientOauth",
     "SchemeClientOauthTypedDict",
     "Security",
@@ -77,6 +83,8 @@ __all__ = [
 ]
 
 _dynamic_imports: dict[str, str] = {
+    "GetHealthStatusResponse": ".gethealthstatusop",
+    "GetHealthStatusResponseTypedDict": ".gethealthstatusop",
     "SchemeClientOauth": ".schemeclientoauth",
     "SchemeClientOauthTypedDict": ".schemeclientoauth",
     "Security": ".security",
