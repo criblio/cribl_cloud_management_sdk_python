@@ -3,17 +3,17 @@ id: 897b2045-55e2-49ca-a37b-2daf10d4e6ea
 management:
   docChecksum: 0d92af91f65020024afcb5ddf963eea6
   docVersion: "1.0"
-  speakeasyVersion: 1.621.0
-  generationVersion: 2.707.0
-  releaseVersion: 0.0.15
-  configChecksum: dc9d38d37691f4fc4dda1b968ef49d16
+  speakeasyVersion: 1.630.0
+  generationVersion: 2.716.10
+  releaseVersion: 0.0.16
+  configChecksum: aaf107c1c89225cf388ebe7b8d3820bf
   repoURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   installationURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   published: true
 features:
   python:
     additionalDependencies: 1.0.0
-    core: 5.20.4
+    core: 5.22.0
     defaultEnabledRetries: 0.2.0
     devContainers: 3.0.0
     enumUnions: 0.1.0
@@ -167,6 +167,3 @@ examples:
 examplesVersion: 1.0.2
 generatedTests:
   dummyServiceStatus: "2025-07-02T19:49:08+02:00"
-releaseNotes: |
-  ## Python SDK Changes Detected:
-  * `cribl_mgmt_plane.health.get()`:  `response` **Changed** **Breaking** :warning:
