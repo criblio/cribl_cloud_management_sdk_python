@@ -10,6 +10,8 @@ from typing import List, Mapping, Optional
 
 
 class Workspaces(BaseSDK):
+    r"""Operations related to workspaces"""
+
     def create(
         self,
         *,

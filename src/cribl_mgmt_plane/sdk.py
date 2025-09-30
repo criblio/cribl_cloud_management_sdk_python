@@ -23,7 +23,9 @@ class CriblMgmtPlane(BaseSDK):
     r"""Cribl.Cloud Public API: Serves as a public API for the Cribl.Cloud platform and powers the Speakeasy SDK"""
 
     health: "Health"
+    r"""Operations related to health"""
     workspaces: "Workspaces"
+    r"""Operations related to workspaces"""
     _sub_sdk_map = {
         "health": ("cribl_mgmt_plane.health", "Health"),
         "workspaces": ("cribl_mgmt_plane.workspaces", "Workspaces"),
