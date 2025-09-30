@@ -12,16 +12,18 @@ from typing import List, Optional
 from typing_extensions import Annotated, NotRequired, TypedDict
 
 
-class WorkspaceSchemaRegion(str, Enum, metaclass=utils.OpenEnumMeta):
+class Region(str, Enum, metaclass=utils.OpenEnumMeta):
     r"""AWS region where the workspace is deployed"""
 
     US_WEST_2 = "us-west-2"
     US_EAST_1 = "us-east-1"
+    US_EAST_2 = "us-east-2"
     EU_CENTRAL_1 = "eu-central-1"
+    EU_CENTRAL_2 = "eu-central-2"
     EU_WEST_2 = "eu-west-2"
+    AP_SOUTHEAST_1 = "ap-southeast-1"
     AP_SOUTHEAST_2 = "ap-southeast-2"
     CA_CENTRAL_1 = "ca-central-1"
-    US_EAST_2 = "us-east-2"
 
 
 class State(str, Enum, metaclass=utils.OpenEnumMeta):
@@ -45,7 +47,7 @@ class State(str, Enum, metaclass=utils.OpenEnumMeta):
 class WorkspaceSchemaTypedDict(TypedDict):
     workspace_id: str
     r"""Unique identifier for the workspace"""
-    region: WorkspaceSchemaRegion
+    region: Region
     r"""AWS region where the workspace is deployed"""
     last_updated: datetime
     r"""Timestamp when the workspace was last updated"""
@@ -65,7 +67,7 @@ class WorkspaceSchema(BaseModel):
     workspace_id: Annotated[str, pydantic.Field(alias="workspaceId")]
     r"""Unique identifier for the workspace"""
 
-    region: Annotated[WorkspaceSchemaRegion, PlainValidator(validate_open_enum(False))]
+    region: Annotated[Region, PlainValidator(validate_open_enum(False))]
     r"""AWS region where the workspace is deployed"""
 
     last_updated: Annotated[datetime, pydantic.Field(alias="lastUpdated")]
