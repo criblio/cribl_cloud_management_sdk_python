@@ -17,7 +17,6 @@ class Workspaces(BaseSDK):
         *,
         organization_id: str,
         workspace_id: str,
-        region: models.WorkspaceCreateRequestDTORegion,
         alias: Optional[str] = None,
         description: Optional[str] = None,
         tags: Optional[List[str]] = None,
@@ -30,7 +29,6 @@ class Workspaces(BaseSDK):
 
         :param organization_id: Organization identifier
         :param workspace_id: Unique identifier for the workspace
-        :param region: AWS region where the workspace is deployed
         :param alias: User-friendly alias for the workspace
         :param description: Detailed description of the workspace
         :param tags: Tags associated with the workspace
@@ -53,7 +51,6 @@ class Workspaces(BaseSDK):
             organization_id=organization_id,
             workspace_create_request_dto=models.WorkspaceCreateRequestDTO(
                 workspace_id=workspace_id,
-                region=region,
                 alias=alias,
                 description=description,
                 tags=tags,
@@ -126,7 +123,6 @@ class Workspaces(BaseSDK):
         *,
         organization_id: str,
         workspace_id: str,
-        region: models.WorkspaceCreateRequestDTORegion,
         alias: Optional[str] = None,
         description: Optional[str] = None,
         tags: Optional[List[str]] = None,
@@ -139,7 +135,6 @@ class Workspaces(BaseSDK):
 
         :param organization_id: Organization identifier
         :param workspace_id: Unique identifier for the workspace
-        :param region: AWS region where the workspace is deployed
         :param alias: User-friendly alias for the workspace
         :param description: Detailed description of the workspace
         :param tags: Tags associated with the workspace
@@ -162,7 +157,6 @@ class Workspaces(BaseSDK):
             organization_id=organization_id,
             workspace_create_request_dto=models.WorkspaceCreateRequestDTO(
                 workspace_id=workspace_id,
-                region=region,
                 alias=alias,
                 description=description,
                 tags=tags,
