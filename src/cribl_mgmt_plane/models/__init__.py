@@ -34,7 +34,6 @@ if TYPE_CHECKING:
     )
     from .workspacecreaterequestdto import (
         WorkspaceCreateRequestDTO,
-        WorkspaceCreateRequestDTORegion,
         WorkspaceCreateRequestDTOTypedDict,
     )
     from .workspacepatchrequestdto import (
@@ -42,9 +41,9 @@ if TYPE_CHECKING:
         WorkspacePatchRequestDTOTypedDict,
     )
     from .workspaceschema import (
+        Region,
         State,
         WorkspaceSchema,
-        WorkspaceSchemaRegion,
         WorkspaceSchemaTypedDict,
     )
     from .workspaceslistresponsedto import (
@@ -55,6 +54,7 @@ if TYPE_CHECKING:
 __all__ = [
     "GetHealthStatusResponse",
     "GetHealthStatusResponseTypedDict",
+    "Region",
     "SchemeClientOauth",
     "SchemeClientOauthTypedDict",
     "Security",
@@ -71,12 +71,10 @@ __all__ = [
     "V1WorkspacesUpdateWorkspaceRequest",
     "V1WorkspacesUpdateWorkspaceRequestTypedDict",
     "WorkspaceCreateRequestDTO",
-    "WorkspaceCreateRequestDTORegion",
     "WorkspaceCreateRequestDTOTypedDict",
     "WorkspacePatchRequestDTO",
     "WorkspacePatchRequestDTOTypedDict",
     "WorkspaceSchema",
-    "WorkspaceSchemaRegion",
     "WorkspaceSchemaTypedDict",
     "WorkspacesListResponseDTO",
     "WorkspacesListResponseDTOTypedDict",
@@ -100,13 +98,12 @@ _dynamic_imports: dict[str, str] = {
     "V1WorkspacesUpdateWorkspaceRequest": ".v1_workspaces_updateworkspaceop",
     "V1WorkspacesUpdateWorkspaceRequestTypedDict": ".v1_workspaces_updateworkspaceop",
     "WorkspaceCreateRequestDTO": ".workspacecreaterequestdto",
-    "WorkspaceCreateRequestDTORegion": ".workspacecreaterequestdto",
     "WorkspaceCreateRequestDTOTypedDict": ".workspacecreaterequestdto",
     "WorkspacePatchRequestDTO": ".workspacepatchrequestdto",
     "WorkspacePatchRequestDTOTypedDict": ".workspacepatchrequestdto",
+    "Region": ".workspaceschema",
     "State": ".workspaceschema",
     "WorkspaceSchema": ".workspaceschema",
-    "WorkspaceSchemaRegion": ".workspaceschema",
     "WorkspaceSchemaTypedDict": ".workspaceschema",
     "WorkspacesListResponseDTO": ".workspaceslistresponsedto",
     "WorkspacesListResponseDTOTypedDict": ".workspaceslistresponsedto",

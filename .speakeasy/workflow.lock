@@ -2,20 +2,20 @@ speakeasyVersion: 1.630.0
 sources:
     Cribl Cloud Management API:
         sourceNamespace: cribl-cloud-management-api
-        sourceRevisionDigest: sha256:5755f97f09381bea93679de6ea052e252e9fb7df7a11b3bcf8ba6d3e1a91d5b4
-        sourceBlobDigest: sha256:20766bc534588606def8ced47eed8642ab3e75dfd6f6cd8e8858bf9e3aa20a27
+        sourceRevisionDigest: sha256:b017bdd8da69dc25072b2a9536070596d1c9a4ae2fc7a71565b54394b9b4f472
+        sourceBlobDigest: sha256:de7f22c2c4d6bdfa5452ddd9a98f557379140db5efe7ae58d3a8831596ca55ca
         tags:
             - latest
-            - speakeasy-sdk-regen-1759222625
+            - speakeasy-sdk-regen-1759230033
             - "1.0"
 targets:
     cribl-mgmt-plane:
         source: Cribl Cloud Management API
         sourceNamespace: cribl-cloud-management-api
-        sourceRevisionDigest: sha256:5755f97f09381bea93679de6ea052e252e9fb7df7a11b3bcf8ba6d3e1a91d5b4
-        sourceBlobDigest: sha256:20766bc534588606def8ced47eed8642ab3e75dfd6f6cd8e8858bf9e3aa20a27
+        sourceRevisionDigest: sha256:b017bdd8da69dc25072b2a9536070596d1c9a4ae2fc7a71565b54394b9b4f472
+        sourceBlobDigest: sha256:de7f22c2c4d6bdfa5452ddd9a98f557379140db5efe7ae58d3a8831596ca55ca
         codeSamplesNamespace: cribl-cloud-management-api-python-code-samples
-        codeSamplesRevisionDigest: sha256:7d3d9960b3ac47c76758feaa0b5c5022c9ba220313cd923ff162e9619f41ecc0
+        codeSamplesRevisionDigest: sha256:486f467d5272cac41add55c8d670699a0f815e065bc9c1d59323d45fe22ecfaa
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: 1.630.0
