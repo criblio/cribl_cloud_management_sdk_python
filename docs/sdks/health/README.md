@@ -3,6 +3,8 @@
 
 ## Overview
 
+Operations related to health
+
 ### Available Operations
 
 * [get](#get) - Get the health status of the application
