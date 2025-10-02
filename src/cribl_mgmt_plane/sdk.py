@@ -20,12 +20,12 @@ if TYPE_CHECKING:
 
 
 class CriblMgmtPlane(BaseSDK):
-    r"""Cribl.Cloud Public API: Serves as a public API for the Cribl.Cloud platform and powers the Speakeasy SDK"""
+    r"""Cribl.Cloud Public API: Public API for the Cribl.Cloud platform. Powers the Speakeasy SDK."""
 
     health: "Health"
-    r"""Operations related to health"""
+    r"""Operations related to application health status"""
     workspaces: "Workspaces"
-    r"""Operations related to workspaces"""
+    r"""Operations related to Workspaces"""
     _sub_sdk_map = {
         "health": ("cribl_mgmt_plane.health", "Health"),
         "workspaces": ("cribl_mgmt_plane.workspaces", "Workspaces"),

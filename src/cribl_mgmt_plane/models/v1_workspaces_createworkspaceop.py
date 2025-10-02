@@ -13,7 +13,7 @@ from typing_extensions import Annotated, TypedDict
 
 class V1WorkspacesCreateWorkspaceRequestTypedDict(TypedDict):
     organization_id: str
-    r"""Organization identifier"""
+    r"""The <code>id</code> of the Organization where you want to create the Workspace."""
     workspace_create_request_dto: WorkspaceCreateRequestDTOTypedDict
 
 
@@ -23,7 +23,7 @@ class V1WorkspacesCreateWorkspaceRequest(BaseModel):
         pydantic.Field(alias="organizationId"),
         FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
     ]
-    r"""Organization identifier"""
+    r"""The <code>id</code> of the Organization where you want to create the Workspace."""
 
     workspace_create_request_dto: Annotated[
         WorkspaceCreateRequestDTO,
