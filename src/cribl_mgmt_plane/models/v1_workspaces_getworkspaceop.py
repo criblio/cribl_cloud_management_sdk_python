@@ -9,9 +9,9 @@ from typing_extensions import Annotated, TypedDict
 
 class V1WorkspacesGetWorkspaceRequestTypedDict(TypedDict):
     organization_id: str
-    r"""Organization identifier"""
+    r"""The <code>id</code> of the Organization that contains the Workspace."""
     workspace_id: str
-    r"""Workspace identifier"""
+    r"""The <code>id</code> of the Workspace to get."""
 
 
 class V1WorkspacesGetWorkspaceRequest(BaseModel):
@@ -20,11 +20,11 @@ class V1WorkspacesGetWorkspaceRequest(BaseModel):
         pydantic.Field(alias="organizationId"),
         FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
     ]
-    r"""Organization identifier"""
+    r"""The <code>id</code> of the Organization that contains the Workspace."""
 
     workspace_id: Annotated[
         str,
         pydantic.Field(alias="workspaceId"),
         FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
     ]
-    r"""Workspace identifier"""
+    r"""The <code>id</code> of the Workspace to get."""

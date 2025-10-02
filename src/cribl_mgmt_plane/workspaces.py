@@ -10,7 +10,7 @@ from typing import List, Mapping, Optional
 
 
 class Workspaces(BaseSDK):
-    r"""Operations related to workspaces"""
+    r"""Operations related to Workspaces"""
 
     def create(
         self,
@@ -25,9 +25,11 @@ class Workspaces(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.WorkspaceSchema:
-        r"""Create a new workspace
+        r"""Create a Workspace in the specified Organization
 
-        :param organization_id: Organization identifier
+        Create a new Workspace in the specified Organization.
+
+        :param organization_id: The <code>id</code> of the Organization where you want to create the Workspace.
         :param workspace_id: Unique identifier for the workspace
         :param alias: User-friendly alias for the workspace
         :param description: Detailed description of the workspace
@@ -131,9 +133,11 @@ class Workspaces(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.WorkspaceSchema:
-        r"""Create a new workspace
+        r"""Create a Workspace in the specified Organization
 
-        :param organization_id: Organization identifier
+        Create a new Workspace in the specified Organization.
+
+        :param organization_id: The <code>id</code> of the Organization where you want to create the Workspace.
         :param workspace_id: Unique identifier for the workspace
         :param alias: User-friendly alias for the workspace
         :param description: Detailed description of the workspace
@@ -233,9 +237,11 @@ class Workspaces(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.WorkspacesListResponseDTO:
-        r"""List all workspaces for an organization
+        r"""List all Workspaces for the specified Organization
 
-        :param organization_id: Organization identifier
+        Get a list of all Workspaces for the specified Organization.
+
+        :param organization_id: The <code>id</code> of the Organization that contains the Workspaces.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -318,9 +324,11 @@ class Workspaces(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.WorkspacesListResponseDTO:
-        r"""List all workspaces for an organization
+        r"""List all Workspaces for the specified Organization
 
-        :param organization_id: Organization identifier
+        Get a list of all Workspaces for the specified Organization.
+
+        :param organization_id: The <code>id</code> of the Organization that contains the Workspaces.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -407,10 +415,12 @@ class Workspaces(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.WorkspaceSchema:
-        r"""Update an existing workspace
+        r"""Update a Workspace
 
-        :param organization_id: Organization identifier
-        :param workspace_id: Workspace identifier
+        Update the specified Workspace.
+
+        :param organization_id: The <code>id</code> of the Organization that contains the Workspace.
+        :param workspace_id: The <code>id</code> of the Workspace to update.
         :param alias: User-friendly alias for the workspace
         :param description: Detailed description of the workspace
         :param tags: Tags associated with the workspace
@@ -513,10 +523,12 @@ class Workspaces(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.WorkspaceSchema:
-        r"""Update an existing workspace
+        r"""Update a Workspace
 
-        :param organization_id: Organization identifier
-        :param workspace_id: Workspace identifier
+        Update the specified Workspace.
+
+        :param organization_id: The <code>id</code> of the Organization that contains the Workspace.
+        :param workspace_id: The <code>id</code> of the Workspace to update.
         :param alias: User-friendly alias for the workspace
         :param description: Detailed description of the workspace
         :param tags: Tags associated with the workspace
@@ -616,10 +628,12 @@ class Workspaces(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ):
-        r"""Delete a workspace
+        r"""Delete a Workspace
 
-        :param organization_id: Organization identifier
-        :param workspace_id: Workspace identifier
+        Delete the specified Workspace in the specified Organization.
+
+        :param organization_id: The <code>id</code> of the Organization that contains the Workspace.
+        :param workspace_id: The <code>id</code> of the Workspace to delete.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -704,10 +718,12 @@ class Workspaces(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ):
-        r"""Delete a workspace
+        r"""Delete a Workspace
 
-        :param organization_id: Organization identifier
-        :param workspace_id: Workspace identifier
+        Delete the specified Workspace in the specified Organization.
+
+        :param organization_id: The <code>id</code> of the Organization that contains the Workspace.
+        :param workspace_id: The <code>id</code> of the Workspace to delete.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -792,10 +808,12 @@ class Workspaces(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.WorkspaceSchema:
-        r"""Get a specific workspace by ID
+        r"""Get a Workspace
 
-        :param organization_id: Organization identifier
-        :param workspace_id: Workspace identifier
+        Get the specified Workspace.
+
+        :param organization_id: The <code>id</code> of the Organization that contains the Workspace.
+        :param workspace_id: The <code>id</code> of the Workspace to get.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -880,10 +898,12 @@ class Workspaces(BaseSDK):
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
     ) -> models.WorkspaceSchema:
-        r"""Get a specific workspace by ID
+        r"""Get a Workspace
 
-        :param organization_id: Organization identifier
-        :param workspace_id: Workspace identifier
+        Get the specified Workspace.
+
+        :param organization_id: The <code>id</code> of the Organization that contains the Workspace.
+        :param workspace_id: The <code>id</code> of the Workspace to get.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
