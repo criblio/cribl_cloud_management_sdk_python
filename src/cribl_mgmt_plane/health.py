@@ -10,7 +10,7 @@ from typing import Mapping, Optional
 
 
 class Health(BaseSDK):
-    r"""Operations related to health"""
+    r"""Operations related to application health status"""
 
     def get(
         self,

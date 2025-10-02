@@ -9,7 +9,7 @@ from typing_extensions import Annotated, TypedDict
 
 class V1WorkspacesListWorkspacesRequestTypedDict(TypedDict):
     organization_id: str
-    r"""Organization identifier"""
+    r"""The <code>id</code> of the Organization that contains the Workspaces."""
 
 
 class V1WorkspacesListWorkspacesRequest(BaseModel):
@@ -18,4 +18,4 @@ class V1WorkspacesListWorkspacesRequest(BaseModel):
         pydantic.Field(alias="organizationId"),
         FieldMetadata(path=PathParamMetadata(style="simple", explode=False)),
     ]
-    r"""Organization identifier"""
+    r"""The <code>id</code> of the Organization that contains the Workspaces."""

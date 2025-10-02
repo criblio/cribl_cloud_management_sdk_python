@@ -2,7 +2,7 @@
 <!-- Start Summary [summary] -->
 ## Summary
 
-Cribl.Cloud Public API: Serves as a public API for the Cribl.Cloud platform and powers the Speakeasy SDK
+Cribl.Cloud Public API: Public API for the Cribl.Cloud platform. Powers the Speakeasy SDK.
 <!-- End Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
@@ -215,11 +215,11 @@ with CriblMgmtPlane(
 
 ### [workspaces](docs/sdks/workspaces/README.md)
 
-* [create](docs/sdks/workspaces/README.md#create) - Create a new workspace
-* [list](docs/sdks/workspaces/README.md#list) - List all workspaces for an organization
-* [update](docs/sdks/workspaces/README.md#update) - Update an existing workspace
-* [delete](docs/sdks/workspaces/README.md#delete) - Delete a workspace
-* [get](docs/sdks/workspaces/README.md#get) - Get a specific workspace by ID
+* [create](docs/sdks/workspaces/README.md#create) - Create a Workspace in the specified Organization
+* [list](docs/sdks/workspaces/README.md#list) - List all Workspaces for the specified Organization
+* [update](docs/sdks/workspaces/README.md#update) - Update a Workspace
+* [delete](docs/sdks/workspaces/README.md#delete) - Delete a Workspace
+* [get](docs/sdks/workspaces/README.md#get) - Get a Workspace
 
 </details>
 <!-- End Available Resources and Operations [operations] -->

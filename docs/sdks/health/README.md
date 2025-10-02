@@ -3,7 +3,7 @@
 
 ## Overview
 
-Operations related to health
+Operations related to application health status
 
 ### Available Operations
 
