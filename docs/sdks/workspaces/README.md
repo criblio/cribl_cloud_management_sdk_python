@@ -59,7 +59,7 @@ with CriblMgmtPlane(
 
 ### Response
 
-**[models.WorkspaceSchema](../../models/workspaceschema.md)**
+**[models.V1WorkspacesCreateWorkspaceResponse](../../models/v1workspacescreateworkspaceresponse.md)**
 
 ### Errors
 
@@ -106,7 +106,7 @@ with CriblMgmtPlane(
 
 ### Response
 
-**[models.WorkspacesListResponseDTO](../../models/workspaceslistresponsedto.md)**
+**[models.V1WorkspacesListWorkspacesResponse](../../models/v1workspaceslistworkspacesresponse.md)**
 
 ### Errors
 
@@ -160,7 +160,7 @@ with CriblMgmtPlane(
 
 ### Response
 
-**[models.WorkspaceSchema](../../models/workspaceschema.md)**
+**[models.V1WorkspacesUpdateWorkspaceResponse](../../models/v1workspacesupdateworkspaceresponse.md)**
 
 ### Errors
 
@@ -191,9 +191,12 @@ with CriblMgmtPlane(
     ),
 ) as cmp_client:
 
-    cmp_client.workspaces.delete(organization_id="<id>", workspace_id="<id>")
+    res = cmp_client.workspaces.delete(organization_id="<id>", workspace_id="<id>")
 
-    # Use the SDK ...
+    assert res is not None
+
+    # Handle response
+    print(res)
 
 ```
 
@@ -204,6 +207,10 @@ with CriblMgmtPlane(
 | `organization_id`                                                    | *str*                                                                | :heavy_check_mark:                                                   | The <code>id</code> of the Organization that contains the Workspace. |
 | `workspace_id`                                                       | *str*                                                                | :heavy_check_mark:                                                   | The <code>id</code> of the Workspace to delete.                      |
 | `retries`                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)     | :heavy_minus_sign:                                                   | Configuration to override the default retry behavior of the client.  |
+
+### Response
+
+**[models.DefaultErrorDTO](../../models/defaulterrordto.md)**
 
 ### Errors
 
@@ -251,7 +258,7 @@ with CriblMgmtPlane(
 
 ### Response
 
-**[models.WorkspaceSchema](../../models/workspaceschema.md)**
+**[models.V1WorkspacesGetWorkspaceResponse](../../models/v1workspacesgetworkspaceresponse.md)**
 
 ### Errors
 

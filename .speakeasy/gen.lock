@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 897b2045-55e2-49ca-a37b-2daf10d4e6ea
 management:
-  docChecksum: ebd81f0fb2def17a26c531456e8fd0ea
+  docChecksum: 7c6f31bbc6cac1d219c098a091740054
   docVersion: "1.0"
-  speakeasyVersion: 1.630.0
-  generationVersion: 2.716.10
-  releaseVersion: 0.0.19
-  configChecksum: 926aebb6ecf53357ff6f9260fcc8d177
+  speakeasyVersion: 1.634.1
+  generationVersion: 2.721.0
+  releaseVersion: 0.0.20
+  configChecksum: f8542d5e9e0cf8747ba6ff92a106ee8f
   repoURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   installationURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   published: true
 features:
   python:
     additionalDependencies: 1.0.0
-    core: 5.22.0
+    core: 5.22.1
     defaultEnabledRetries: 0.2.0
     devContainers: 3.0.0
     enumUnions: 0.1.0
@@ -38,6 +38,7 @@ generatedFiles:
   - .gitattributes
   - .vscode/settings.json
   - USAGE.md
+  - docs/models/defaulterrordto.md
   - docs/models/gethealthstatusresponse.md
   - docs/models/region.md
   - docs/models/schemeclientoauth.md
@@ -45,10 +46,14 @@ generatedFiles:
   - docs/models/state.md
   - docs/models/utils/retryconfig.md
   - docs/models/v1workspacescreateworkspacerequest.md
+  - docs/models/v1workspacescreateworkspaceresponse.md
   - docs/models/v1workspacesdeleteworkspacerequest.md
   - docs/models/v1workspacesgetworkspacerequest.md
+  - docs/models/v1workspacesgetworkspaceresponse.md
   - docs/models/v1workspaceslistworkspacesrequest.md
+  - docs/models/v1workspaceslistworkspacesresponse.md
   - docs/models/v1workspacesupdateworkspacerequest.md
+  - docs/models/v1workspacesupdateworkspaceresponse.md
   - docs/models/workspacecreaterequestdto.md
   - docs/models/workspacepatchrequestdto.md
   - docs/models/workspaceschema.md
@@ -77,6 +82,7 @@ generatedFiles:
   - src/cribl_mgmt_plane/health.py
   - src/cribl_mgmt_plane/httpclient.py
   - src/cribl_mgmt_plane/models/__init__.py
+  - src/cribl_mgmt_plane/models/defaulterrordto.py
   - src/cribl_mgmt_plane/models/gethealthstatusop.py
   - src/cribl_mgmt_plane/models/schemeclientoauth.py
   - src/cribl_mgmt_plane/models/security.py
@@ -129,6 +135,8 @@ examples:
       responses:
         "201":
           application/json: {"workspaceId": "main", "region": "us-west-2", "lastUpdated": "2023-01-01T12:00:00Z", "leaderFQDN": "workspace-leader.example.com", "state": "Workspace-Active", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
+        default:
+          application/json: {"statusCode": 2135.91, "message": "<value>"}
   v1.workspaces.listWorkspaces:
     speakeasy-default-v1-workspaces-list-workspaces:
       parameters:
@@ -137,6 +145,8 @@ examples:
       responses:
         "200":
           application/json: {"items": [{"workspaceId": "main", "region": "us-west-2", "lastUpdated": "2023-01-01T12:00:00Z", "leaderFQDN": "workspace-leader.example.com", "state": "Workspace-Active", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}], "count": 5}
+        default:
+          application/json: {"statusCode": 5622.58, "message": "<value>"}
   v1.workspaces.updateWorkspace:
     speakeasy-default-v1-workspaces-update-workspace:
       parameters:
@@ -148,12 +158,17 @@ examples:
       responses:
         "200":
           application/json: {"workspaceId": "main", "region": "us-west-2", "lastUpdated": "2023-01-01T12:00:00Z", "leaderFQDN": "workspace-leader.example.com", "state": "Workspace-Active", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
+        default:
+          application/json: {"statusCode": 8141.25, "message": "<value>"}
   v1.workspaces.deleteWorkspace:
     speakeasy-default-v1-workspaces-delete-workspace:
       parameters:
         path:
           organizationId: "<id>"
           workspaceId: "<id>"
+      responses:
+        default:
+          application/json: {"statusCode": 8158.92, "message": "<value>"}
   v1.workspaces.getWorkspace:
     speakeasy-default-v1-workspaces-get-workspace:
       parameters:
@@ -163,6 +178,15 @@ examples:
       responses:
         "200":
           application/json: {"workspaceId": "main", "region": "us-west-2", "lastUpdated": "2023-01-01T12:00:00Z", "leaderFQDN": "workspace-leader.example.com", "state": "Workspace-Active", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
+        default:
+          application/json: {"statusCode": 8847.69, "message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests:
   dummyServiceStatus: "2025-07-02T19:49:08+02:00"
+releaseNotes: |
+  ## Python SDK Changes Detected:
+  * `cribl_mgmt_plane.workspaces.create()`:  `response.status[default]` **Added** **Breaking** :warning:
+  * `cribl_mgmt_plane.workspaces.list()`:  `response.status[default]` **Added** **Breaking** :warning:
+  * `cribl_mgmt_plane.workspaces.update()`:  `response.status[default]` **Added** **Breaking** :warning:
+  * `cribl_mgmt_plane.workspaces.delete()`:  `response.status[default]` **Added** **Breaking** :warning:
+  * `cribl_mgmt_plane.workspaces.get()`:  `response.status[default]` **Added** **Breaking** :warning:

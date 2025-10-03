@@ -6,6 +6,7 @@ import builtins
 import sys
 
 if TYPE_CHECKING:
+    from .defaulterrordto import DefaultErrorDTO, DefaultErrorDTOTypedDict
     from .gethealthstatusop import (
         GetHealthStatusResponse,
         GetHealthStatusResponseTypedDict,
@@ -15,6 +16,8 @@ if TYPE_CHECKING:
     from .v1_workspaces_createworkspaceop import (
         V1WorkspacesCreateWorkspaceRequest,
         V1WorkspacesCreateWorkspaceRequestTypedDict,
+        V1WorkspacesCreateWorkspaceResponse,
+        V1WorkspacesCreateWorkspaceResponseTypedDict,
     )
     from .v1_workspaces_deleteworkspaceop import (
         V1WorkspacesDeleteWorkspaceRequest,
@@ -23,14 +26,20 @@ if TYPE_CHECKING:
     from .v1_workspaces_getworkspaceop import (
         V1WorkspacesGetWorkspaceRequest,
         V1WorkspacesGetWorkspaceRequestTypedDict,
+        V1WorkspacesGetWorkspaceResponse,
+        V1WorkspacesGetWorkspaceResponseTypedDict,
     )
     from .v1_workspaces_listworkspacesop import (
         V1WorkspacesListWorkspacesRequest,
         V1WorkspacesListWorkspacesRequestTypedDict,
+        V1WorkspacesListWorkspacesResponse,
+        V1WorkspacesListWorkspacesResponseTypedDict,
     )
     from .v1_workspaces_updateworkspaceop import (
         V1WorkspacesUpdateWorkspaceRequest,
         V1WorkspacesUpdateWorkspaceRequestTypedDict,
+        V1WorkspacesUpdateWorkspaceResponse,
+        V1WorkspacesUpdateWorkspaceResponseTypedDict,
     )
     from .workspacecreaterequestdto import (
         WorkspaceCreateRequestDTO,
@@ -52,6 +61,8 @@ if TYPE_CHECKING:
     )
 
 __all__ = [
+    "DefaultErrorDTO",
+    "DefaultErrorDTOTypedDict",
     "GetHealthStatusResponse",
     "GetHealthStatusResponseTypedDict",
     "Region",
@@ -62,14 +73,22 @@ __all__ = [
     "State",
     "V1WorkspacesCreateWorkspaceRequest",
     "V1WorkspacesCreateWorkspaceRequestTypedDict",
+    "V1WorkspacesCreateWorkspaceResponse",
+    "V1WorkspacesCreateWorkspaceResponseTypedDict",
     "V1WorkspacesDeleteWorkspaceRequest",
     "V1WorkspacesDeleteWorkspaceRequestTypedDict",
     "V1WorkspacesGetWorkspaceRequest",
     "V1WorkspacesGetWorkspaceRequestTypedDict",
+    "V1WorkspacesGetWorkspaceResponse",
+    "V1WorkspacesGetWorkspaceResponseTypedDict",
     "V1WorkspacesListWorkspacesRequest",
     "V1WorkspacesListWorkspacesRequestTypedDict",
+    "V1WorkspacesListWorkspacesResponse",
+    "V1WorkspacesListWorkspacesResponseTypedDict",
     "V1WorkspacesUpdateWorkspaceRequest",
     "V1WorkspacesUpdateWorkspaceRequestTypedDict",
+    "V1WorkspacesUpdateWorkspaceResponse",
+    "V1WorkspacesUpdateWorkspaceResponseTypedDict",
     "WorkspaceCreateRequestDTO",
     "WorkspaceCreateRequestDTOTypedDict",
     "WorkspacePatchRequestDTO",
@@ -81,6 +100,8 @@ __all__ = [
 ]
 
 _dynamic_imports: dict[str, str] = {
+    "DefaultErrorDTO": ".defaulterrordto",
+    "DefaultErrorDTOTypedDict": ".defaulterrordto",
     "GetHealthStatusResponse": ".gethealthstatusop",
     "GetHealthStatusResponseTypedDict": ".gethealthstatusop",
     "SchemeClientOauth": ".schemeclientoauth",
@@ -89,14 +110,22 @@ _dynamic_imports: dict[str, str] = {
     "SecurityTypedDict": ".security",
     "V1WorkspacesCreateWorkspaceRequest": ".v1_workspaces_createworkspaceop",
     "V1WorkspacesCreateWorkspaceRequestTypedDict": ".v1_workspaces_createworkspaceop",
+    "V1WorkspacesCreateWorkspaceResponse": ".v1_workspaces_createworkspaceop",
+    "V1WorkspacesCreateWorkspaceResponseTypedDict": ".v1_workspaces_createworkspaceop",
     "V1WorkspacesDeleteWorkspaceRequest": ".v1_workspaces_deleteworkspaceop",
     "V1WorkspacesDeleteWorkspaceRequestTypedDict": ".v1_workspaces_deleteworkspaceop",
     "V1WorkspacesGetWorkspaceRequest": ".v1_workspaces_getworkspaceop",
     "V1WorkspacesGetWorkspaceRequestTypedDict": ".v1_workspaces_getworkspaceop",
+    "V1WorkspacesGetWorkspaceResponse": ".v1_workspaces_getworkspaceop",
+    "V1WorkspacesGetWorkspaceResponseTypedDict": ".v1_workspaces_getworkspaceop",
     "V1WorkspacesListWorkspacesRequest": ".v1_workspaces_listworkspacesop",
     "V1WorkspacesListWorkspacesRequestTypedDict": ".v1_workspaces_listworkspacesop",
+    "V1WorkspacesListWorkspacesResponse": ".v1_workspaces_listworkspacesop",
+    "V1WorkspacesListWorkspacesResponseTypedDict": ".v1_workspaces_listworkspacesop",
     "V1WorkspacesUpdateWorkspaceRequest": ".v1_workspaces_updateworkspaceop",
     "V1WorkspacesUpdateWorkspaceRequestTypedDict": ".v1_workspaces_updateworkspaceop",
+    "V1WorkspacesUpdateWorkspaceResponse": ".v1_workspaces_updateworkspaceop",
+    "V1WorkspacesUpdateWorkspaceResponseTypedDict": ".v1_workspaces_updateworkspaceop",
     "WorkspaceCreateRequestDTO": ".workspacecreaterequestdto",
     "WorkspaceCreateRequestDTOTypedDict": ".workspacecreaterequestdto",
     "WorkspacePatchRequestDTO": ".workspacepatchrequestdto",
