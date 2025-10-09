@@ -5,8 +5,8 @@ management:
   docVersion: "1.0"
   speakeasyVersion: 1.634.1
   generationVersion: 2.721.0
-  releaseVersion: 0.0.21
-  configChecksum: 47406f5ac91000f13a778f33467e46d8
+  releaseVersion: 0.0.22
+  configChecksum: 79ea9c4c3be188700dce3a73174d1876
   repoURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   installationURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   published: true
