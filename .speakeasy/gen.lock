@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 897b2045-55e2-49ca-a37b-2daf10d4e6ea
 management:
-  docChecksum: 7c6f31bbc6cac1d219c098a091740054
+  docChecksum: ff37b4b00bc63ca3571bac4de75352c8
   docVersion: "1.0"
   speakeasyVersion: 1.634.1
   generationVersion: 2.721.0
-  releaseVersion: 0.0.20
-  configChecksum: f8542d5e9e0cf8747ba6ff92a106ee8f
+  releaseVersion: 0.0.21
+  configChecksum: 47406f5ac91000f13a778f33467e46d8
   repoURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   installationURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   published: true
@@ -134,7 +134,7 @@ examples:
         application/json: {"workspaceId": "main", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
       responses:
         "201":
-          application/json: {"workspaceId": "main", "region": "us-west-2", "lastUpdated": "2023-01-01T12:00:00Z", "leaderFQDN": "workspace-leader.example.com", "state": "Workspace-Active", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
+          application/json: {"workspaceId": "main", "region": "us-west-2", "lastUpdated": "2023-01-01T12:00:00Z", "leaderFQDN": "workspace-leader.example.com", "state": "Active", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
         default:
           application/json: {"statusCode": 2135.91, "message": "<value>"}
   v1.workspaces.listWorkspaces:
@@ -144,7 +144,7 @@ examples:
           organizationId: "<id>"
       responses:
         "200":
-          application/json: {"items": [{"workspaceId": "main", "region": "us-west-2", "lastUpdated": "2023-01-01T12:00:00Z", "leaderFQDN": "workspace-leader.example.com", "state": "Workspace-Active", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}], "count": 5}
+          application/json: {"items": [{"workspaceId": "main", "region": "us-west-2", "lastUpdated": "2023-01-01T12:00:00Z", "leaderFQDN": "workspace-leader.example.com", "state": "Inactive", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}], "count": 5}
         default:
           application/json: {"statusCode": 5622.58, "message": "<value>"}
   v1.workspaces.updateWorkspace:
@@ -157,7 +157,7 @@ examples:
         application/json: {"alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
       responses:
         "200":
-          application/json: {"workspaceId": "main", "region": "us-west-2", "lastUpdated": "2023-01-01T12:00:00Z", "leaderFQDN": "workspace-leader.example.com", "state": "Workspace-Active", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
+          application/json: {"workspaceId": "main", "region": "us-west-2", "lastUpdated": "2023-01-01T12:00:00Z", "leaderFQDN": "workspace-leader.example.com", "state": "Active", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
         default:
           application/json: {"statusCode": 8141.25, "message": "<value>"}
   v1.workspaces.deleteWorkspace:
@@ -177,16 +177,9 @@ examples:
           workspaceId: "<id>"
       responses:
         "200":
-          application/json: {"workspaceId": "main", "region": "us-west-2", "lastUpdated": "2023-01-01T12:00:00Z", "leaderFQDN": "workspace-leader.example.com", "state": "Workspace-Active", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
+          application/json: {"workspaceId": "main", "region": "us-west-2", "lastUpdated": "2023-01-01T12:00:00Z", "leaderFQDN": "workspace-leader.example.com", "state": "Active", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
         default:
           application/json: {"statusCode": 8847.69, "message": "<value>"}
 examplesVersion: 1.0.2
 generatedTests:
   dummyServiceStatus: "2025-07-02T19:49:08+02:00"
-releaseNotes: |
-  ## Python SDK Changes Detected:
-  * `cribl_mgmt_plane.workspaces.create()`:  `response.status[default]` **Added** **Breaking** :warning:
-  * `cribl_mgmt_plane.workspaces.list()`:  `response.status[default]` **Added** **Breaking** :warning:
-  * `cribl_mgmt_plane.workspaces.update()`:  `response.status[default]` **Added** **Breaking** :warning:
-  * `cribl_mgmt_plane.workspaces.delete()`:  `response.status[default]` **Added** **Breaking** :warning:
-  * `cribl_mgmt_plane.workspaces.get()`:  `response.status[default]` **Added** **Breaking** :warning:
