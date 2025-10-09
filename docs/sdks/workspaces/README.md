@@ -142,6 +142,8 @@ with CriblMgmtPlane(
         "customer-data",
     ])
 
+    assert res is not None
+
     # Handle response
     print(res)
 
@@ -160,7 +162,7 @@ with CriblMgmtPlane(
 
 ### Response
 
-**[models.V1WorkspacesUpdateWorkspaceResponse](../../models/v1workspacesupdateworkspaceresponse.md)**
+**[models.DefaultErrorDTO](../../models/defaulterrordto.md)**
 
 ### Errors
 
