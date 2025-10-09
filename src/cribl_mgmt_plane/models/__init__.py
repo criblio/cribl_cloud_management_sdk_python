@@ -38,8 +38,6 @@ if TYPE_CHECKING:
     from .v1_workspaces_updateworkspaceop import (
         V1WorkspacesUpdateWorkspaceRequest,
         V1WorkspacesUpdateWorkspaceRequestTypedDict,
-        V1WorkspacesUpdateWorkspaceResponse,
-        V1WorkspacesUpdateWorkspaceResponseTypedDict,
     )
     from .workspacecreaterequestdto import (
         WorkspaceCreateRequestDTO,
@@ -87,8 +85,6 @@ __all__ = [
     "V1WorkspacesListWorkspacesResponseTypedDict",
     "V1WorkspacesUpdateWorkspaceRequest",
     "V1WorkspacesUpdateWorkspaceRequestTypedDict",
-    "V1WorkspacesUpdateWorkspaceResponse",
-    "V1WorkspacesUpdateWorkspaceResponseTypedDict",
     "WorkspaceCreateRequestDTO",
     "WorkspaceCreateRequestDTOTypedDict",
     "WorkspacePatchRequestDTO",
@@ -124,8 +120,6 @@ _dynamic_imports: dict[str, str] = {
     "V1WorkspacesListWorkspacesResponseTypedDict": ".v1_workspaces_listworkspacesop",
     "V1WorkspacesUpdateWorkspaceRequest": ".v1_workspaces_updateworkspaceop",
     "V1WorkspacesUpdateWorkspaceRequestTypedDict": ".v1_workspaces_updateworkspaceop",
-    "V1WorkspacesUpdateWorkspaceResponse": ".v1_workspaces_updateworkspaceop",
-    "V1WorkspacesUpdateWorkspaceResponseTypedDict": ".v1_workspaces_updateworkspaceop",
     "WorkspaceCreateRequestDTO": ".workspacecreaterequestdto",
     "WorkspaceCreateRequestDTOTypedDict": ".workspacecreaterequestdto",
     "WorkspacePatchRequestDTO": ".workspacepatchrequestdto",
