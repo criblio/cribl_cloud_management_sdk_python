@@ -422,7 +422,7 @@ class Workspaces(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.V1WorkspacesUpdateWorkspaceResponse:
+    ) -> Optional[models.DefaultErrorDTO]:
         r"""Update a Workspace
 
         Update the specified Workspace.
@@ -507,8 +507,8 @@ class Workspaces(BaseSDK):
             retry_config=retry_config,
         )
 
-        if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.WorkspaceSchema, http_res)
+        if utils.match_response(http_res, "204", "*"):
+            return None
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.APIError("API error occurred", http_res, http_res_text)
@@ -532,7 +532,7 @@ class Workspaces(BaseSDK):
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.V1WorkspacesUpdateWorkspaceResponse:
+    ) -> Optional[models.DefaultErrorDTO]:
         r"""Update a Workspace
 
         Update the specified Workspace.
@@ -617,8 +617,8 @@ class Workspaces(BaseSDK):
             retry_config=retry_config,
         )
 
-        if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.WorkspaceSchema, http_res)
+        if utils.match_response(http_res, "204", "*"):
+            return None
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.APIError("API error occurred", http_res, http_res_text)

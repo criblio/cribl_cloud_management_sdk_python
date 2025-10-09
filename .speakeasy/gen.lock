@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 897b2045-55e2-49ca-a37b-2daf10d4e6ea
 management:
-  docChecksum: ff37b4b00bc63ca3571bac4de75352c8
+  docChecksum: 078e5c90c41b18dc69a380573ef6a88f
   docVersion: "1.0"
   speakeasyVersion: 1.634.1
   generationVersion: 2.721.0
-  releaseVersion: 0.0.22
-  configChecksum: 79ea9c4c3be188700dce3a73174d1876
+  releaseVersion: 0.0.23
+  configChecksum: 556809f4f73d1f2229aa2d084f95a270
   repoURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   installationURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   published: true
@@ -53,7 +53,6 @@ generatedFiles:
   - docs/models/v1workspaceslistworkspacesrequest.md
   - docs/models/v1workspaceslistworkspacesresponse.md
   - docs/models/v1workspacesupdateworkspacerequest.md
-  - docs/models/v1workspacesupdateworkspaceresponse.md
   - docs/models/workspacecreaterequestdto.md
   - docs/models/workspacepatchrequestdto.md
   - docs/models/workspaceschema.md
@@ -183,3 +182,6 @@ examples:
 examplesVersion: 1.0.2
 generatedTests:
   dummyServiceStatus: "2025-07-02T19:49:08+02:00"
+releaseNotes: |
+  ## Python SDK Changes Detected:
+  * `cribl_mgmt_plane.workspaces.update()`:  `response` **Changed** **Breaking** :warning:
