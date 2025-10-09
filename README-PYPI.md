@@ -1,9 +1,16 @@
 # cribl_cloud_management_sdk_python
-<!-- Start Summary [summary] -->
-## Summary
 
-Cribl.Cloud Public API: Public API for the Cribl.Cloud platform. Powers the Speakeasy SDK.
-<!-- End Summary [summary] -->
+The Cribl Python SDK for the management plane provides operational control of administrative tasks like configuring and managing Workspaces and helps streamline the process of integrating with Cribl.
+
+Complementary API reference documentation is available at https://docs.cribl.io/cribl-as-code/api-reference. Product documentation is available at https://docs.cribl.io.
+
+> [!IMPORTANT]
+> **Preview Feature**
+> The Cribl SDKs are Preview features that are still being developed. We do not recommend using them in a production environment, because the features might not be fully tested or optimized for performance, and related documentation could be incomplete.
+>
+> Please continue to submit feedback through normal Cribl support channels, but assistance might be limited while the features remain in Preview.
+
+<!-- No Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
