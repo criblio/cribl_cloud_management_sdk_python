@@ -215,7 +215,6 @@ with CriblMgmtPlane(
 <details open>
 <summary>Available methods</summary>
 
-
 ### [health](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/docs/sdks/health/README.md)
 
 * [get](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/docs/sdks/health/README.md#get) - Get the health status of the application
