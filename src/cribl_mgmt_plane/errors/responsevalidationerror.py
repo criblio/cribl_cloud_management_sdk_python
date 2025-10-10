@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from cribl_mgmt_plane.errors import CriblMgmtPlaneError
 
 
-@dataclass(frozen=True)
+@dataclass(unsafe_hash=True)
 class ResponseValidationError(CriblMgmtPlaneError):
     """Error raised when there is a type mismatch between the response data and the expected Pydantic model."""
 

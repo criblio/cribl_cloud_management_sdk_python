@@ -215,7 +215,6 @@ with CriblMgmtPlane(
 <details open>
 <summary>Available methods</summary>
 
-
 ### [health](docs/sdks/health/README.md)
 
 * [get](docs/sdks/health/README.md#get) - Get the health status of the application
