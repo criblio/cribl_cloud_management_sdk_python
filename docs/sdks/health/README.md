@@ -34,8 +34,6 @@ with CriblMgmtPlane(
 
     res = cmp_client.health.get()
 
-    assert res is not None
-
     # Handle response
     print(res)
 
