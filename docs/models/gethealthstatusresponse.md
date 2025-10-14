@@ -1,10 +1,17 @@
 # GetHealthStatusResponse
 
-Health status
 
+## Supported Types
 
-## Fields
+### `models.GetHealthStatusResponseBody`
 
-| Field              | Type               | Required           | Description        | Example            |
-| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| `status`           | *Optional[str]*    | :heavy_minus_sign: | N/A                | OK                 |
+```python
+value: models.GetHealthStatusResponseBody = /* values here */
+```
+
+### `models.DefaultErrorDTO`
+
+```python
+value: models.DefaultErrorDTO = /* values here */
+```
+

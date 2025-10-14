@@ -9,6 +9,8 @@ if TYPE_CHECKING:
     from .defaulterrordto import DefaultErrorDTO, DefaultErrorDTOTypedDict
     from .gethealthstatusop import (
         GetHealthStatusResponse,
+        GetHealthStatusResponseBody,
+        GetHealthStatusResponseBodyTypedDict,
         GetHealthStatusResponseTypedDict,
     )
     from .schemeclientoauth import SchemeClientOauth, SchemeClientOauthTypedDict
@@ -62,6 +64,8 @@ __all__ = [
     "DefaultErrorDTO",
     "DefaultErrorDTOTypedDict",
     "GetHealthStatusResponse",
+    "GetHealthStatusResponseBody",
+    "GetHealthStatusResponseBodyTypedDict",
     "GetHealthStatusResponseTypedDict",
     "Region",
     "SchemeClientOauth",
@@ -99,6 +103,8 @@ _dynamic_imports: dict[str, str] = {
     "DefaultErrorDTO": ".defaulterrordto",
     "DefaultErrorDTOTypedDict": ".defaulterrordto",
     "GetHealthStatusResponse": ".gethealthstatusop",
+    "GetHealthStatusResponseBody": ".gethealthstatusop",
+    "GetHealthStatusResponseBodyTypedDict": ".gethealthstatusop",
     "GetHealthStatusResponseTypedDict": ".gethealthstatusop",
     "SchemeClientOauth": ".schemeclientoauth",
     "SchemeClientOauthTypedDict": ".schemeclientoauth",

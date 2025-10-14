@@ -18,8 +18,6 @@ with CriblMgmtPlane(
 
     res = cmp_client.health.get()
 
-    assert res is not None
-
     # Handle response
     print(res)
 ```
@@ -48,8 +46,6 @@ async def main():
     ) as cmp_client:
 
         res = await cmp_client.health.get_async()
-
-        assert res is not None
 
         # Handle response
         print(res)

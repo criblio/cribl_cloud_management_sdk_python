@@ -130,8 +130,6 @@ with CriblMgmtPlane(
 
     res = cmp_client.health.get()
 
-    assert res is not None
-
     # Handle response
     print(res)
 ```
@@ -160,8 +158,6 @@ async def main():
     ) as cmp_client:
 
         res = await cmp_client.health.get_async()
-
-        assert res is not None
 
         # Handle response
         print(res)
@@ -200,8 +196,6 @@ with CriblMgmtPlane(
 ) as cmp_client:
 
     res = cmp_client.health.get()
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -256,8 +250,6 @@ with CriblMgmtPlane(
     res = cmp_client.health.get(,
         RetryConfig("backoff", BackoffStrategy(1, 50, 1.1, 100), False))
 
-    assert res is not None
-
     # Handle response
     print(res)
 
@@ -283,8 +275,6 @@ with CriblMgmtPlane(
 ) as cmp_client:
 
     res = cmp_client.health.get()
-
-    assert res is not None
 
     # Handle response
     print(res)
@@ -325,8 +315,6 @@ with CriblMgmtPlane(
     try:
 
         res = cmp_client.health.get()
-
-        assert res is not None
 
         # Handle response
         print(res)
@@ -386,8 +374,6 @@ with CriblMgmtPlane(
 ) as cmp_client:
 
     res = cmp_client.health.get()
-
-    assert res is not None
 
     # Handle response
     print(res)
