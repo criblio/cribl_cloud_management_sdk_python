@@ -5,8 +5,8 @@ management:
   docVersion: "1.0"
   speakeasyVersion: 1.638.1
   generationVersion: 2.729.2
-  releaseVersion: 0.2.0rc1
-  configChecksum: 7abcdd9ae2f8531496094ff6822951b7
+  releaseVersion: 0.2.0
+  configChecksum: 7ca4974cf1c629a864a78ab60237128c
   repoURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   installationURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   published: true
@@ -184,8 +184,3 @@ examples:
 examplesVersion: 1.0.2
 generatedTests:
   dummyServiceStatus: "2025-07-02T19:49:08+02:00"
-releaseNotes: |
-  ## Python SDK Changes Detected:
-  * `cribl_mgmt_plane.workspaces.create()`:  `response.last_updated` **Removed** **Breaking** :warning:
-  * `cribl_mgmt_plane.workspaces.list()`:  `response.items.[].last_updated` **Removed** **Breaking** :warning:
-  * `cribl_mgmt_plane.workspaces.get()`:  `response.last_updated` **Removed** **Breaking** :warning:
