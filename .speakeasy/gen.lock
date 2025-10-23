@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 897b2045-55e2-49ca-a37b-2daf10d4e6ea
 management:
-  docChecksum: 78122e10b4222a74a9bab96f15f1ada1
+  docChecksum: 5a299b4b662ba6b29dd1a0d6675a1e51
   docVersion: "1.0"
-  speakeasyVersion: 1.636.3
-  generationVersion: 2.723.11
-  releaseVersion: 0.1.1
-  configChecksum: 4c3d9525a8e7a2be51a3c2da511a96fa
+  speakeasyVersion: 1.638.1
+  generationVersion: 2.729.2
+  releaseVersion: 0.2.0rc1
+  configChecksum: 7abcdd9ae2f8531496094ff6822951b7
   repoURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   installationURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   published: true
 features:
   python:
     additionalDependencies: 1.0.0
-    core: 5.22.1
+    core: 5.23.0
     defaultEnabledRetries: 0.2.0
     devContainers: 3.0.0
     enumUnions: 0.1.0
@@ -135,7 +135,7 @@ examples:
         application/json: {"workspaceId": "main", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
       responses:
         "201":
-          application/json: {"workspaceId": "main", "region": "us-west-2", "lastUpdated": "2023-01-01T12:00:00Z", "leaderFQDN": "workspace-leader.example.com", "state": "Active", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
+          application/json: {"workspaceId": "main", "region": "us-west-2", "leaderFQDN": "workspace-leader.example.com", "state": "Active", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
         default:
           application/json: {"statusCode": 2135.91, "message": "<value>"}
   v1.workspaces.listWorkspaces:
@@ -145,7 +145,7 @@ examples:
           organizationId: "<id>"
       responses:
         "200":
-          application/json: {"items": [{"workspaceId": "main", "region": "us-west-2", "lastUpdated": "2023-01-01T12:00:00Z", "leaderFQDN": "workspace-leader.example.com", "state": "Inactive", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}], "count": 5}
+          application/json: {"items": [{"workspaceId": "main", "region": "us-west-2", "leaderFQDN": "workspace-leader.example.com", "state": "Inactive", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}], "count": 5}
         default:
           application/json: {"statusCode": 5622.58, "message": "<value>"}
   v1.workspaces.updateWorkspace:
@@ -178,7 +178,7 @@ examples:
           workspaceId: "<id>"
       responses:
         "200":
-          application/json: {"workspaceId": "main", "region": "us-west-2", "lastUpdated": "2023-01-01T12:00:00Z", "leaderFQDN": "workspace-leader.example.com", "state": "Active", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
+          application/json: {"workspaceId": "main", "region": "us-west-2", "leaderFQDN": "workspace-leader.example.com", "state": "Active", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
         default:
           application/json: {"statusCode": 8847.69, "message": "<value>"}
 examplesVersion: 1.0.2
@@ -186,4 +186,6 @@ generatedTests:
   dummyServiceStatus: "2025-07-02T19:49:08+02:00"
 releaseNotes: |
   ## Python SDK Changes Detected:
-  * `cribl_mgmt_plane.health.get()`:  `response.status[default]` **Added**
+  * `cribl_mgmt_plane.workspaces.create()`:  `response.last_updated` **Removed** **Breaking** :warning:
+  * `cribl_mgmt_plane.workspaces.list()`:  `response.items.[].last_updated` **Removed** **Breaking** :warning:
+  * `cribl_mgmt_plane.workspaces.get()`:  `response.last_updated` **Removed** **Breaking** :warning:
