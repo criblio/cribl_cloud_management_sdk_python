@@ -4,7 +4,6 @@ from __future__ import annotations
 from cribl_mgmt_plane import utils
 from cribl_mgmt_plane.types import BaseModel
 from cribl_mgmt_plane.utils import validate_open_enum
-from datetime import datetime
 from enum import Enum
 import pydantic
 from pydantic.functional_validators import PlainValidator
@@ -41,8 +40,6 @@ class WorkspaceSchemaTypedDict(TypedDict):
     r"""Unique identifier for the workspace"""
     region: Region
     r"""AWS region where the workspace is deployed"""
-    last_updated: datetime
-    r"""Timestamp when the workspace was last updated"""
     leader_fqdn: str
     r"""Fully Qualified Domain Name of the workspace leader"""
     state: State
@@ -61,9 +58,6 @@ class WorkspaceSchema(BaseModel):
 
     region: Annotated[Region, PlainValidator(validate_open_enum(False))]
     r"""AWS region where the workspace is deployed"""
-
-    last_updated: Annotated[datetime, pydantic.Field(alias="lastUpdated")]
-    r"""Timestamp when the workspace was last updated"""
 
     leader_fqdn: Annotated[str, pydantic.Field(alias="leaderFQDN")]
     r"""Fully Qualified Domain Name of the workspace leader"""
