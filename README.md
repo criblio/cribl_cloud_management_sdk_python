@@ -166,19 +166,28 @@ asyncio.run(main())
 ```
 <!-- End SDK Example Usage [usage] -->
 
-<!-- Start Authentication [security] -->
 ## Authentication
+
+All Cribl management plane SDK requests require you to authenticate with a Bearer token. The Bearer token verifies your identity and ensures secure access to the requested resources. The SDK uses the OAuth2 credentials you provide when initializing your SDK client to obtain the Bearer token. The SDK automatically manages the `Authorization` header for subsequent requests once properly authenticated.
+
+For information about Bearer token expiration, see [Token Management](https://docs.cribl.io/cribl-as-code/sdks-auth/#sdks-token-mgmt) in the Cribl as Code documentation.
+
+**Authentication happens once during SDK initialization**. After you initialize the SDK client with authentication as shown in the [authentication example](#authentication-example), the SDK automatically handles authentication for all subsequent API calls. You do not need to include authentication parameters in individual API requests. The [SDK Example Usage](#sdk-example-usage) section shows how to initialize the SDK and make API calls, but if you've properly initialized your client as shown in the authentication example, you only need to make the API method calls themselves without re-initializing.
 
 ### Per-Client Security Schemes
 
-This SDK supports the following security schemes globally:
+This SDK supports the following security scheme globally:
 
 | Name           | Type   | Scheme       | Environment Variable          |
 | -------------- | ------ | ------------ | ----------------------------- |
 | `client_oauth` | oauth2 | OAuth2 token | `CRIBLMGMTPLANE_CLIENT_OAUTH` |
-| `bearer_auth`  | http   | HTTP Bearer  | `CRIBLMGMTPLANE_BEARER_AUTH`  |
 
-You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
+Set the security scheme through the `security` parameter when initializing the SDK client instance. The SDK uses the OAuth2 credentials that you provide for the `client_oauth` scheme to obtain a Bearer token, refresh the token within its expiration window using the standard OAuth2 flow, and authenticate with the API.
+
+### Authentication Examples
+
+The [Cribl.Cloud Authentication Example](https://github.com/criblio/cribl_control_plane_sdk_python/blob/main/examples/example_cloud_auth.py) demonstrates how to configure authentication on Cribl.Cloud and in hybrid deployments. To obtain the Client ID and Client Secret you'll need to initialize using the `client_oauth` security schema, follow the [instructions for creating an API Credential](https://docs.cribl.io/cribl-as-code/sdks-auth/#sdks-auth-cloud) in the Cribl as Code documentation.
+
 ```python
 from cribl_mgmt_plane import CriblMgmtPlane, models
 import os
@@ -201,7 +210,7 @@ with CriblMgmtPlane(
     print(res)
 
 ```
-<!-- End Authentication [security] -->
+<!-- No Authentication [security] -->
 
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
