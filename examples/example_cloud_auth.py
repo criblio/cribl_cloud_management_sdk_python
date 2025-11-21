@@ -7,7 +7,7 @@ using OAuth2 credentials.
 1. Create an SDK client with OAuth2 client credentials using the 
 client_oauth security scheme.
 2. Automatically handle token exchange and refresh.
-3. Validate the connection by checking health status and listing workspaces.
+3. Validate the connection by checking health status and listing Workspaces.
  
 Prerequisites: Replace the placeholder values for ORG_ID, CLIENT_ID, and 
 CLIENT_SECRET with your Organization ID and Client ID and Secret.  
@@ -23,12 +23,12 @@ import asyncio
 from cribl_mgmt_plane import CriblMgmtPlane, models
 
 
-# Cribl Cloud configuration: Replace the placeholder values
+# Cribl.Cloud configuration: Replace the placeholder values
 CLIENT_ID = "your-client-id"  # Replace with your OAuth2 Client ID
 CLIENT_SECRET = "your-client-secret"  # Replace with your OAuth2 Client Secret
 ORG_ID = "your-org-id"  # Replace with your Organization ID
 
-# Token URL and audience for Cribl Cloud OAuth2
+# Token URL and audience for Cribl.Cloud OAuth2
 TOKEN_URL = "https://login.cribl.cloud/oauth/token"
 AUDIENCE = "https://api.cribl.cloud"
 
@@ -55,7 +55,7 @@ async def main():
             status = health_response.status or "unknown"
             print(f"✅ Health check passed! Status: {status}")
         
-        # List all workspaces for the organization
+        # List all Workspaces for the Organization
         workspaces_response = await cmp_client.workspaces.list_async(
             organization_id=ORG_ID
         )
@@ -65,14 +65,14 @@ async def main():
             items = workspaces_response.items
             count = workspaces_response.count
             
-            message = f"✅ Client works! Found {count} workspace(s):" if items else f"✅ Client works! No workspaces found for organization {ORG_ID}"
+            message = f"✅ Client works! Found {count} Workspace(s):" if items else f"✅ Client works! No Workspaces found for Organization {ORG_ID}"
             print(message)
             
             for ws in items:
                 alias_display = f" ({ws.alias})" if ws.alias else ""
                 print(f"  • {ws.workspace_id}{alias_display} - {ws.state.value} in {ws.region.value}")
         else:
-            print(f"❌ Error listing workspaces: {workspaces_response}")
+            print(f"❌ Error listing Workspaces: {workspaces_response}")
 
 
 if __name__ == "__main__":
