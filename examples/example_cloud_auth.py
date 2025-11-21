@@ -45,7 +45,7 @@ async def main():
     security = models.Security(client_oauth=client_oauth)
     
     async with CriblMgmtPlane(security=security) as cmp_client:
-        print(f"✅ Cribl.Cloud Management Plane SDK client created")
+        print("✅ Cribl.Cloud Management Plane SDK client created")
 
         # Validate connection with health check
         health_response = await cmp_client.health.get_async()
@@ -60,23 +60,29 @@ async def main():
             organization_id=ORG_ID
         )
         
-        if workspaces_response.items:
-            print(f"✅ Client works! Found {workspaces_response.count} workspace(s):")
-            for ws in workspaces_response.items:
+        # Check if response is successful (has items attribute)
+        if isinstance(workspaces_response, models.WorkspacesListResponseDTO):
+            items = workspaces_response.items
+            count = workspaces_response.count
+            
+            message = f"✅ Client works! Found {count} workspace(s):" if items else f"✅ Client works! No workspaces found for organization {ORG_ID}"
+            print(message)
+            
+            for ws in items:
                 alias_display = f" ({ws.alias})" if ws.alias else ""
                 print(f"  • {ws.workspace_id}{alias_display} - {ws.state.value} in {ws.region.value}")
         else:
-            print(f"✅ Client works! No workspaces found for organization {ORG_ID}")
+            print(f"❌ Error listing workspaces: {workspaces_response}")
 
 
 if __name__ == "__main__":
     try:
         asyncio.run(main())
     except Exception as error:
-        status_code = getattr(error, "status_code", None)
-        if status_code == 401:
+        STATUS_CODE = getattr(error, "status_code", None)
+        if STATUS_CODE == 401:
             print("⚠️ Authentication failed! Check your CLIENT_ID and CLIENT_SECRET.")
-        elif status_code == 429:
+        elif STATUS_CODE == 429:
             print("⚠️ Uh oh, you've reached the rate limit! Try again in a few seconds.")
         else:
             print(f"❌ Something went wrong: {error}")
