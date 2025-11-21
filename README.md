@@ -184,32 +184,10 @@ This SDK supports the following security scheme globally:
 
 Set the security scheme through the `security` parameter when initializing the SDK client instance. The SDK uses the OAuth2 credentials that you provide for the `client_oauth` scheme to obtain a Bearer token, refresh the token within its expiration window using the standard OAuth2 flow, and authenticate with the API.
 
-### Authentication Examples
+### Authentication Example
 
 The [Cribl.Cloud Authentication Example](https://github.com/criblio/cribl_control_plane_sdk_python/blob/main/examples/example_cloud_auth.py) demonstrates how to configure authentication on Cribl.Cloud and in hybrid deployments. To obtain the Client ID and Client Secret you'll need to initialize using the `client_oauth` security schema, follow the [instructions for creating an API Credential](https://docs.cribl.io/cribl-as-code/sdks-auth/#sdks-auth-cloud) in the Cribl as Code documentation.
 
-```python
-from cribl_mgmt_plane import CriblMgmtPlane, models
-import os
-
-
-with CriblMgmtPlane(
-    security=models.Security(
-        client_oauth=models.SchemeClientOauth(
-            client_id=os.getenv("CRIBLMGMTPLANE_CLIENT_ID", ""),
-            client_secret=os.getenv("CRIBLMGMTPLANE_CLIENT_SECRET", ""),
-            token_url=os.getenv("CRIBLMGMTPLANE_TOKEN_URL", ""),
-            audience="https://api.cribl.cloud",
-        ),
-    ),
-) as cmp_client:
-
-    res = cmp_client.health.get()
-
-    # Handle response
-    print(res)
-
-```
 <!-- No Authentication [security] -->
 
 <!-- Start Available Resources and Operations [operations] -->
