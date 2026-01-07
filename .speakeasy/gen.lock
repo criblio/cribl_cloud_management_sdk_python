@@ -3,17 +3,21 @@ id: 897b2045-55e2-49ca-a37b-2daf10d4e6ea
 management:
   docChecksum: 5a299b4b662ba6b29dd1a0d6675a1e51
   docVersion: "1.0"
-  speakeasyVersion: 1.638.1
-  generationVersion: 2.729.2
+  speakeasyVersion: 1.682.0
+  generationVersion: 2.791.1
   releaseVersion: 0.2.0
-  configChecksum: 7ca4974cf1c629a864a78ab60237128c
+  configChecksum: 31f055cfd36f4a59e8b42c3c56942084
   repoURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   installationURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   published: true
+persistentEdits:
+  generation_id: 725c478f-4d62-4565-8e04-cc01a4e71e1f
+  pristine_commit_hash: 7b9e07f268e7db6129bd9b3a1bb6a2ae124c4976
+  pristine_tree_hash: cca26acd1f5d3f5cab60ffb6ef6ca331cd6e998e
 features:
   python:
     additionalDependencies: 1.0.0
-    core: 5.23.0
+    core: 5.23.16
     defaultEnabledRetries: 0.2.0
     devContainers: 3.0.0
     enumUnions: 0.1.0
@@ -22,15 +26,423 @@ features:
     flattening: 3.1.1
     globalSecurity: 3.0.4
     globalSecurityCallbacks: 1.0.0
-    globalServerURLs: 3.1.1
+    globalServerURLs: 3.2.0
     groups: 3.0.1
     methodArguments: 1.0.2
     nameOverrides: 3.0.1
     oauth2ClientCredentials: 2.1.0
-    openEnums: 1.0.1
+    openEnums: 1.0.2
     responseFormat: 1.0.1
-    retries: 3.0.2
-    sdkHooks: 1.1.0
+    retries: 3.0.3
+    sdkHooks: 1.2.0
+trackedFiles:
+  .devcontainer/README.md:
+    id: b170c0f184ac
+    last_write_checksum: sha1:29f9bf727ca9edc0062c62e54a0ab847e5ea4ad5
+    pristine_git_object: 7cabdc8559c8db888eff9b6f9860d93bda45a059
+  .devcontainer/devcontainer.json:
+    id: b34062a34eb1
+    last_write_checksum: sha1:fbbce5654b8990b172a9ffe841d7635cd51c495b
+    pristine_git_object: 7e67af9f5b5aeed56bab8dd84f75d3729df3ada1
+  .devcontainer/setup.sh:
+    id: 5f1dfbfeb8eb
+    last_write_checksum: sha1:36daffa8440cbf552f087c7953d70ef40e2c9d2e
+    pristine_git_object: 51086ac83a6f29a9b302575b2bc46b6660061e3d
+  .gitattributes:
+    id: 24139dae6567
+    last_write_checksum: sha1:53134de3ada576f37c22276901e1b5b6d85cd2da
+    pristine_git_object: 4d75d59008e4d8609876d263419a9dc56c8d6f3a
+  .vscode/settings.json:
+    id: 89aa447020cd
+    last_write_checksum: sha1:f84632c81029fcdda8c3b0c768d02b836fc80526
+    pristine_git_object: 8d79f0abb72526f1fb34a4c03e5bba612c6ba2ae
+  USAGE.md:
+    id: 3aed33ce6e6f
+    last_write_checksum: sha1:c2f3a87ae128013e859f545d7c37037be206f69c
+    pristine_git_object: f73fed97ef2f3cfae24054f235e9aaa358644d23
+  docs/models/defaulterrordto.md:
+    id: 2faad791832c
+    last_write_checksum: sha1:4cc5a009616be8e115699e27227f10aeb6dca022
+    pristine_git_object: a2795f5a72e5187507bf358395567848cb35a101
+  docs/models/gethealthstatusresponse.md:
+    id: 6a1707468a2a
+    last_write_checksum: sha1:fa9ad1b9b1e13eb2b8c80efe897060601a66f411
+    pristine_git_object: 6e3e7e914463200fb89175468d4b02211f7eccba
+  docs/models/gethealthstatusresponsebody.md:
+    id: d66a7b726899
+    last_write_checksum: sha1:181254bb21c2784e5a63bc896daf86dbbdb09704
+    pristine_git_object: bb53dacfaa5bfb273e9af05a882ac1b1bea07a2b
+  docs/models/region.md:
+    id: 79be579f21a7
+    last_write_checksum: sha1:0b65ef7b937e5fcbe0ad0ed0deb3a4b6f78bb5ba
+    pristine_git_object: 02f55f7b9bc93c8e76c5fb86f0c8d606a1dcdd76
+  docs/models/schemeclientoauth.md:
+    id: 961e796e86c2
+    last_write_checksum: sha1:71dc23b205bb9420859d196615fca4303dc598b5
+    pristine_git_object: 5dc934e60ea916afbe3e2d626347dfe3eac5b847
+  docs/models/security.md:
+    id: 452e4d4eb67a
+    last_write_checksum: sha1:603537241601c418a48d449d9cac9bd0831ca747
+    pristine_git_object: a0e18e179787dbd869d4c23a1f0646d614d599b2
+  docs/models/state.md:
+    id: e560b4e72643
+    last_write_checksum: sha1:c26a263b9a8bc37bd5b747c66a5ee1ee3de1d3e2
+    pristine_git_object: 2b788f35781ea0f3a5838277d324d9a54f9b0292
+  docs/models/utils/retryconfig.md:
+    id: 4343ac43161c
+    last_write_checksum: sha1:562c0f21e308ad10c27f85f75704c15592c6929d
+    pristine_git_object: 69dd549ec7f5f885101d08dd502e25748183aebf
+  docs/models/v1workspacescreateworkspacerequest.md:
+    id: 1b3fa6b50705
+    last_write_checksum: sha1:17a18b3349612304a0d5470b405db87c1bf87c16
+    pristine_git_object: bd9bd20618798b56404e05ea738cc113a0319377
+  docs/models/v1workspacescreateworkspaceresponse.md:
+    id: f1c0b569a0e7
+    last_write_checksum: sha1:07c0148208a889620fbc7370bb1cc5f6c2000d3a
+    pristine_git_object: 5adb885ba8f290e58a22c297d02f990ff8cfa8de
+  docs/models/v1workspacesdeleteworkspacerequest.md:
+    id: 90573ba31852
+    last_write_checksum: sha1:b9d0f887f1eea0ad5f71940550d5f2739b3f43d8
+    pristine_git_object: c8c9feea5294781fa54c3275378b8a80b4fd69ee
+  docs/models/v1workspacesgetworkspacerequest.md:
+    id: 7320362ece28
+    last_write_checksum: sha1:51523ba2e9a9a49fb4561a3a7d06d31d1a2a02d1
+    pristine_git_object: ae5ddbc9e7a020628ab88d4fafd85c886e757401
+  docs/models/v1workspacesgetworkspaceresponse.md:
+    id: abb91de03b3b
+    last_write_checksum: sha1:2aec366641b04429ae212502a2f4d52794a6ab3b
+    pristine_git_object: c46433ead75ebb23e0c6ce987915b640288d32f6
+  docs/models/v1workspaceslistworkspacesrequest.md:
+    id: 85541e6c529f
+    last_write_checksum: sha1:869763d5ed07626a5fa8a5c0fa64ad36ba23a657
+    pristine_git_object: 6bfc31cf23eb1813dbd3762c6b593a3c533371ba
+  docs/models/v1workspaceslistworkspacesresponse.md:
+    id: 2ee2fc81c852
+    last_write_checksum: sha1:43ecad750548d57ff780fd0c8dfd1db0a77180ef
+    pristine_git_object: 717a456c624699e0cc3a7fa3196fd940c482b143
+  docs/models/v1workspacesupdateworkspacerequest.md:
+    id: 17d6958b37f2
+    last_write_checksum: sha1:9c99cf33f5bc0591c6d25762c4c164d2e39ab38c
+    pristine_git_object: a84ea62a4c4ce3e4b812c3a68463a28dde17934f
+  docs/models/workspacecreaterequestdto.md:
+    id: c6d2d66f4333
+    last_write_checksum: sha1:9c56429a7c18ecf9eb84475df49c4b77d371680d
+    pristine_git_object: ac0300e5ea3304fa338c78553de0c9c0e0c94475
+  docs/models/workspacepatchrequestdto.md:
+    id: c23d2f32d55f
+    last_write_checksum: sha1:ce3132dee264139ffff3d1b79bb275a3dfe344a9
+    pristine_git_object: 7daa894ae2e18d2866f1baf849e1569a21562e93
+  docs/models/workspaceschema.md:
+    id: 38e9dfa53552
+    last_write_checksum: sha1:e483e974f4ae3d0f6fa926a7adeaebb9ee916cdc
+    pristine_git_object: 68f3b906c00325d503f0d7a5eb468ac6508c7411
+  docs/models/workspaceslistresponsedto.md:
+    id: a149445e390c
+    last_write_checksum: sha1:72e73a0b1960e68324215e9755f3607afff07dd7
+    pristine_git_object: d4dbabecf29791be46f485b452f655cf01c8815a
+  docs/sdks/health/README.md:
+    id: 5082c50d5e82
+    last_write_checksum: sha1:b56f83a1ea293ad9b5fd76797122e09dccdbc1f9
+    pristine_git_object: 8bc80815563c358cd707d3a483cdb1bcf7f35ada
+  docs/sdks/workspaces/README.md:
+    id: 1f5b051a6380
+    last_write_checksum: sha1:4ae4c9a45061d64f9065d0594c848e41e0b26527
+    pristine_git_object: cb2030929e93effd9a5159c0c576330836f9886d
+  poetry.toml:
+    id: a81ade82122a
+    last_write_checksum: sha1:2242305e29dc6921bdf5b200aea5d4bf67830230
+    pristine_git_object: cd3492ac9dc870fdcf23dbd94fd1d40cc753cc8e
+  py.typed:
+    id: 258c3ed47ae4
+    last_write_checksum: sha1:8efc425ffe830805ffcc0f3055871bdcdc542c60
+    pristine_git_object: 3e38f1a929f7d6b1d6de74604aa87e3d8f010544
+  pylintrc:
+    id: 7ce8b9f946e6
+    last_write_checksum: sha1:d99516d03b4492a038ef908be7aa202d914d1dcf
+    pristine_git_object: 7f1dd32e8a5a3c2c02519af121a88dd2988dd308
+  pyproject.toml:
+    id: 5d07e7d72637
+    last_write_checksum: sha1:2aaa9ed9d4becc226964b7f87a7210724c58d222
+    pristine_git_object: bc0741707fdcff75e2591751e693de61d8e85621
+  scripts/prepare_readme.py:
+    id: e0c5957a6035
+    last_write_checksum: sha1:24bfcb3bc609310d0b86cb75ca844b42d4c9c248
+    pristine_git_object: 9ee34715870c2bec6261008306d14382d7dae98d
+  scripts/publish.sh:
+    id: fe273b08f514
+    last_write_checksum: sha1:b31bafc19c15ab5ea925fdf8d5d4adce2b115a63
+    pristine_git_object: 2a3ead70ccc6228cbae1c5c8a319b1399f3804ea
+  src/cribl_mgmt_plane/__init__.py:
+    id: c54c001d58bd
+    last_write_checksum: sha1:da077c0bdfcef64a4a5aea91a17292f72fa2b088
+    pristine_git_object: 833c68cd526fe34aab2b7e7c45f974f7f4b9e120
+  src/cribl_mgmt_plane/_hooks/__init__.py:
+    id: 652bd308ab54
+    last_write_checksum: sha1:e3111289afd28ad557c21d9e2f918caabfb7037d
+    pristine_git_object: 2ee66cdd592fe41731c24ddd407c8ca31c50aec1
+  src/cribl_mgmt_plane/_hooks/clientcredentials.py:
+    id: 1753d967b292
+    last_write_checksum: sha1:45a9a8a4da1a83bc5f46d477503ce96bfceb0234
+    pristine_git_object: 26b00cc9f03ce429858a7043ba8c2dd3fe87c2eb
+  src/cribl_mgmt_plane/_hooks/sdkhooks.py:
+    id: 810dd416dc93
+    last_write_checksum: sha1:d486163d136cf08281af1286b147861baeab6ae3
+    pristine_git_object: e35b73de5ce565d73c9a772d34038af829534d38
+  src/cribl_mgmt_plane/_hooks/types.py:
+    id: 3b009a1ca58d
+    last_write_checksum: sha1:54c238843f41d77fb7daec25262c284e44ce5947
+    pristine_git_object: 8660a4d81ec54cbc43bcb4ed058985af8dcc715b
+  src/cribl_mgmt_plane/_version.py:
+    id: 8ec199fcd31a
+    last_write_checksum: sha1:d092c7fe1ca34f9b65e0b7cfa69d9c41df6f5ef2
+    pristine_git_object: e0e55cd7b1c34b7c7968b76d39e3e81de7d752d8
+  src/cribl_mgmt_plane/basesdk.py:
+    id: 024a102b240a
+    last_write_checksum: sha1:e837e961663a03d2cb2875d8b4fcae3c4837e1fd
+    pristine_git_object: e35683a1f33c58e66d0623ed77f7942e76ac1785
+  src/cribl_mgmt_plane/errors/__init__.py:
+    id: 53763ce236b6
+    last_write_checksum: sha1:ae6757f3aad104e9af9b4fca76f5a4df9263f4a2
+    pristine_git_object: efd52bc8bdb6551c704dc78062992c4eeb175533
+  src/cribl_mgmt_plane/errors/apierror.py:
+    id: 3b56be319b25
+    last_write_checksum: sha1:ac533257cca52c24c6de478c233097dabfb13e03
+    pristine_git_object: 13fdd1f17750954d7e8de2376fec00216cf09a57
+  src/cribl_mgmt_plane/errors/criblmgmtplaneerror.py:
+    id: 6ea36f67e7ff
+    last_write_checksum: sha1:7ba467ba24c8d4f822ed191d05d6cd91ea9a2080
+    pristine_git_object: 29d086359a1edde35ec9ed186df1c93ef47289ce
+  src/cribl_mgmt_plane/errors/no_response_error.py:
+    id: 52e22c8feca5
+    last_write_checksum: sha1:7f326424a7d5ae1bcd5c89a0d6b3dbda9138942f
+    pristine_git_object: 1deab64bc43e1e65bf3c412d326a4032ce342366
+  src/cribl_mgmt_plane/errors/responsevalidationerror.py:
+    id: 9b82814c3808
+    last_write_checksum: sha1:3dc59494bfdb04e31656725edf9a09486cfb4ea9
+    pristine_git_object: a67105e0edc3fc0e672262a1e7ac94557259a656
+  src/cribl_mgmt_plane/health.py:
+    id: 5e82c1604c10
+    last_write_checksum: sha1:bf2a920fd3bf74446234881ff495eee87cb87924
+    pristine_git_object: cb15b570a022f60ca2a757603a16a4f68bdafe46
+  src/cribl_mgmt_plane/httpclient.py:
+    id: 910dc032ac94
+    last_write_checksum: sha1:5e55338d6ee9f01ab648cad4380201a8a3da7dd7
+    pristine_git_object: 89560b566073785535643e694c112bedbd3db13d
+  src/cribl_mgmt_plane/models/__init__.py:
+    id: c0ef0c636a04
+    last_write_checksum: sha1:0cb15fcbe5b641951a9b2a3121dcfa051b51856b
+    pristine_git_object: 8eb08e1445399890bc17f04dd4915c175a2e834f
+  src/cribl_mgmt_plane/models/defaulterrordto.py:
+    id: 76f1b582a83f
+    last_write_checksum: sha1:2f3898fd25d6f62b080d17203bb7766ed624db74
+    pristine_git_object: ce3eefa7a850a5ccf2b6f6b9fdff734b6e660d76
+  src/cribl_mgmt_plane/models/gethealthstatusop.py:
+    id: 1b4ada1c1b56
+    last_write_checksum: sha1:a5c8532fe7c3ebf4877d0bde71ce52967a57bac5
+    pristine_git_object: 907b5a4643caec4e286a2747aa451b89fd5d9189
+  src/cribl_mgmt_plane/models/schemeclientoauth.py:
+    id: f12e60add63a
+    last_write_checksum: sha1:efd1cb34c025d16dde8f018f43e65cce0c9a2eea
+    pristine_git_object: 9a2bfafcfb2e45d9f21cea4c92c66d6b86d93dab
+  src/cribl_mgmt_plane/models/security.py:
+    id: f963194ca6f9
+    last_write_checksum: sha1:20dd2befec9ae17273332444dde1ca98e0b5c215
+    pristine_git_object: c3e34107097e5813e7c9c31c5a0d2608108bb7d1
+  src/cribl_mgmt_plane/models/v1_workspaces_createworkspaceop.py:
+    id: 09e69d4b9704
+    last_write_checksum: sha1:89c6c500183884e777acf1154dc6210c90fb7e67
+    pristine_git_object: ea252266d4b0c7111857555e784ace39b64c45ab
+  src/cribl_mgmt_plane/models/v1_workspaces_deleteworkspaceop.py:
+    id: 832300372bd8
+    last_write_checksum: sha1:f5b5116bf59de3f2acb45c255c06c91f96844bd0
+    pristine_git_object: 9f7b7b16bb39a253e072aa96f0c56d77a513ba7d
+  src/cribl_mgmt_plane/models/v1_workspaces_getworkspaceop.py:
+    id: 5cff5c501a6a
+    last_write_checksum: sha1:38a8450c84e4fe423c86aaf1b73f71a451e9e4ab
+    pristine_git_object: 1fef4a24ed48dc238e301e3cab4e1e82c31265e8
+  src/cribl_mgmt_plane/models/v1_workspaces_listworkspacesop.py:
+    id: 9864ce7bba72
+    last_write_checksum: sha1:5402eb122479e044d597ec166402bdefe6ccf860
+    pristine_git_object: fafef82701ec62990619d119901a010f51ebab85
+  src/cribl_mgmt_plane/models/v1_workspaces_updateworkspaceop.py:
+    id: 0d6a34ff9ec9
+    last_write_checksum: sha1:d4e4943015082a74ded585e6aa1e13b2d8c1c546
+    pristine_git_object: 3999136214d3e7f976bc369b2948d7888591da7c
+  src/cribl_mgmt_plane/models/workspacecreaterequestdto.py:
+    id: 9f6a349917a5
+    last_write_checksum: sha1:543184591a29b62148c15a55b72b2663086db03d
+    pristine_git_object: de15be1491989f9a6aafffa7b10b6e59cbafcf6d
+  src/cribl_mgmt_plane/models/workspacepatchrequestdto.py:
+    id: 06cd1ff23445
+    last_write_checksum: sha1:db9124bf9be46ce2d1fab52c02cdb108e54f5190
+    pristine_git_object: 67934f089ba950d358aa0c9091a4aebc3e50e3e6
+  src/cribl_mgmt_plane/models/workspaceschema.py:
+    id: 197bdc6fad7a
+    last_write_checksum: sha1:ff5dd7e7a53ddf4f39fdb6132c2a74d1d58c1108
+    pristine_git_object: 641dafb6198ba0d65195e7c96e4637faa337a2c2
+  src/cribl_mgmt_plane/models/workspaceslistresponsedto.py:
+    id: fd82ae9398f8
+    last_write_checksum: sha1:016712761c2c413001de1038ec7bdbdfb1b5f8fe
+    pristine_git_object: de4b411876c0ddaa2af2e03f3e3e242596813088
+  src/cribl_mgmt_plane/py.typed:
+    id: f47a27fde01f
+    last_write_checksum: sha1:8efc425ffe830805ffcc0f3055871bdcdc542c60
+    pristine_git_object: 3e38f1a929f7d6b1d6de74604aa87e3d8f010544
+  src/cribl_mgmt_plane/sdk.py:
+    id: 61b8e256ad47
+    last_write_checksum: sha1:1ac1c7719f90796f70a4acecd82be83ff5007d62
+    pristine_git_object: 76fe37e69ca6744601eb6ebb8d904968a602a6f1
+  src/cribl_mgmt_plane/sdkconfiguration.py:
+    id: 31a3f1e28307
+    last_write_checksum: sha1:008d083f213b1f7dacd0c7970dfd224e0c13c39c
+    pristine_git_object: 65c499c66e905195a345a02c21a0050685df6926
+  src/cribl_mgmt_plane/types/__init__.py:
+    id: ac748e42a9e7
+    last_write_checksum: sha1:140ebdd01a46f92ffc710c52c958c4eba3cf68ed
+    pristine_git_object: fc76fe0c5505e29859b5d2bb707d48fd27661b8c
+  src/cribl_mgmt_plane/types/basemodel.py:
+    id: 61728c103c49
+    last_write_checksum: sha1:10d84aedeb9d35edfdadf2c3020caa1d24d8b584
+    pristine_git_object: a9a640a1a7048736383f96c67c6290c86bf536ee
+  src/cribl_mgmt_plane/utils/__init__.py:
+    id: da0b5586a571
+    last_write_checksum: sha1:5d88356c206a32c694ae113178ca6325a9fc612a
+    pristine_git_object: 87192ddef2589a7778f85e1cd715d6d1e61ae0a6
+  src/cribl_mgmt_plane/utils/annotations.py:
+    id: 669b8458fd26
+    last_write_checksum: sha1:a4824ad65f730303e4e1e3ec1febf87b4eb46dbc
+    pristine_git_object: 12e0aa4f1151bb52474cc02e88397329b90703f6
+  src/cribl_mgmt_plane/utils/datetimes.py:
+    id: 04d9777c7f10
+    last_write_checksum: sha1:c721e4123000e7dc61ec52b28a739439d9e17341
+    pristine_git_object: a6c52cd61bbe2d459046c940ce5e8c469f2f0664
+  src/cribl_mgmt_plane/utils/enums.py:
+    id: 72418257b1b0
+    last_write_checksum: sha1:786ba597f79dca6fbc0d87c591752bb8d775ecb7
+    pristine_git_object: c3bc13cfc48794c143a64667f02e7949a8ce3fcc
+  src/cribl_mgmt_plane/utils/eventstreaming.py:
+    id: 30f167e350de
+    last_write_checksum: sha1:bababae5d54b7efc360db701daa49e18a92c2f3b
+    pristine_git_object: 0969899bfc491e5e408d05643525f347ea95e4fc
+  src/cribl_mgmt_plane/utils/forms.py:
+    id: 89247def37c3
+    last_write_checksum: sha1:15fa7e9ab1611e062a9984cf06cb20969713d295
+    pristine_git_object: f961e76beaf0a8b1fe0dda44754a74eebd3608e7
+  src/cribl_mgmt_plane/utils/headers.py:
+    id: 97c0f4ea3c60
+    last_write_checksum: sha1:7c6df233ee006332b566a8afa9ce9a245941d935
+    pristine_git_object: 37864cbbbc40d1a47112bbfdd3ba79568fc8818a
+  src/cribl_mgmt_plane/utils/logger.py:
+    id: 7138ed95f09e
+    last_write_checksum: sha1:b6fe915ccda8249d8fb888bad6cc85f9c780a9ac
+    pristine_git_object: 8208db9b37d8954f8c7e0ed0302b2eb590adaaff
+  src/cribl_mgmt_plane/utils/metadata.py:
+    id: 2c9e26716bc6
+    last_write_checksum: sha1:c6a560bd0c63ab158582f34dadb69433ea73b3d4
+    pristine_git_object: 173b3e5ce658675c2f504222a56b3daaaa68107d
+  src/cribl_mgmt_plane/utils/queryparams.py:
+    id: adec088670fa
+    last_write_checksum: sha1:b94c3f314fd3da0d1d215afc2731f48748e2aa59
+    pristine_git_object: c04e0db82b68eca041f2cb2614d748fbac80fd41
+  src/cribl_mgmt_plane/utils/requestbodies.py:
+    id: 91737dcb4d38
+    last_write_checksum: sha1:e0a3a78158eba39880475d62d61be906625676b8
+    pristine_git_object: d5240dd5f5efffabbd9aefa2f4a349511a9c75b4
+  src/cribl_mgmt_plane/utils/retries.py:
+    id: e0e855f01c10
+    last_write_checksum: sha1:5b97ac4f59357d70c2529975d50364c88bcad607
+    pristine_git_object: 88a91b10cd2076b4a2c6cff2ac6bfaa5e3c5ad13
+  src/cribl_mgmt_plane/utils/security.py:
+    id: 6e9559bdd145
+    last_write_checksum: sha1:cb552f446323881ae933829721aa88a47787fb62
+    pristine_git_object: 2653426d6ecccf4d33f206e266dfde673c258dda
+  src/cribl_mgmt_plane/utils/serializers.py:
+    id: 8199ce0531cd
+    last_write_checksum: sha1:a0d184ace7371a14a7d005cca7f358a03e3d4b07
+    pristine_git_object: 378a14c0f86a867ca7b0eb7e620da82234c0ccc4
+  src/cribl_mgmt_plane/utils/unmarshal_json_response.py:
+    id: 3441b981eaea
+    last_write_checksum: sha1:2e70698f9b2355b1a0ff412353333b746d94edd5
+    pristine_git_object: b5f9408ba97b36f7c71caa414065aaab737091a2
+  src/cribl_mgmt_plane/utils/url.py:
+    id: a61fcac1614e
+    last_write_checksum: sha1:6479961baa90432ca25626f8e40a7bbc32e73b41
+    pristine_git_object: c78ccbae426ce6d385709d97ce0b1c2813ea2418
+  src/cribl_mgmt_plane/utils/values.py:
+    id: 5b5277a50d83
+    last_write_checksum: sha1:acaa178a7c41ddd000f58cc691e4632d925b2553
+    pristine_git_object: dae01a44384ac3bc13ae07453a053bf6c898ebe3
+  src/cribl_mgmt_plane/workspaces.py:
+    id: bd7d8da788fc
+    last_write_checksum: sha1:b825e161032c47cedacfc63dedf756b2d49da7fe
+    pristine_git_object: f54be3c0c047cbd71b5be2694af808d0b520ce5a
+examples:
+  dummyServiceStatus: {}
+  getHealthStatus:
+    speakeasy-default-get-health-status:
+      responses:
+        "200":
+          application/json: {"status": "OK"}
+        default:
+          application/json: {"statusCode": 1397.13, "message": "<value>"}
+  v1.workspaces.createWorkspace:
+    speakeasy-default-v1-workspaces-create-workspace:
+      parameters:
+        path:
+          organizationId: "<id>"
+      requestBody:
+        application/json: {"workspaceId": "main", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
+      responses:
+        "201":
+          application/json: {"workspaceId": "main", "region": "us-west-2", "leaderFQDN": "workspace-leader.example.com", "state": "Active", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
+        default:
+          application/json: {"statusCode": 2135.91, "message": "<value>"}
+  v1.workspaces.listWorkspaces:
+    speakeasy-default-v1-workspaces-list-workspaces:
+      parameters:
+        path:
+          organizationId: "<id>"
+      responses:
+        "200":
+          application/json: {"items": [{"workspaceId": "main", "region": "us-west-2", "leaderFQDN": "workspace-leader.example.com", "state": "Inactive", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}], "count": 5}
+        default:
+          application/json: {"statusCode": 5622.58, "message": "<value>"}
+  v1.workspaces.updateWorkspace:
+    speakeasy-default-v1-workspaces-update-workspace:
+      parameters:
+        path:
+          organizationId: "<id>"
+          workspaceId: "<id>"
+      requestBody:
+        application/json: {"alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
+      responses:
+        "200":
+          application/json: {"workspaceId": "main", "region": "us-west-2", "lastUpdated": "2023-01-01T12:00:00Z", "leaderFQDN": "workspace-leader.example.com", "state": "Active", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
+        default:
+          application/json: {"statusCode": 8141.25, "message": "<value>"}
+  v1.workspaces.deleteWorkspace:
+    speakeasy-default-v1-workspaces-delete-workspace:
+      parameters:
+        path:
+          organizationId: "<id>"
+          workspaceId: "<id>"
+      responses:
+        default:
+          application/json: {"statusCode": 8158.92, "message": "<value>"}
+  v1.workspaces.getWorkspace:
+    speakeasy-default-v1-workspaces-get-workspace:
+      parameters:
+        path:
+          organizationId: "<id>"
+          workspaceId: "<id>"
+      responses:
+        "200":
+          application/json: {"workspaceId": "main", "region": "us-west-2", "leaderFQDN": "workspace-leader.example.com", "state": "Active", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
+        default:
+          application/json: {"statusCode": 8847.69, "message": "<value>"}
+examplesVersion: 1.0.2
+generatedTests:
+  dummyServiceStatus: "2025-07-02T19:49:08+02:00"
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
@@ -117,70 +529,3 @@ generatedFiles:
   - src/cribl_mgmt_plane/utils/url.py
   - src/cribl_mgmt_plane/utils/values.py
   - src/cribl_mgmt_plane/workspaces.py
-examples:
-  dummyServiceStatus: {}
-  getHealthStatus:
-    speakeasy-default-get-health-status:
-      responses:
-        "200":
-          application/json: {"status": "OK"}
-        default:
-          application/json: {"statusCode": 1397.13, "message": "<value>"}
-  v1.workspaces.createWorkspace:
-    speakeasy-default-v1-workspaces-create-workspace:
-      parameters:
-        path:
-          organizationId: "<id>"
-      requestBody:
-        application/json: {"workspaceId": "main", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
-      responses:
-        "201":
-          application/json: {"workspaceId": "main", "region": "us-west-2", "leaderFQDN": "workspace-leader.example.com", "state": "Active", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
-        default:
-          application/json: {"statusCode": 2135.91, "message": "<value>"}
-  v1.workspaces.listWorkspaces:
-    speakeasy-default-v1-workspaces-list-workspaces:
-      parameters:
-        path:
-          organizationId: "<id>"
-      responses:
-        "200":
-          application/json: {"items": [{"workspaceId": "main", "region": "us-west-2", "leaderFQDN": "workspace-leader.example.com", "state": "Inactive", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}], "count": 5}
-        default:
-          application/json: {"statusCode": 5622.58, "message": "<value>"}
-  v1.workspaces.updateWorkspace:
-    speakeasy-default-v1-workspaces-update-workspace:
-      parameters:
-        path:
-          organizationId: "<id>"
-          workspaceId: "<id>"
-      requestBody:
-        application/json: {"alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
-      responses:
-        "200":
-          application/json: {"workspaceId": "main", "region": "us-west-2", "lastUpdated": "2023-01-01T12:00:00Z", "leaderFQDN": "workspace-leader.example.com", "state": "Active", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
-        default:
-          application/json: {"statusCode": 8141.25, "message": "<value>"}
-  v1.workspaces.deleteWorkspace:
-    speakeasy-default-v1-workspaces-delete-workspace:
-      parameters:
-        path:
-          organizationId: "<id>"
-          workspaceId: "<id>"
-      responses:
-        default:
-          application/json: {"statusCode": 8158.92, "message": "<value>"}
-  v1.workspaces.getWorkspace:
-    speakeasy-default-v1-workspaces-get-workspace:
-      parameters:
-        path:
-          organizationId: "<id>"
-          workspaceId: "<id>"
-      responses:
-        "200":
-          application/json: {"workspaceId": "main", "region": "us-west-2", "leaderFQDN": "workspace-leader.example.com", "state": "Active", "alias": "Production Environment", "description": "Main production workspace for customer data processing", "tags": ["production", "customer-data"]}
-        default:
-          application/json: {"statusCode": 8847.69, "message": "<value>"}
-examplesVersion: 1.0.2
-generatedTests:
-  dummyServiceStatus: "2025-07-02T19:49:08+02:00"
