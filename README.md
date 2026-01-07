@@ -196,11 +196,11 @@ The [Cribl.Cloud Authentication Example](https://github.com/criblio/cribl_contro
 <details open>
 <summary>Available methods</summary>
 
-### [health](docs/sdks/health/README.md)
+### [Health](docs/sdks/health/README.md)
 
 * [get](docs/sdks/health/README.md#get) - Get the health status of the application
 
-### [workspaces](docs/sdks/workspaces/README.md)
+### [Workspaces](docs/sdks/workspaces/README.md)
 
 * [create](docs/sdks/workspaces/README.md#create) - Create a Workspace in the specified Organization
 * [list](docs/sdks/workspaces/README.md#list) - List all Workspaces for the specified Organization
