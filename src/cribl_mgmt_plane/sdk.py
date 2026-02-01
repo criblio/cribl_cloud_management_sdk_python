@@ -15,6 +15,7 @@ from typing import Callable, Dict, Optional, TYPE_CHECKING, Union, cast
 import weakref
 
 if TYPE_CHECKING:
+    from cribl_mgmt_plane.apicredentials import APICredentials
     from cribl_mgmt_plane.health import Health
     from cribl_mgmt_plane.workspaces import Workspaces
 
@@ -24,10 +25,13 @@ class CriblMgmtPlane(BaseSDK):
 
     health: "Health"
     r"""Operations related to application health status"""
+    api_credentials: "APICredentials"
+    r"""Operations related to API credentials"""
     workspaces: "Workspaces"
     r"""Operations related to Workspaces"""
     _sub_sdk_map = {
         "health": ("cribl_mgmt_plane.health", "Health"),
+        "api_credentials": ("cribl_mgmt_plane.apicredentials", "APICredentials"),
         "workspaces": ("cribl_mgmt_plane.workspaces", "Workspaces"),
     }
 

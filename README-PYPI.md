@@ -5,6 +5,8 @@ The Cribl Python SDK for the management plane provides operational control of ad
 Complementary API reference documentation is available at https://docs.cribl.io/cribl-as-code/api-reference. Product documentation is available at https://docs.cribl.io.
 
 > [!IMPORTANT]
+> The Cribl Python SDK for the management plane is supported only on Cribl.Cloud.
+> 
 > **Preview Feature**
 > The Cribl SDKs are Preview features that are still being developed. We do not recommend using them in a production environment, because the features might not be fully tested or optimized for performance, and related documentation could be incomplete.
 >
@@ -195,6 +197,10 @@ The [Cribl.Cloud Authentication Example](https://github.com/criblio/cribl_contro
 
 <details open>
 <summary>Available methods</summary>
+
+### [ApiCredentials](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/docs/sdks/apicredentials/README.md)
+
+* [list](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/docs/sdks/apicredentials/README.md#list) - List API credentials for an Organization
 
 ### [Health](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/docs/sdks/health/README.md)
 
