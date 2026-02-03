@@ -2,7 +2,7 @@
 
 The Cribl Python SDK for the management plane provides operational control of administrative tasks like configuring and managing Workspaces and helps streamline the process of integrating with Cribl.
 
-Complementary API reference documentation is available at https://docs.cribl.io/cribl-as-code/api-reference. Product documentation is available at https://docs.cribl.io.
+Complementary API reference documentation is available at [https://docs.cribl.io/cribl-as-code/api/](https://docs.cribl.io/cribl-as-code/api-reference/management-plane/workspaces/). Product documentation is available at https://docs.cribl.io.
 
 > [!IMPORTANT]
 > The Cribl Python SDK for the management plane is supported only on Cribl.Cloud.
