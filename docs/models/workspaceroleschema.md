@@ -1,0 +1,10 @@
+# WorkspaceRoleSchema
+
+
+## Fields
+
+| Field                                                                 | Type                                                                  | Required                                                              | Description                                                           | Example                                                               |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `workspace_id`                                                        | *str*                                                                 | :heavy_check_mark:                                                    | Unique ID of the Workspace.                                           | main                                                                  |
+| `workspace_role`                                                      | [models.WorkspaceRole](../models/workspacerole.md)                    | :heavy_check_mark:                                                    | Role assigned to the API Credential on the Workspace.                 | admin                                                                 |
+| `products`                                                            | List[[models.ProductRoleSchema](../models/productroleschema.md)]      | :heavy_minus_sign:                                                    | Product-level Roles assigned to the API Credential for the Workspace. |                                                                       |
