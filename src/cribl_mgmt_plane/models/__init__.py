@@ -6,6 +6,31 @@ import builtins
 import sys
 
 if TYPE_CHECKING:
+    from .apicredentialcreaterequestdto import (
+        APICredentialCreateRequestDTO,
+        APICredentialCreateRequestDTOTypedDict,
+    )
+    from .apicredentiallistitemschema import (
+        APICredentialListItemSchema,
+        APICredentialListItemSchemaTypedDict,
+    )
+    from .apicredentialresponseschema import (
+        APICredentialResponseSchema,
+        APICredentialResponseSchemaTypedDict,
+    )
+    from .apicredentialrolesschema import (
+        APICredentialRolesSchema,
+        APICredentialRolesSchemaTypedDict,
+        OrganizationRole,
+    )
+    from .apicredentialslistresponsedto import (
+        APICredentialsListResponseDTO,
+        APICredentialsListResponseDTOTypedDict,
+    )
+    from .apicredentialupdaterequestdto import (
+        APICredentialUpdateRequestDTO,
+        APICredentialUpdateRequestDTOTypedDict,
+    )
     from .defaulterrordto import DefaultErrorDTO, DefaultErrorDTOTypedDict
     from .gethealthstatusop import (
         GetHealthStatusResponse,
@@ -13,8 +38,40 @@ if TYPE_CHECKING:
         GetHealthStatusResponseBodyTypedDict,
         GetHealthStatusResponseTypedDict,
     )
+    from .productroleschema import (
+        Product,
+        ProductRoleSchema,
+        ProductRoleSchemaTypedDict,
+        Role,
+    )
     from .schemeclientoauth import SchemeClientOauth, SchemeClientOauthTypedDict
     from .security import Security, SecurityTypedDict
+    from .v1_apicredentials_createapicredentialop import (
+        V1APICredentialsCreateAPICredentialRequest,
+        V1APICredentialsCreateAPICredentialRequestTypedDict,
+        V1APICredentialsCreateAPICredentialResponse,
+        V1APICredentialsCreateAPICredentialResponseTypedDict,
+    )
+    from .v1_apicredentials_deleteapicredentialop import (
+        V1APICredentialsDeleteAPICredentialRequest,
+        V1APICredentialsDeleteAPICredentialRequestTypedDict,
+    )
+    from .v1_apicredentials_getapicredentialop import (
+        V1APICredentialsGetAPICredentialRequest,
+        V1APICredentialsGetAPICredentialRequestTypedDict,
+        V1APICredentialsGetAPICredentialResponse,
+        V1APICredentialsGetAPICredentialResponseTypedDict,
+    )
+    from .v1_apicredentials_listapicredentialsop import (
+        V1APICredentialsListAPICredentialsRequest,
+        V1APICredentialsListAPICredentialsRequestTypedDict,
+        V1APICredentialsListAPICredentialsResponse,
+        V1APICredentialsListAPICredentialsResponseTypedDict,
+    )
+    from .v1_apicredentials_updateapicredentialop import (
+        V1APICredentialsUpdateAPICredentialRequest,
+        V1APICredentialsUpdateAPICredentialRequestTypedDict,
+    )
     from .v1_workspaces_createworkspaceop import (
         V1WorkspacesCreateWorkspaceRequest,
         V1WorkspacesCreateWorkspaceRequestTypedDict,
@@ -49,6 +106,11 @@ if TYPE_CHECKING:
         WorkspacePatchRequestDTO,
         WorkspacePatchRequestDTOTypedDict,
     )
+    from .workspaceroleschema import (
+        WorkspaceRole,
+        WorkspaceRoleSchema,
+        WorkspaceRoleSchemaTypedDict,
+    )
     from .workspaceschema import (
         Region,
         State,
@@ -61,18 +123,51 @@ if TYPE_CHECKING:
     )
 
 __all__ = [
+    "APICredentialCreateRequestDTO",
+    "APICredentialCreateRequestDTOTypedDict",
+    "APICredentialListItemSchema",
+    "APICredentialListItemSchemaTypedDict",
+    "APICredentialResponseSchema",
+    "APICredentialResponseSchemaTypedDict",
+    "APICredentialRolesSchema",
+    "APICredentialRolesSchemaTypedDict",
+    "APICredentialUpdateRequestDTO",
+    "APICredentialUpdateRequestDTOTypedDict",
+    "APICredentialsListResponseDTO",
+    "APICredentialsListResponseDTOTypedDict",
     "DefaultErrorDTO",
     "DefaultErrorDTOTypedDict",
     "GetHealthStatusResponse",
     "GetHealthStatusResponseBody",
     "GetHealthStatusResponseBodyTypedDict",
     "GetHealthStatusResponseTypedDict",
+    "OrganizationRole",
+    "Product",
+    "ProductRoleSchema",
+    "ProductRoleSchemaTypedDict",
     "Region",
+    "Role",
     "SchemeClientOauth",
     "SchemeClientOauthTypedDict",
     "Security",
     "SecurityTypedDict",
     "State",
+    "V1APICredentialsCreateAPICredentialRequest",
+    "V1APICredentialsCreateAPICredentialRequestTypedDict",
+    "V1APICredentialsCreateAPICredentialResponse",
+    "V1APICredentialsCreateAPICredentialResponseTypedDict",
+    "V1APICredentialsDeleteAPICredentialRequest",
+    "V1APICredentialsDeleteAPICredentialRequestTypedDict",
+    "V1APICredentialsGetAPICredentialRequest",
+    "V1APICredentialsGetAPICredentialRequestTypedDict",
+    "V1APICredentialsGetAPICredentialResponse",
+    "V1APICredentialsGetAPICredentialResponseTypedDict",
+    "V1APICredentialsListAPICredentialsRequest",
+    "V1APICredentialsListAPICredentialsRequestTypedDict",
+    "V1APICredentialsListAPICredentialsResponse",
+    "V1APICredentialsListAPICredentialsResponseTypedDict",
+    "V1APICredentialsUpdateAPICredentialRequest",
+    "V1APICredentialsUpdateAPICredentialRequestTypedDict",
     "V1WorkspacesCreateWorkspaceRequest",
     "V1WorkspacesCreateWorkspaceRequestTypedDict",
     "V1WorkspacesCreateWorkspaceResponse",
@@ -93,6 +188,9 @@ __all__ = [
     "WorkspaceCreateRequestDTOTypedDict",
     "WorkspacePatchRequestDTO",
     "WorkspacePatchRequestDTOTypedDict",
+    "WorkspaceRole",
+    "WorkspaceRoleSchema",
+    "WorkspaceRoleSchemaTypedDict",
     "WorkspaceSchema",
     "WorkspaceSchemaTypedDict",
     "WorkspacesListResponseDTO",
@@ -100,16 +198,49 @@ __all__ = [
 ]
 
 _dynamic_imports: dict[str, str] = {
+    "APICredentialCreateRequestDTO": ".apicredentialcreaterequestdto",
+    "APICredentialCreateRequestDTOTypedDict": ".apicredentialcreaterequestdto",
+    "APICredentialListItemSchema": ".apicredentiallistitemschema",
+    "APICredentialListItemSchemaTypedDict": ".apicredentiallistitemschema",
+    "APICredentialResponseSchema": ".apicredentialresponseschema",
+    "APICredentialResponseSchemaTypedDict": ".apicredentialresponseschema",
+    "APICredentialRolesSchema": ".apicredentialrolesschema",
+    "APICredentialRolesSchemaTypedDict": ".apicredentialrolesschema",
+    "OrganizationRole": ".apicredentialrolesschema",
+    "APICredentialsListResponseDTO": ".apicredentialslistresponsedto",
+    "APICredentialsListResponseDTOTypedDict": ".apicredentialslistresponsedto",
+    "APICredentialUpdateRequestDTO": ".apicredentialupdaterequestdto",
+    "APICredentialUpdateRequestDTOTypedDict": ".apicredentialupdaterequestdto",
     "DefaultErrorDTO": ".defaulterrordto",
     "DefaultErrorDTOTypedDict": ".defaulterrordto",
     "GetHealthStatusResponse": ".gethealthstatusop",
     "GetHealthStatusResponseBody": ".gethealthstatusop",
     "GetHealthStatusResponseBodyTypedDict": ".gethealthstatusop",
     "GetHealthStatusResponseTypedDict": ".gethealthstatusop",
+    "Product": ".productroleschema",
+    "ProductRoleSchema": ".productroleschema",
+    "ProductRoleSchemaTypedDict": ".productroleschema",
+    "Role": ".productroleschema",
     "SchemeClientOauth": ".schemeclientoauth",
     "SchemeClientOauthTypedDict": ".schemeclientoauth",
     "Security": ".security",
     "SecurityTypedDict": ".security",
+    "V1APICredentialsCreateAPICredentialRequest": ".v1_apicredentials_createapicredentialop",
+    "V1APICredentialsCreateAPICredentialRequestTypedDict": ".v1_apicredentials_createapicredentialop",
+    "V1APICredentialsCreateAPICredentialResponse": ".v1_apicredentials_createapicredentialop",
+    "V1APICredentialsCreateAPICredentialResponseTypedDict": ".v1_apicredentials_createapicredentialop",
+    "V1APICredentialsDeleteAPICredentialRequest": ".v1_apicredentials_deleteapicredentialop",
+    "V1APICredentialsDeleteAPICredentialRequestTypedDict": ".v1_apicredentials_deleteapicredentialop",
+    "V1APICredentialsGetAPICredentialRequest": ".v1_apicredentials_getapicredentialop",
+    "V1APICredentialsGetAPICredentialRequestTypedDict": ".v1_apicredentials_getapicredentialop",
+    "V1APICredentialsGetAPICredentialResponse": ".v1_apicredentials_getapicredentialop",
+    "V1APICredentialsGetAPICredentialResponseTypedDict": ".v1_apicredentials_getapicredentialop",
+    "V1APICredentialsListAPICredentialsRequest": ".v1_apicredentials_listapicredentialsop",
+    "V1APICredentialsListAPICredentialsRequestTypedDict": ".v1_apicredentials_listapicredentialsop",
+    "V1APICredentialsListAPICredentialsResponse": ".v1_apicredentials_listapicredentialsop",
+    "V1APICredentialsListAPICredentialsResponseTypedDict": ".v1_apicredentials_listapicredentialsop",
+    "V1APICredentialsUpdateAPICredentialRequest": ".v1_apicredentials_updateapicredentialop",
+    "V1APICredentialsUpdateAPICredentialRequestTypedDict": ".v1_apicredentials_updateapicredentialop",
     "V1WorkspacesCreateWorkspaceRequest": ".v1_workspaces_createworkspaceop",
     "V1WorkspacesCreateWorkspaceRequestTypedDict": ".v1_workspaces_createworkspaceop",
     "V1WorkspacesCreateWorkspaceResponse": ".v1_workspaces_createworkspaceop",
@@ -130,6 +261,9 @@ _dynamic_imports: dict[str, str] = {
     "WorkspaceCreateRequestDTOTypedDict": ".workspacecreaterequestdto",
     "WorkspacePatchRequestDTO": ".workspacepatchrequestdto",
     "WorkspacePatchRequestDTOTypedDict": ".workspacepatchrequestdto",
+    "WorkspaceRole": ".workspaceroleschema",
+    "WorkspaceRoleSchema": ".workspaceroleschema",
+    "WorkspaceRoleSchemaTypedDict": ".workspaceroleschema",
     "Region": ".workspaceschema",
     "State": ".workspaceschema",
     "WorkspaceSchema": ".workspaceschema",

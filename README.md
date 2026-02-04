@@ -79,7 +79,7 @@ It's also possible to write a standalone Python script without needing to set up
 ```python
 #!/usr/bin/env -S uv run --script
 # /// script
-# requires-python = ">=3.9"
+# requires-python = ">=3.10"
 # dependencies = [
 #     "cribl-mgmt-plane",
 # ]
@@ -197,6 +197,14 @@ The [Cribl.Cloud Authentication Example](https://github.com/criblio/cribl_contro
 
 <details open>
 <summary>Available methods</summary>
+
+### [ApiCredentials](docs/sdks/apicredentials/README.md)
+
+* [list](docs/sdks/apicredentials/README.md#list) - List API Credentials for an Organization
+* [create](docs/sdks/apicredentials/README.md#create) - Create an API Credential
+* [update](docs/sdks/apicredentials/README.md#update) - Update an API Credential
+* [delete](docs/sdks/apicredentials/README.md#delete) - Delete an API Credential
+* [get](docs/sdks/apicredentials/README.md#get) - Get an API Credential
 
 ### [Health](docs/sdks/health/README.md)
 
