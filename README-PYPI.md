@@ -2,9 +2,11 @@
 
 The Cribl Python SDK for the management plane provides operational control of administrative tasks like configuring and managing Workspaces and helps streamline the process of integrating with Cribl.
 
-Complementary API reference documentation is available at https://docs.cribl.io/cribl-as-code/api-reference. Product documentation is available at https://docs.cribl.io.
+Complementary API reference documentation is available at [https://docs.cribl.io/cribl-as-code/api/](https://docs.cribl.io/cribl-as-code/api-reference/management-plane/workspaces/). Product documentation is available at https://docs.cribl.io.
 
 > [!IMPORTANT]
+> The Cribl Python SDK for the management plane is supported only on Cribl.Cloud.
+> 
 > **Preview Feature**
 > The Cribl SDKs are Preview features that are still being developed. We do not recommend using them in a production environment, because the features might not be fully tested or optimized for performance, and related documentation could be incomplete.
 >
@@ -77,7 +79,7 @@ It's also possible to write a standalone Python script without needing to set up
 ```python
 #!/usr/bin/env -S uv run --script
 # /// script
-# requires-python = ">=3.9"
+# requires-python = ">=3.10"
 # dependencies = [
 #     "cribl-mgmt-plane",
 # ]
@@ -195,6 +197,14 @@ The [Cribl.Cloud Authentication Example](https://github.com/criblio/cribl_contro
 
 <details open>
 <summary>Available methods</summary>
+
+### [ApiCredentials](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/docs/sdks/apicredentials/README.md)
+
+* [list](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/docs/sdks/apicredentials/README.md#list) - List API Credentials for an Organization
+* [create](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/docs/sdks/apicredentials/README.md#create) - Create an API Credential
+* [update](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/docs/sdks/apicredentials/README.md#update) - Update an API Credential
+* [delete](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/docs/sdks/apicredentials/README.md#delete) - Delete an API Credential
+* [get](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/docs/sdks/apicredentials/README.md#get) - Get an API Credential
 
 ### [Health](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/docs/sdks/health/README.md)
 

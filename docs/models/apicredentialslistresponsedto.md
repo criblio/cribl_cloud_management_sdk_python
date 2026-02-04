@@ -1,0 +1,9 @@
+# APICredentialsListResponseDTO
+
+
+## Fields
+
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          | Example                                                                              |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `items`                                                                              | List[[models.APICredentialListItemSchema](../models/apicredentiallistitemschema.md)] | :heavy_check_mark:                                                                   | List of API Credentials.                                                             |                                                                                      |
+| `count`                                                                              | *float*                                                                              | :heavy_check_mark:                                                                   | Total number of API Credentials listed in the response.                              | 1                                                                                    |
