@@ -6,7 +6,7 @@ generation:
   sdkClassName: CriblMgmtPlane
   maintainOpenAPIOrder: true
   usageSnippets:
-    optionalPropertyRendering: always
+    optionalPropertyRendering: withExample
     sdkInitStyle: constructor
   useClassNamesForArrayFields: true
   fixes:
@@ -16,7 +16,7 @@ generation:
     requestResponseComponentNamesFeb2024: true
     securityFeb2025: true
     sharedErrorComponentsApr2025: true
-    sharedNestedComponentsJan2026: false
+    sharedNestedComponentsJan2026: true
   auth:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: true
