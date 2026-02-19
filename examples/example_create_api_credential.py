@@ -5,9 +5,8 @@ This example demonstrates how to create a new API Credential with specific
 Role assignments.
 
 1. Create an authenticated SDK client with OAuth2 credentials.
-2. Call api_credentials.create with User Role on the Organization, Member
-   Role on the Workspace, and Editor Role on Cribl Stream, Cribl Edge, 
-   Cribl Search, and Cribl Lake.
+2. Call api_credentials.create with the Admin Role on the Organization, 
+   Workspace, and products (Cribl Stream, Edge, Search, and Lake).
 3. Print the details for the created API Credential.
 
 Prerequisites: To use this example, you must first create at least one 
@@ -50,24 +49,24 @@ def main():
         ),
     ) as cmp_client:
 
-        # Create API Credential with the roles User (Organization), Member (Workspace), and Editor (Cribl Stream/Edge/Search/Lake)
+        # Create API credential: Admin on Organization, Workspace, and products (Cribl Stream, Edge, Search, and Lake)
         res = cmp_client.api_credentials.create(
             organization_id=ORG_ID,
-            name="Example credential (User/Member/Editor/User)",
-            description="User on Organization; Member on Workspace; Editor on Cribl Stream, Cribl Edge, Cribl Search, and Cribl Lake",
+            name="Auto-Manage-Workspace",
+            description="Used for automated Workspace management",
             enabled=True,
             workspace_id=WORKSPACE_ID,
             roles={
-                "organization_role": models.OrganizationRole.USER,
+                "organization_role": models.OrganizationRole.ADMIN,
                 "workspaces": [
                     {
                         "workspace_id": WORKSPACE_ID,
-                        "workspace_role": models.WorkspaceRole.USER,  # Member
+                        "workspace_role": models.WorkspaceRole.ADMIN,
                         "products": [
-                            {"product": models.Product.STREAM, "role": models.Role.EDITOR},
-                            {"product": models.Product.EDGE, "role": models.Role.EDITOR},
-                            {"product": models.Product.SEARCH, "role": models.Role.EDITOR},
-                            {"product": models.Product.LAKE, "role": models.Role.EDITOR},
+                            {"product": models.Product.STREAM, "role": models.Role.ADMIN},
+                            {"product": models.Product.EDGE, "role": models.Role.ADMIN},
+                            {"product": models.Product.SEARCH, "role": models.Role.ADMIN},
+                            {"product": models.Product.LAKE, "role": models.Role.ADMIN},
                         ],
                     },
                 ],
