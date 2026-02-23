@@ -59,3 +59,9 @@ class APICredentialRolesSchema(BaseModel):
                     m[k] = val
 
         return m
+
+
+try:
+    APICredentialRolesSchema.model_rebuild()
+except NameError:
+    pass

@@ -47,3 +47,9 @@ class WorkspaceCreateRequestDTO(BaseModel):
                     m[k] = val
 
         return m
+
+
+try:
+    WorkspaceCreateRequestDTO.model_rebuild()
+except NameError:
+    pass
