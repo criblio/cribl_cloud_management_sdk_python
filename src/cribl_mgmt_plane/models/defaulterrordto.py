@@ -15,3 +15,9 @@ class DefaultErrorDTO(BaseModel):
     status_code: Annotated[float, pydantic.Field(alias="statusCode")]
 
     message: str
+
+
+try:
+    DefaultErrorDTO.model_rebuild()
+except NameError:
+    pass

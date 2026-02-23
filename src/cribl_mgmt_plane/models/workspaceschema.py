@@ -106,3 +106,9 @@ class WorkspaceSchema(BaseModel):
                     m[k] = val
 
         return m
+
+
+try:
+    WorkspaceSchema.model_rebuild()
+except NameError:
+    pass

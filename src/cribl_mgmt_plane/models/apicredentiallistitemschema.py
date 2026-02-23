@@ -68,3 +68,9 @@ class APICredentialListItemSchema(BaseModel):
 
     last_updated_date: Annotated[str, pydantic.Field(alias="lastUpdatedDate")]
     r"""ISO 8601 timestamp when the API Credential was last updated."""
+
+
+try:
+    APICredentialListItemSchema.model_rebuild()
+except NameError:
+    pass
