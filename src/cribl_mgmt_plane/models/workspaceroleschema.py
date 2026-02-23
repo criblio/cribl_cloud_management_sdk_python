@@ -63,3 +63,9 @@ class WorkspaceRoleSchema(BaseModel):
                     m[k] = val
 
         return m
+
+
+try:
+    WorkspaceRoleSchema.model_rebuild()
+except NameError:
+    pass

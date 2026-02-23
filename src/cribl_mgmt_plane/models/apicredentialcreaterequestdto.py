@@ -38,3 +38,9 @@ class APICredentialCreateRequestDTO(BaseModel):
 
     roles: APICredentialRolesSchema
     r"""Role assignments for the API Credential."""
+
+
+try:
+    APICredentialCreateRequestDTO.model_rebuild()
+except NameError:
+    pass

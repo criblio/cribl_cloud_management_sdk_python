@@ -73,3 +73,9 @@ class APICredentialResponseSchema(BaseModel):
 
     client_secret: Annotated[str, pydantic.Field(alias="clientSecret")]
     r"""Client Secret for the API Credential. The Client Secret is sensitive information and should be kept private. Only <code>POST</code> responses include the Client Secret. For other methods, responses return an empty string."""
+
+
+try:
+    APICredentialResponseSchema.model_rebuild()
+except NameError:
+    pass
