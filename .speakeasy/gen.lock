@@ -641,15 +641,19 @@ examplesVersion: 1.0.2
 generatedTests:
   dummyServiceStatus: "2025-07-02T19:49:08+02:00"
 releaseNotes: |
-  ## Python SDK Changes:
-  * `cribl_mgmt_plane.api_credentials.list()`: **Added**
-  * `cribl_mgmt_plane.api_credentials.create()`: **Added**
-  * `cribl_mgmt_plane.api_credentials.update()`: **Added**
-  * `cribl_mgmt_plane.api_credentials.delete()`: **Added**
-  * `cribl_mgmt_plane.api_credentials.get()`: **Added**
-  * `cribl_mgmt_plane.workspaces.create()`:  `response.region` **Changed**
-  * `cribl_mgmt_plane.workspaces.list()`:  `response.items[].region` **Changed**
-  * `cribl_mgmt_plane.workspaces.get()`:  `response.region` **Changed**
+  ## Python SDK Changes
+
+  This version of the SDK is generated for Cribl.Cloud.
+
+  ### Added new endpoints
+  * API Credentials:
+  * `cribl_mgmt_plane.api_credentials.list()` - List API Credentials for an Organization
+  * `cribl_mgmt_plane.api_credentials.create()` - Create an API Credential
+  * `cribl_mgmt_plane.api_credentials.update()` - Update an API Credential
+  * `cribl_mgmt_plane.api_credentials.delete()` - Delete an API Credential
+  * `cribl_mgmt_plane.api_credentials.get()` - Get an API Credential
+  ### Region enum
+  * Extended with additional AWS regions: `ap-northeast-1`, `sa-east-1`, `eu-west-1`, `eu-west-3`
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
