@@ -82,7 +82,7 @@ with CriblMgmtPlane(
     ),
 ) as cmp_client:
 
-    res = cmp_client.api_credentials.create(organization_id="<id>", name="Auto-Manage-Workspaces", description="Used for automated Workspace management", enabled=True, workspace_id="main", roles={
+    res = cmp_client.api_credentials.create(organization_id="<id>", name="Auto-Manage-Workspaces", description="Used for automated Workspace management", enabled=True, roles={
         "organization_role": models.OrganizationRole.ADMIN,
         "workspaces": [
             {
@@ -111,7 +111,6 @@ with CriblMgmtPlane(
 | `name`                                                                               | *str*                                                                                | :heavy_check_mark:                                                                   | Human-readable name of the API Credential.                                           | Auto-Manage-Workspaces                                                               |
 | `description`                                                                        | *str*                                                                                | :heavy_check_mark:                                                                   | Brief description of the purpose and usage for the API Credential.                   | Used for automated Workspace management                                              |
 | `enabled`                                                                            | *bool*                                                                               | :heavy_check_mark:                                                                   | If <code>true</code>, the API Credential is enabled. Otherwise, <code>false</code>.  | true                                                                                 |
-| `workspace_id`                                                                       | *str*                                                                                | :heavy_check_mark:                                                                   | Unique ID of the Workspace.                                                          | main                                                                                 |
 | `roles`                                                                              | [models.APICredentialRolesSchema](../../models/apicredentialrolesschema.md)          | :heavy_check_mark:                                                                   | Role assignments for the API Credential.                                             |                                                                                      |
 | `retries`                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                     | :heavy_minus_sign:                                                                   | Configuration to override the default retry behavior of the client.                  |                                                                                      |
 

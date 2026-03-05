@@ -1,6 +1,16 @@
 # State
 
-Current state of the workspace
+Current state of the Workspace.
+
+## Example Usage
+
+```python
+from cribl_mgmt_plane.models import State
+
+value = State.PROVISIONING
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+```
 
 
 ## Values
