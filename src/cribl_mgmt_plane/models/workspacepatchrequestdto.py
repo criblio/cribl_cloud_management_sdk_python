@@ -9,22 +9,22 @@ from typing_extensions import NotRequired, TypedDict
 
 class WorkspacePatchRequestDTOTypedDict(TypedDict):
     alias: NotRequired[str]
-    r"""User-friendly alias for the workspace"""
+    r"""User-friendly alias for the Workspace."""
     description: NotRequired[str]
-    r"""Detailed description of the workspace"""
+    r"""Brief description of the Workspace."""
     tags: NotRequired[List[str]]
-    r"""Tags associated with the workspace"""
+    r"""Tags associated with the Workspace."""
 
 
 class WorkspacePatchRequestDTO(BaseModel):
     alias: Optional[str] = None
-    r"""User-friendly alias for the workspace"""
+    r"""User-friendly alias for the Workspace."""
 
     description: Optional[str] = None
-    r"""Detailed description of the workspace"""
+    r"""Brief description of the Workspace."""
 
     tags: Optional[List[str]] = None
-    r"""Tags associated with the workspace"""
+    r"""Tags associated with the Workspace."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

@@ -30,10 +30,10 @@ class Workspaces(BaseSDK):
         Create a new Workspace in the specified Organization.
 
         :param organization_id: The <code>id</code> of the Organization where you want to create the Workspace.
-        :param workspace_id: Unique identifier for the workspace
-        :param alias: User-friendly alias for the workspace
-        :param description: Detailed description of the workspace
-        :param tags: Tags associated with the workspace
+        :param workspace_id: Unique identifier for the Workspace.
+        :param alias: User-friendly alias for the Workspace.
+        :param description: Brief description of the Workspace.
+        :param tags: Tags associated with the Workspace.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -141,10 +141,10 @@ class Workspaces(BaseSDK):
         Create a new Workspace in the specified Organization.
 
         :param organization_id: The <code>id</code> of the Organization where you want to create the Workspace.
-        :param workspace_id: Unique identifier for the workspace
-        :param alias: User-friendly alias for the workspace
-        :param description: Detailed description of the workspace
-        :param tags: Tags associated with the workspace
+        :param workspace_id: Unique identifier for the Workspace.
+        :param alias: User-friendly alias for the Workspace.
+        :param description: Brief description of the Workspace.
+        :param tags: Tags associated with the Workspace.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -433,9 +433,9 @@ class Workspaces(BaseSDK):
 
         :param organization_id: The <code>id</code> of the Organization that contains the Workspace.
         :param workspace_id: The <code>id</code> of the Workspace to update.
-        :param alias: User-friendly alias for the workspace
-        :param description: Detailed description of the workspace
-        :param tags: Tags associated with the workspace
+        :param alias: User-friendly alias for the Workspace.
+        :param description: Brief description of the Workspace.
+        :param tags: Tags associated with the Workspace.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -544,9 +544,9 @@ class Workspaces(BaseSDK):
 
         :param organization_id: The <code>id</code> of the Organization that contains the Workspace.
         :param workspace_id: The <code>id</code> of the Workspace to update.
-        :param alias: User-friendly alias for the workspace
-        :param description: Detailed description of the workspace
-        :param tags: Tags associated with the workspace
+        :param alias: User-friendly alias for the Workspace.
+        :param description: Brief description of the Workspace.
+        :param tags: Tags associated with the Workspace.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds

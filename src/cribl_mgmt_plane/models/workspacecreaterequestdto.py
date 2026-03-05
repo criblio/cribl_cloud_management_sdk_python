@@ -10,27 +10,27 @@ from typing_extensions import Annotated, NotRequired, TypedDict
 
 class WorkspaceCreateRequestDTOTypedDict(TypedDict):
     workspace_id: str
-    r"""Unique identifier for the workspace"""
+    r"""Unique identifier for the Workspace."""
     alias: NotRequired[str]
-    r"""User-friendly alias for the workspace"""
+    r"""User-friendly alias for the Workspace."""
     description: NotRequired[str]
-    r"""Detailed description of the workspace"""
+    r"""Brief description of the Workspace."""
     tags: NotRequired[List[str]]
-    r"""Tags associated with the workspace"""
+    r"""Tags associated with the Workspace."""
 
 
 class WorkspaceCreateRequestDTO(BaseModel):
     workspace_id: Annotated[str, pydantic.Field(alias="workspaceId")]
-    r"""Unique identifier for the workspace"""
+    r"""Unique identifier for the Workspace."""
 
     alias: Optional[str] = None
-    r"""User-friendly alias for the workspace"""
+    r"""User-friendly alias for the Workspace."""
 
     description: Optional[str] = None
-    r"""Detailed description of the workspace"""
+    r"""Brief description of the Workspace."""
 
     tags: Optional[List[str]] = None
-    r"""Tags associated with the workspace"""
+    r"""Tags associated with the Workspace."""
 
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):

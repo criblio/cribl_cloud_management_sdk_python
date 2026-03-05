@@ -17,8 +17,6 @@ class APICredentialListItemSchemaTypedDict(TypedDict):
     r"""Brief description of the purpose and usage for the API Credential."""
     enabled: bool
     r"""If <code>true</code>, the API Credential is enabled. Otherwise, <code>false</code>."""
-    workspace_id: str
-    r"""Unique ID of the Workspace."""
     organization_id: str
     r"""Unique ID of the Organization."""
     client_id: str
@@ -44,9 +42,6 @@ class APICredentialListItemSchema(BaseModel):
 
     enabled: bool
     r"""If <code>true</code>, the API Credential is enabled. Otherwise, <code>false</code>."""
-
-    workspace_id: Annotated[str, pydantic.Field(alias="workspaceId")]
-    r"""Unique ID of the Workspace."""
 
     organization_id: Annotated[str, pydantic.Field(alias="organizationId")]
     r"""Unique ID of the Organization."""

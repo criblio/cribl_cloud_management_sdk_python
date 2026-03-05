@@ -11,7 +11,7 @@ from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class Region(str, Enum, metaclass=utils.OpenEnumMeta):
-    r"""AWS region where the workspace is deployed"""
+    r"""AWS region where the Workspace is deployed."""
 
     US_WEST_2 = "us-west-2"
     US_EAST_1 = "us-east-1"
@@ -22,10 +22,14 @@ class Region(str, Enum, metaclass=utils.OpenEnumMeta):
     AP_SOUTHEAST_1 = "ap-southeast-1"
     AP_SOUTHEAST_2 = "ap-southeast-2"
     CA_CENTRAL_1 = "ca-central-1"
+    AP_NORTHEAST_1 = "ap-northeast-1"
+    SA_EAST_1 = "sa-east-1"
+    EU_WEST_1 = "eu-west-1"
+    EU_WEST_3 = "eu-west-3"
 
 
 class State(str, Enum, metaclass=utils.OpenEnumMeta):
-    r"""Current state of the workspace"""
+    r"""Current state of the Workspace."""
 
     PROVISIONING = "Provisioning"
     ACTIVE = "Active"
@@ -36,42 +40,42 @@ class State(str, Enum, metaclass=utils.OpenEnumMeta):
 
 class WorkspaceSchemaTypedDict(TypedDict):
     workspace_id: str
-    r"""Unique identifier for the workspace"""
+    r"""Unique identifier for the Workspace."""
     region: Region
-    r"""AWS region where the workspace is deployed"""
+    r"""AWS region where the Workspace is deployed."""
     leader_fqdn: str
-    r"""Fully Qualified Domain Name of the workspace leader"""
+    r"""Fully Qualified Domain Name (FQDN) of the Workspace Leader."""
     state: State
-    r"""Current state of the workspace"""
+    r"""Current state of the Workspace."""
     alias: NotRequired[str]
-    r"""User-friendly alias for the workspace"""
+    r"""User-friendly alias for the Workspace."""
     description: NotRequired[str]
-    r"""Detailed description of the workspace"""
+    r"""Brief description of the Workspace."""
     tags: NotRequired[List[str]]
-    r"""Tags associated with the workspace"""
+    r"""Tags associated with the Workspace."""
 
 
 class WorkspaceSchema(BaseModel):
     workspace_id: Annotated[str, pydantic.Field(alias="workspaceId")]
-    r"""Unique identifier for the workspace"""
+    r"""Unique identifier for the Workspace."""
 
     region: Region
-    r"""AWS region where the workspace is deployed"""
+    r"""AWS region where the Workspace is deployed."""
 
     leader_fqdn: Annotated[str, pydantic.Field(alias="leaderFQDN")]
-    r"""Fully Qualified Domain Name of the workspace leader"""
+    r"""Fully Qualified Domain Name (FQDN) of the Workspace Leader."""
 
     state: State
-    r"""Current state of the workspace"""
+    r"""Current state of the Workspace."""
 
     alias: Optional[str] = None
-    r"""User-friendly alias for the workspace"""
+    r"""User-friendly alias for the Workspace."""
 
     description: Optional[str] = None
-    r"""Detailed description of the workspace"""
+    r"""Brief description of the Workspace."""
 
     tags: Optional[List[str]] = None
-    r"""Tags associated with the workspace"""
+    r"""Tags associated with the Workspace."""
 
     @field_serializer("region")
     def serialize_region(self, value):

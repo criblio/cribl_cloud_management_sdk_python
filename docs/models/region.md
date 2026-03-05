@@ -1,6 +1,16 @@
 # Region
 
-AWS region where the workspace is deployed
+AWS region where the Workspace is deployed.
+
+## Example Usage
+
+```python
+from cribl_mgmt_plane.models import Region
+
+value = Region.US_WEST_2
+
+# Open enum: unrecognized values are captured as UnrecognizedStr
+```
 
 
 ## Values
@@ -16,3 +26,7 @@ AWS region where the workspace is deployed
 | `AP_SOUTHEAST_1` | ap-southeast-1   |
 | `AP_SOUTHEAST_2` | ap-southeast-2   |
 | `CA_CENTRAL_1`   | ca-central-1     |
+| `AP_NORTHEAST_1` | ap-northeast-1   |
+| `SA_EAST_1`      | sa-east-1        |
+| `EU_WEST_1`      | eu-west-1        |
+| `EU_WEST_3`      | eu-west-3        |

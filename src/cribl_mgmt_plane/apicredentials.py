@@ -203,7 +203,6 @@ class APICredentials(BaseSDK):
         name: str,
         description: str,
         enabled: bool,
-        workspace_id: str,
         roles: Union[
             models.APICredentialRolesSchema, models.APICredentialRolesSchemaTypedDict
         ],
@@ -220,7 +219,6 @@ class APICredentials(BaseSDK):
         :param name: Human-readable name of the API Credential.
         :param description: Brief description of the purpose and usage for the API Credential.
         :param enabled: If <code>true</code>, the API Credential is enabled. Otherwise, <code>false</code>.
-        :param workspace_id: Unique ID of the Workspace.
         :param roles: Role assignments for the API Credential.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -243,7 +241,6 @@ class APICredentials(BaseSDK):
                 name=name,
                 description=description,
                 enabled=enabled,
-                workspace_id=workspace_id,
                 roles=utils.get_pydantic_model(roles, models.APICredentialRolesSchema),
             ),
         )
@@ -319,7 +316,6 @@ class APICredentials(BaseSDK):
         name: str,
         description: str,
         enabled: bool,
-        workspace_id: str,
         roles: Union[
             models.APICredentialRolesSchema, models.APICredentialRolesSchemaTypedDict
         ],
@@ -336,7 +332,6 @@ class APICredentials(BaseSDK):
         :param name: Human-readable name of the API Credential.
         :param description: Brief description of the purpose and usage for the API Credential.
         :param enabled: If <code>true</code>, the API Credential is enabled. Otherwise, <code>false</code>.
-        :param workspace_id: Unique ID of the Workspace.
         :param roles: Role assignments for the API Credential.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
@@ -359,7 +354,6 @@ class APICredentials(BaseSDK):
                 name=name,
                 description=description,
                 enabled=enabled,
-                workspace_id=workspace_id,
                 roles=utils.get_pydantic_model(roles, models.APICredentialRolesSchema),
             ),
         )
