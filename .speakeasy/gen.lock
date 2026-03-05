@@ -5,15 +5,15 @@ management:
   docVersion: "1.0"
   speakeasyVersion: 1.741.5
   generationVersion: 2.849.7
-  releaseVersion: 0.3.0rc5
-  configChecksum: 9592e0d3f1d906f0e49e8f0e9aa0f92f
+  releaseVersion: 0.3.0
+  configChecksum: af17295f6c73cd4b83c8aa853fe0ab67
   repoURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   installationURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   published: true
 persistentEdits:
-  generation_id: 4c46121c-e907-40f3-afdf-0d909afa8a2e
-  pristine_commit_hash: 028ccafe9114b0b928d7352e9d0c399901b0fa62
-  pristine_tree_hash: 48af50defa9dbe51ca11b3bad52781cfe7b7ca01
+  generation_id: d6eb7f1c-a13e-416d-86a0-5ace6fb156b3
+  pristine_commit_hash: e71e91b7f091fd06e6547bf75a52cc8ffd1a9cbf
+  pristine_tree_hash: 7db82b3ece1d90e27fd6b30994395ce762064687
 features:
   python:
     additionalDependencies: 1.0.0
@@ -246,8 +246,8 @@ trackedFiles:
     pristine_git_object: fde5e0418e98324b2b3b2a8e02559e575b2f6cfa
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:9be82e53c5af0fa3eccda4439acee8a5ee89ff07
-    pristine_git_object: d04225bd397550b2410f55bd12f51df2f414a656
+    last_write_checksum: sha1:bd56e79b332feca0e918f2930741c5501fc5de2c
+    pristine_git_object: 99704d458900755b8f05c3209c558af82dd1a331
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:24bfcb3bc609310d0b86cb75ca844b42d4c9c248
@@ -278,8 +278,8 @@ trackedFiles:
     pristine_git_object: 8660a4d81ec54cbc43bcb4ed058985af8dcc715b
   src/cribl_mgmt_plane/_version.py:
     id: 8ec199fcd31a
-    last_write_checksum: sha1:746f9166c63a8585ce348aa3c5bd17c2c96f9862
-    pristine_git_object: 71cb008e23cdee6ebea3ab7364e60410cecfa4cc
+    last_write_checksum: sha1:310124cc24040e48b4bce782be16d4e04f813b15
+    pristine_git_object: fd067e8509f23b133388cbff477a1e923e33024f
   src/cribl_mgmt_plane/apicredentials.py:
     id: d344dfa0de1f
     last_write_checksum: sha1:4ce1bc27b025ad80bc6b61f3eb9bfb80f1c49643
