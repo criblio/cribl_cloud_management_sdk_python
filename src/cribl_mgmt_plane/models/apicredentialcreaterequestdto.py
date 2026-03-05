@@ -6,8 +6,7 @@ from .apicredentialrolesschema import (
     APICredentialRolesSchemaTypedDict,
 )
 from cribl_mgmt_plane.types import BaseModel
-import pydantic
-from typing_extensions import Annotated, TypedDict
+from typing_extensions import TypedDict
 
 
 class APICredentialCreateRequestDTOTypedDict(TypedDict):
@@ -17,8 +16,6 @@ class APICredentialCreateRequestDTOTypedDict(TypedDict):
     r"""Brief description of the purpose and usage for the API Credential."""
     enabled: bool
     r"""If <code>true</code>, the API Credential is enabled. Otherwise, <code>false</code>."""
-    workspace_id: str
-    r"""Unique ID of the Workspace."""
     roles: APICredentialRolesSchemaTypedDict
     r"""Role assignments for the API Credential."""
 
@@ -33,14 +30,5 @@ class APICredentialCreateRequestDTO(BaseModel):
     enabled: bool
     r"""If <code>true</code>, the API Credential is enabled. Otherwise, <code>false</code>."""
 
-    workspace_id: Annotated[str, pydantic.Field(alias="workspaceId")]
-    r"""Unique ID of the Workspace."""
-
     roles: APICredentialRolesSchema
     r"""Role assignments for the API Credential."""
-
-
-try:
-    APICredentialCreateRequestDTO.model_rebuild()
-except NameError:
-    pass
