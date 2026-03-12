@@ -7,14 +7,18 @@ from typing_extensions import Annotated, TypedDict
 
 
 class DefaultErrorDTOTypedDict(TypedDict):
-    status_code: float
+    status_code: int
+    r"""HTTP status code."""
     message: str
+    r"""Human-readable error message."""
 
 
 class DefaultErrorDTO(BaseModel):
-    status_code: Annotated[float, pydantic.Field(alias="statusCode")]
+    status_code: Annotated[int, pydantic.Field(alias="statusCode")]
+    r"""HTTP status code."""
 
     message: str
+    r"""Human-readable error message."""
 
 
 try:

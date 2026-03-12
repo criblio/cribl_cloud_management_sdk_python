@@ -6,6 +6,7 @@ from .apicredentialrolesschema import (
     APICredentialRolesSchemaTypedDict,
 )
 from cribl_mgmt_plane.types import BaseModel
+from datetime import datetime
 import pydantic
 from typing_extensions import Annotated, TypedDict
 
@@ -25,14 +26,12 @@ class APICredentialResponseSchemaTypedDict(TypedDict):
     r"""Role assignments for the API Credential."""
     created_by: str
     r"""Member who created the API Credential."""
-    created_date: str
+    created_date: datetime
     r"""ISO 8601 timestamp when the API Credential was created."""
     last_updated_by: str
     r"""Member who last updated the API Credential."""
-    last_updated_date: str
+    last_updated_date: datetime
     r"""ISO 8601 timestamp when the API Credential was last updated."""
-    client_secret: str
-    r"""Client Secret for the API Credential. The Client Secret is sensitive information and should be kept private. Only <code>POST</code> responses include the Client Secret. For other methods, responses return an empty string."""
 
 
 class APICredentialResponseSchema(BaseModel):
@@ -57,17 +56,14 @@ class APICredentialResponseSchema(BaseModel):
     created_by: Annotated[str, pydantic.Field(alias="createdBy")]
     r"""Member who created the API Credential."""
 
-    created_date: Annotated[str, pydantic.Field(alias="createdDate")]
+    created_date: Annotated[datetime, pydantic.Field(alias="createdDate")]
     r"""ISO 8601 timestamp when the API Credential was created."""
 
     last_updated_by: Annotated[str, pydantic.Field(alias="lastUpdatedBy")]
     r"""Member who last updated the API Credential."""
 
-    last_updated_date: Annotated[str, pydantic.Field(alias="lastUpdatedDate")]
+    last_updated_date: Annotated[datetime, pydantic.Field(alias="lastUpdatedDate")]
     r"""ISO 8601 timestamp when the API Credential was last updated."""
-
-    client_secret: Annotated[str, pydantic.Field(alias="clientSecret")]
-    r"""Client Secret for the API Credential. The Client Secret is sensitive information and should be kept private. Only <code>POST</code> responses include the Client Secret. For other methods, responses return an empty string."""
 
 
 try:

@@ -10,7 +10,7 @@ from typing_extensions import TypedDict
 class WorkspacesListResponseDTOTypedDict(TypedDict):
     items: List[WorkspaceSchemaTypedDict]
     r"""List of workspaces"""
-    count: float
+    count: int
     r"""Total number of workspaces"""
 
 
@@ -18,5 +18,5 @@ class WorkspacesListResponseDTO(BaseModel):
     items: List[WorkspaceSchema]
     r"""List of workspaces"""
 
-    count: float
+    count: int
     r"""Total number of workspaces"""

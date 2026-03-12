@@ -9,9 +9,9 @@ if TYPE_CHECKING:
         APICredentialCreateRequestDTO,
         APICredentialCreateRequestDTOTypedDict,
     )
-    from .apicredentiallistitemschema import (
-        APICredentialListItemSchema,
-        APICredentialListItemSchemaTypedDict,
+    from .apicredentialcreateresponseschema import (
+        APICredentialCreateResponseSchema,
+        APICredentialCreateResponseSchemaTypedDict,
     )
     from .apicredentialresponseschema import (
         APICredentialResponseSchema,
@@ -124,8 +124,8 @@ if TYPE_CHECKING:
 __all__ = [
     "APICredentialCreateRequestDTO",
     "APICredentialCreateRequestDTOTypedDict",
-    "APICredentialListItemSchema",
-    "APICredentialListItemSchemaTypedDict",
+    "APICredentialCreateResponseSchema",
+    "APICredentialCreateResponseSchemaTypedDict",
     "APICredentialResponseSchema",
     "APICredentialResponseSchemaTypedDict",
     "APICredentialRolesSchema",
@@ -199,8 +199,8 @@ __all__ = [
 _dynamic_imports: dict[str, str] = {
     "APICredentialCreateRequestDTO": ".apicredentialcreaterequestdto",
     "APICredentialCreateRequestDTOTypedDict": ".apicredentialcreaterequestdto",
-    "APICredentialListItemSchema": ".apicredentiallistitemschema",
-    "APICredentialListItemSchemaTypedDict": ".apicredentiallistitemschema",
+    "APICredentialCreateResponseSchema": ".apicredentialcreateresponseschema",
+    "APICredentialCreateResponseSchemaTypedDict": ".apicredentialcreateresponseschema",
     "APICredentialResponseSchema": ".apicredentialresponseschema",
     "APICredentialResponseSchemaTypedDict": ".apicredentialresponseschema",
     "APICredentialRolesSchema": ".apicredentialrolesschema",

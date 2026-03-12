@@ -79,7 +79,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ApiCredentialResponseSchema"
+                $ref: "#/components/schemas/ApiCredentialCreateResponseSchema"
+        "422":
+          description: API Credential limit reached
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DefaultErrorDTO"
         default:
           description: Default error response
           content:
@@ -147,8 +153,8 @@ paths:
           schema:
             type: string
       responses:
-        "202":
-          description: API Credential deletion accepted
+        "204":
+          description: API Credential deleted
         default:
           description: Default error response
           content:
@@ -481,78 +487,6 @@ components:
             $ref: "#/components/schemas/WorkspaceRoleSchema"
       required:
         - organizationRole
-    ApiCredentialListItemSchema:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Human-readable name of the API Credential.
-          pattern: ^[A-Za-z0-9-]+$
-          example: Auto-Manage-Workspaces
-        description:
-          type: string
-          description: Brief description of the purpose and usage for the API Credential.
-          maxLength: 140
-          example: Used for automated Workspace management
-        enabled:
-          type: boolean
-          description: If <code>true</code>, the API Credential is enabled. Otherwise,
-            <code>false</code>.
-          example: true
-        organizationId:
-          type: string
-          description: Unique ID of the Organization.
-          example: org-123
-        clientId:
-          type: string
-          description: Client ID for the API Credential.
-          example: clientIdabcd1234EXAMPLE
-        roles:
-          description: Role assignments for the API Credential.
-          allOf:
-            - $ref: "#/components/schemas/ApiCredentialRolesSchema"
-        createdBy:
-          type: string
-          description: Member who created the API Credential.
-          example: user@example.com
-        createdDate:
-          type: string
-          description: ISO 8601 timestamp when the API Credential was created.
-          example: 2024-08-15T12:34:56.000Z
-        lastUpdatedBy:
-          type: string
-          description: Member who last updated the API Credential.
-          example: user@example.com
-        lastUpdatedDate:
-          type: string
-          description: ISO 8601 timestamp when the API Credential was last updated.
-          example: 2024-08-15T12:34:56.000Z
-      required:
-        - name
-        - description
-        - enabled
-        - organizationId
-        - clientId
-        - roles
-        - createdBy
-        - createdDate
-        - lastUpdatedBy
-        - lastUpdatedDate
-    ApiCredentialsListResponseDTO:
-      type: object
-      properties:
-        items:
-          description: List of API Credentials.
-          type: array
-          items:
-            $ref: "#/components/schemas/ApiCredentialListItemSchema"
-        count:
-          type: number
-          description: Total number of API Credentials listed in the response.
-          example: 1
-      required:
-        - items
-        - count
     ApiCredentialResponseSchema:
       type: object
       properties:
@@ -590,6 +524,7 @@ components:
         createdDate:
           type: string
           description: ISO 8601 timestamp when the API Credential was created.
+          format: date-time
           example: 2024-08-15T12:34:56.000Z
         lastUpdatedBy:
           type: string
@@ -598,13 +533,90 @@ components:
         lastUpdatedDate:
           type: string
           description: ISO 8601 timestamp when the API Credential was last updated.
+          format: date-time
+          example: 2024-08-15T12:34:56.000Z
+      required:
+        - name
+        - description
+        - enabled
+        - organizationId
+        - clientId
+        - roles
+        - createdBy
+        - createdDate
+        - lastUpdatedBy
+        - lastUpdatedDate
+    ApiCredentialsListResponseDTO:
+      type: object
+      properties:
+        items:
+          description: List of API Credentials.
+          type: array
+          items:
+            $ref: "#/components/schemas/ApiCredentialResponseSchema"
+        count:
+          type: integer
+          description: Total number of API Credentials listed in the response.
+          example: 1
+      required:
+        - items
+        - count
+    ApiCredentialCreateResponseSchema:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Human-readable name of the API Credential.
+          pattern: ^[A-Za-z0-9-]+$
+          example: Auto-Manage-Workspaces
+        description:
+          type: string
+          description: Brief description of the purpose and usage for the API Credential.
+          maxLength: 140
+          example: Used for automated Workspace management
+        enabled:
+          type: boolean
+          description: If <code>true</code>, the API Credential is enabled. Otherwise,
+            <code>false</code>.
+          example: true
+        organizationId:
+          type: string
+          description: Unique ID of the Organization.
+          example: org-123
+        clientId:
+          type: string
+          description: Client ID for the API Credential.
+          example: clientIdabcd1234EXAMPLE
+        roles:
+          description: Role assignments for the API Credential.
+          allOf:
+            - $ref: "#/components/schemas/ApiCredentialRolesSchema"
+        createdBy:
+          type: string
+          description: Member who created the API Credential.
+          example: user@example.com
+        createdDate:
+          type: string
+          description: ISO 8601 timestamp when the API Credential was created.
+          format: date-time
+          example: 2024-08-15T12:34:56.000Z
+        lastUpdatedBy:
+          type: string
+          description: Member who last updated the API Credential.
+          example: user@example.com
+        lastUpdatedDate:
+          type: string
+          description: ISO 8601 timestamp when the API Credential was last updated.
+          format: date-time
           example: 2024-08-15T12:34:56.000Z
         clientSecret:
           type: string
           description: Client Secret for the API Credential. The Client Secret is
-            sensitive information and should be kept private. Only
-            <code>POST</code> responses include the Client Secret. For other
-            methods, responses return an empty string.
+            sensitive information and should be kept private. Returned only in
+            the <code>POST</code> response when the API Credential is created.
+            Never returned in <code>GET</code> responses. If you need the Client
+            Secret again, you must rotate credentials and retrieve the new
+            Client Secret from the <code>POST</code> response.
           example: clientSecretabcd1234EXAMPLE
       required:
         - name
@@ -808,7 +820,7 @@ components:
           items:
             $ref: "#/components/schemas/WorkspaceSchema"
         count:
-          type: number
+          type: integer
           description: Total number of workspaces
           example: 5
       required:
@@ -818,9 +830,13 @@ components:
       type: object
       properties:
         statusCode:
-          type: number
+          type: integer
+          description: HTTP status code.
+          example: 400
         message:
           type: string
+          description: Human-readable error message.
+          example: Bad Request
       required:
         - statusCode
         - message
