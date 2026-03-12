@@ -284,13 +284,14 @@ with CriblMgmtPlane(
 
 [`CriblMgmtPlaneError`](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/./src/cribl_mgmt_plane/errors/criblmgmtplaneerror.py) is the base class for all HTTP error responses. It has the following properties:
 
-| Property           | Type             | Description                                            |
-| ------------------ | ---------------- | ------------------------------------------------------ |
-| `err.message`      | `str`            | Error message                                          |
-| `err.status_code`  | `int`            | HTTP response status code eg `404`                     |
-| `err.headers`      | `httpx.Headers`  | HTTP response headers                                  |
-| `err.body`         | `str`            | HTTP body. Can be empty string if no body is returned. |
-| `err.raw_response` | `httpx.Response` | Raw HTTP response                                      |
+| Property           | Type             | Description                                                                             |
+| ------------------ | ---------------- | --------------------------------------------------------------------------------------- |
+| `err.message`      | `str`            | Error message                                                                           |
+| `err.status_code`  | `int`            | HTTP response status code eg `404`                                                      |
+| `err.headers`      | `httpx.Headers`  | HTTP response headers                                                                   |
+| `err.body`         | `str`            | HTTP body. Can be empty string if no body is returned.                                  |
+| `err.raw_response` | `httpx.Response` | Raw HTTP response                                                                       |
+| `err.data`         |                  | Optional. Some errors may contain structured data. [See Error Classes](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/#error-classes). |
 
 ### Example
 ```python
@@ -311,7 +312,21 @@ with CriblMgmtPlane(
     res = None
     try:
 
-        res = cmp_client.health.get()
+        res = cmp_client.api_credentials.create(organization_id="<id>", name="Auto-Manage-Workspaces", description="Used for automated Workspace management", enabled=True, roles={
+            "organization_role": models.OrganizationRole.ADMIN,
+            "workspaces": [
+                {
+                    "workspace_id": "main",
+                    "workspace_role": models.WorkspaceRole.ADMIN,
+                    "products": [
+                        {
+                            "product": models.Product.STREAM,
+                            "role": models.Role.ADMIN,
+                        },
+                    ],
+                },
+            ],
+        })
 
         # Handle response
         print(res)
@@ -325,13 +340,17 @@ with CriblMgmtPlane(
         print(e.headers)
         print(e.raw_response)
 
+        # Depending on the method different errors may be thrown
+        if isinstance(e, errors.DefaultErrorDTO):
+            print(e.data.status_code)  # int
+            print(e.data.message)  # str
 ```
 
 ### Error Classes
 **Primary error:**
 * [`CriblMgmtPlaneError`](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/./src/cribl_mgmt_plane/errors/criblmgmtplaneerror.py): The base class for HTTP error responses.
 
-<details><summary>Less common errors (5)</summary>
+<details><summary>Less common errors (6)</summary>
 
 <br />
 
@@ -342,9 +361,12 @@ with CriblMgmtPlane(
 
 
 **Inherit from [`CriblMgmtPlaneError`](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/./src/cribl_mgmt_plane/errors/criblmgmtplaneerror.py)**:
+* [`DefaultErrorDTO`](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/./src/cribl_mgmt_plane/errors/defaulterrordto.py): API Credential limit reached. Status code `422`. Applicable to 1 of 11 methods.*
 * [`ResponseValidationError`](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/./src/cribl_mgmt_plane/errors/responsevalidationerror.py): Type mismatch between the response data and the expected Pydantic model. Provides access to the Pydantic validation error via the `cause` attribute.
 
 </details>
+
+\* Check [the method documentation](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/#available-resources-and-operations) to see if the error is applicable.
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->

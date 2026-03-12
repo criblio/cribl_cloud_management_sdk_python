@@ -3,10 +3,10 @@
 
 ## Supported Types
 
-### `models.APICredentialResponseSchema`
+### `models.APICredentialCreateResponseSchema`
 
 ```python
-value: models.APICredentialResponseSchema = /* values here */
+value: models.APICredentialCreateResponseSchema = /* values here */
 ```
 
 ### `models.DefaultErrorDTO`

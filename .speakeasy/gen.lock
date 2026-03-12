@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 897b2045-55e2-49ca-a37b-2daf10d4e6ea
 management:
-  docChecksum: 56b557ce82cc3eaca25b70f5b4a9587e
+  docChecksum: c371bb9548f0b66eb9681bab2aef6dd1
   docVersion: "1.0"
-  speakeasyVersion: 1.749.1
-  generationVersion: 2.855.2
-  releaseVersion: 0.3.0rc6
-  configChecksum: e0e48baf6ff266a0960a2395b623f3c4
+  speakeasyVersion: 1.752.0
+  generationVersion: 2.859.2
+  releaseVersion: 0.3.0rc7
+  configChecksum: 3e186e6c084e07554c19391bd9a753bb
   repoURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   installationURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   published: true
 persistentEdits:
-  generation_id: 73fc69fc-fbfd-4a07-a501-d7b915582a98
-  pristine_commit_hash: 32a11a64444f365d3550ae96a9e1c3a86dc70288
-  pristine_tree_hash: 0a700d220672a04633ad4981098f35c2623d4bff
+  generation_id: f5e4c10f-9ce7-404c-b83d-f7dad991eb58
+  pristine_commit_hash: e1aa660897a6dc12c3e817862123660addd20dec
+  pristine_tree_hash: 631ae42d6dc05b861c0dc4ed6af6b0e0c42f4853
 features:
   python:
     additionalDependencies: 1.0.0
@@ -60,34 +60,38 @@ trackedFiles:
     id: 3aed33ce6e6f
     last_write_checksum: sha1:c2f3a87ae128013e859f545d7c37037be206f69c
     pristine_git_object: f73fed97ef2f3cfae24054f235e9aaa358644d23
+  docs/errors/defaulterrordto.md:
+    id: 59146d4be6ae
+    last_write_checksum: sha1:ce2e44ca6cc383ccf6547b2ee5e1785ef0615641
+    pristine_git_object: 98806b4888189aa75d8d54e7f780051e31de45dd
   docs/models/apicredentialcreaterequestdto.md:
     id: 319c51eee342
     last_write_checksum: sha1:6e66b839ad83986b373a68bbca87acc99862d8f2
     pristine_git_object: 327b1c41ba1216e9bf478c85e3526ef9fbe92c03
-  docs/models/apicredentiallistitemschema.md:
-    id: 438e8122ce18
-    last_write_checksum: sha1:bc1ff629a2599aa7811cfff77bece71d64fd2d27
-    pristine_git_object: 31a085fedd98af5e6b9d958c0059087c6b9230e6
+  docs/models/apicredentialcreateresponseschema.md:
+    id: 014a24f3b459
+    last_write_checksum: sha1:522d68bbe550e70022fdd4e3e9f77ffa41f58a6e
+    pristine_git_object: 20ce874c07a0581a4a5cb68ea6ae9d5e5caf3446
   docs/models/apicredentialresponseschema.md:
     id: 720d766d5582
-    last_write_checksum: sha1:69f84627795f40621b6ffd679a81ce7f5a180224
-    pristine_git_object: 345f43ed2103611fb2c56da3baf29e447458bf62
+    last_write_checksum: sha1:0be587bb55737adaa234284edbfdfd402e7ef8e0
+    pristine_git_object: 4d7eacb46e4427dd81951df3f1aeb8e431015f27
   docs/models/apicredentialrolesschema.md:
     id: bf13c1048286
     last_write_checksum: sha1:4f3b355aed69274c0bea91ce52799b719cf43e82
     pristine_git_object: 199a2d5b913abf4d18f1abdd14ba67ccafd1169c
   docs/models/apicredentialslistresponsedto.md:
     id: 703a25f19467
-    last_write_checksum: sha1:88f23e58adbf3da7744548d24a5093d39da314c4
-    pristine_git_object: fe1b1e4b4f90aab650bb1b013e675e0e35df6739
+    last_write_checksum: sha1:f29a8a007e1bc2383411dfc60109b50afc9d537d
+    pristine_git_object: aa2ab2b4f0a2906f371fe2b4261e786a55b59f29
   docs/models/apicredentialupdaterequestdto.md:
     id: 735a837faa57
     last_write_checksum: sha1:0b53c10b4c957b882511bd886c9ee22e106951f8
     pristine_git_object: f304b1121cf0419512a440b5596461731e28e2d8
   docs/models/defaulterrordto.md:
     id: 2faad791832c
-    last_write_checksum: sha1:4cc5a009616be8e115699e27227f10aeb6dca022
-    pristine_git_object: a2795f5a72e5187507bf358395567848cb35a101
+    last_write_checksum: sha1:ce2e44ca6cc383ccf6547b2ee5e1785ef0615641
+    pristine_git_object: 98806b4888189aa75d8d54e7f780051e31de45dd
   docs/models/gethealthstatusresponse.md:
     id: 6a1707468a2a
     last_write_checksum: sha1:fa9ad1b9b1e13eb2b8c80efe897060601a66f411
@@ -138,8 +142,8 @@ trackedFiles:
     pristine_git_object: 1a86f1949e0f50ee8e10d07f384b378bd6f71ba8
   docs/models/v1apicredentialscreateapicredentialresponse.md:
     id: 1a3b34239b69
-    last_write_checksum: sha1:b7108730013512bd7b4fb9df8151d5bf79bf2939
-    pristine_git_object: 47b14bf3eaead3e7c136d2e33641ca1ed5d34d1f
+    last_write_checksum: sha1:23dece60b15e223dd7b286ef2710bffa83c820ad
+    pristine_git_object: cfbe6c0cd0e4ea35cd13e209d90746477d7016b7
   docs/models/v1apicredentialsdeleteapicredentialrequest.md:
     id: 99f81d5fe2e1
     last_write_checksum: sha1:3cc3ae6e771e17430be0c6312c71ed72fa41d35a
@@ -218,12 +222,12 @@ trackedFiles:
     pristine_git_object: f3108cbaaa40890005a75a9b4ae03939eb165409
   docs/models/workspaceslistresponsedto.md:
     id: a149445e390c
-    last_write_checksum: sha1:72e73a0b1960e68324215e9755f3607afff07dd7
-    pristine_git_object: d4dbabecf29791be46f485b452f655cf01c8815a
+    last_write_checksum: sha1:03e29aece3765237ca0dba16565bd897059c16f6
+    pristine_git_object: 78fe7ba64906b1e70602ba1d1c8cf1306cd00891
   docs/sdks/apicredentials/README.md:
     id: 93fa0592990c
-    last_write_checksum: sha1:e8e2e50fbd8cef5ae28ddbe3064d5ef2afa364ed
-    pristine_git_object: 229719b49d51a22e1dd36c0982b034d25c604ed4
+    last_write_checksum: sha1:0d7a2c140599a699544f77d39ce81a13f10afd44
+    pristine_git_object: 911f16e98f8d637201bdd336f07077de6058c798
   docs/sdks/health/README.md:
     id: 5082c50d5e82
     last_write_checksum: sha1:b56f83a1ea293ad9b5fd76797122e09dccdbc1f9
@@ -246,8 +250,8 @@ trackedFiles:
     pristine_git_object: fde5e0418e98324b2b3b2a8e02559e575b2f6cfa
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:c394b2cb9ae3708cb932c7c9a7eb81f1b681eafb
-    pristine_git_object: a70324f9693d3d7afe93ee2a15d0ebdc2d51e365
+    last_write_checksum: sha1:e3378bb9825fcd98e6f759a291d8062bbd3ffe21
+    pristine_git_object: 627652ea1f50e328a90eebb22b90db714ed5a489
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:24bfcb3bc609310d0b86cb75ca844b42d4c9c248
@@ -278,20 +282,20 @@ trackedFiles:
     pristine_git_object: 8660a4d81ec54cbc43bcb4ed058985af8dcc715b
   src/cribl_mgmt_plane/_version.py:
     id: 8ec199fcd31a
-    last_write_checksum: sha1:5b9eaab25a0a655deb9c17bd7282f40f18ce6d0d
-    pristine_git_object: 38cb49d5135fc6063ed6b157c77366f2e0413294
+    last_write_checksum: sha1:9234fb4452eacee77bbb76a96c8d320af07336d6
+    pristine_git_object: 325aafade68eea4e65cde93796a5010832e588cd
   src/cribl_mgmt_plane/apicredentials.py:
     id: d344dfa0de1f
-    last_write_checksum: sha1:4ce1bc27b025ad80bc6b61f3eb9bfb80f1c49643
-    pristine_git_object: 84e825f5016617bdb06779ba5b4bd4a149cb75ba
+    last_write_checksum: sha1:ae90554af2850c59be73d7a8deb14f4b2074d4d4
+    pristine_git_object: fb7a65652345397eaaa05b110a5404a989041abb
   src/cribl_mgmt_plane/basesdk.py:
     id: 024a102b240a
     last_write_checksum: sha1:b8593745cc00e1a12a12cf04a1385a5a0b3a08c0
     pristine_git_object: f7926a47bc4a90de84612f20b2b6a08260d98cbe
   src/cribl_mgmt_plane/errors/__init__.py:
     id: 53763ce236b6
-    last_write_checksum: sha1:349c6f2ce69b1c20f1eb11294c1ab561a6431f3e
-    pristine_git_object: b43172d23397f513611f541d44fc56f7dbbdd4b8
+    last_write_checksum: sha1:959bb14a8cad993c700d93bec2ee8ce68833270c
+    pristine_git_object: e585a036dc17d5e754405b1802a41e82ad999e6b
   src/cribl_mgmt_plane/errors/apierror.py:
     id: 3b56be319b25
     last_write_checksum: sha1:ac533257cca52c24c6de478c233097dabfb13e03
@@ -300,6 +304,10 @@ trackedFiles:
     id: 6ea36f67e7ff
     last_write_checksum: sha1:7ba467ba24c8d4f822ed191d05d6cd91ea9a2080
     pristine_git_object: 29d086359a1edde35ec9ed186df1c93ef47289ce
+  src/cribl_mgmt_plane/errors/defaulterrordto.py:
+    id: b13f8288bb8a
+    last_write_checksum: sha1:837ea12932d26ed177fdb77d4d80ae86fc77a3b3
+    pristine_git_object: 50061b19b8a4abd73f5417545aa168e1764de14e
   src/cribl_mgmt_plane/errors/no_response_error.py:
     id: 52e22c8feca5
     last_write_checksum: sha1:7f326424a7d5ae1bcd5c89a0d6b3dbda9138942f
@@ -318,36 +326,36 @@ trackedFiles:
     pristine_git_object: 89560b566073785535643e694c112bedbd3db13d
   src/cribl_mgmt_plane/models/__init__.py:
     id: c0ef0c636a04
-    last_write_checksum: sha1:7f34fc02ca16c7e045eb03fb683f02ada5f476a3
-    pristine_git_object: a0d982c1d1505243c7dee8e806f329e5df452465
+    last_write_checksum: sha1:c256692565e1085b4adaafccbc4f25089bd0eaab
+    pristine_git_object: e1224e65597bc576685eef30f7f105ccba9c4b6a
   src/cribl_mgmt_plane/models/apicredentialcreaterequestdto.py:
     id: 36936da257f5
     last_write_checksum: sha1:dbfd4dfc184a8eba77b97252ad87031c4bef7018
     pristine_git_object: 784212d83b5a10026c0769e118ea48a4fe1f5cfd
-  src/cribl_mgmt_plane/models/apicredentiallistitemschema.py:
-    id: 64337fa981c9
-    last_write_checksum: sha1:05f49ccbca0f9234389c9453e100d71c4c185eee
-    pristine_git_object: be3b7058ab141365048d07c716062468bd2fb417
+  src/cribl_mgmt_plane/models/apicredentialcreateresponseschema.py:
+    id: 79576624b1da
+    last_write_checksum: sha1:d00d81b39800ca43f7b7824ab81c0b314e066678
+    pristine_git_object: e3a1d7625ee2327351882cc47e55b22a4ce72930
   src/cribl_mgmt_plane/models/apicredentialresponseschema.py:
     id: fa76122a2224
-    last_write_checksum: sha1:fc28c723e16394d48095f8c656362195608b814e
-    pristine_git_object: 531d640c89cddedd4ef71441f42ef7566233798d
+    last_write_checksum: sha1:f0d38e0dfc18a0d36819f6fc4a1c5656163b5f49
+    pristine_git_object: ee2acfb675140f136dd5594a2480afaf1b8a9ef4
   src/cribl_mgmt_plane/models/apicredentialrolesschema.py:
     id: 560baf16d23f
     last_write_checksum: sha1:cdc09aab1c539f2ac6930a94d68d56794a3d42e2
     pristine_git_object: 45e9ae9f8665e1cae85e758a8f37b220f4380314
   src/cribl_mgmt_plane/models/apicredentialslistresponsedto.py:
     id: 1d3da16b70f2
-    last_write_checksum: sha1:2f2ef6c750013787915c1c70da5aaef4d7b2d557
-    pristine_git_object: 863acdb06e275c47a1dec9e33470f26b3e9227c2
+    last_write_checksum: sha1:b8fb4735a43e8ee7369f13fdf3c5adb51faf81d7
+    pristine_git_object: 147d4e74cb0a929b26bdc53a3356d78abade7b74
   src/cribl_mgmt_plane/models/apicredentialupdaterequestdto.py:
     id: e3cf6456c637
     last_write_checksum: sha1:fe77b3c8c3097f1a4d5d19346861a2a1c682a452
     pristine_git_object: 242d440f622bceb6d303cf2bfcc41cb600864c4f
   src/cribl_mgmt_plane/models/defaulterrordto.py:
     id: 76f1b582a83f
-    last_write_checksum: sha1:0ca3df2047234f9c42cb5bcd6aaa380328c81e29
-    pristine_git_object: dd9aafbbbf494ae63c810efa12adce263d1c1ad7
+    last_write_checksum: sha1:8c7790b7fb0204368cca2403cfbe364c32ee959f
+    pristine_git_object: e5b12050486c408bcb7362973296b26badfa6b11
   src/cribl_mgmt_plane/models/gethealthstatusop.py:
     id: 1b4ada1c1b56
     last_write_checksum: sha1:9aea50e04c4c5df13405a2f98759665233f0a463
@@ -366,8 +374,8 @@ trackedFiles:
     pristine_git_object: 29484b242bf472ca42994632881ddaeb24ca326f
   src/cribl_mgmt_plane/models/v1_apicredentials_createapicredentialop.py:
     id: 5ec147b920ea
-    last_write_checksum: sha1:75ee09bf0f98ed38c4bdd98cade15f8b02bed6e2
-    pristine_git_object: 60ecdd9677ad2d4a6e7397e80832430795dbe6f3
+    last_write_checksum: sha1:4ff57567c7d158f008d5a99b18c7f4da5f0d47cf
+    pristine_git_object: bd291274a3dd7d4f6707e90bc6668fdc79d4b899
   src/cribl_mgmt_plane/models/v1_apicredentials_deleteapicredentialop.py:
     id: e39219002695
     last_write_checksum: sha1:e16bd30a8b676a635fe9f2f47b25ef98a4ee5cce
@@ -422,8 +430,8 @@ trackedFiles:
     pristine_git_object: 458182454b67e4b48d7cd555d2b874718d3d9cde
   src/cribl_mgmt_plane/models/workspaceslistresponsedto.py:
     id: fd82ae9398f8
-    last_write_checksum: sha1:016712761c2c413001de1038ec7bdbdfb1b5f8fe
-    pristine_git_object: de4b411876c0ddaa2af2e03f3e3e242596813088
+    last_write_checksum: sha1:8e6a439f82de335ae751bcc307b10f45f4ffd1e4
+    pristine_git_object: a32e97c78ecd3429d63dc25957543d3e6b25badc
   src/cribl_mgmt_plane/py.typed:
     id: f47a27fde01f
     last_write_checksum: sha1:8efc425ffe830805ffcc0f3055871bdcdc542c60
@@ -466,8 +474,8 @@ trackedFiles:
     pristine_git_object: 3324e1bc2668c54c4d5f5a1a845675319757a828
   src/cribl_mgmt_plane/utils/eventstreaming.py:
     id: 30f167e350de
-    last_write_checksum: sha1:ffa870a25a7e4e2015bfd7a467ccd3aa1de97f0e
-    pristine_git_object: f2052fc22d9fd6c663ba3dce019fe234ca37108b
+    last_write_checksum: sha1:620d78a8b4e3b854e08d136e02e40a01a786bd70
+    pristine_git_object: 3bdcd6d3d4fc772cb7f5fca8685dcdc8c85e13e8
   src/cribl_mgmt_plane/utils/forms.py:
     id: 89247def37c3
     last_write_checksum: sha1:15fa7e9ab1611e062a9984cf06cb20969713d295
@@ -606,6 +614,8 @@ examples:
           application/json: {"name": "Auto-Manage-Workspaces", "description": "Used for automated Workspace management", "enabled": true, "organizationId": "org-123", "clientId": "clientIdabcd1234EXAMPLE", "roles": {"organizationRole": "admin", "workspaces": [{"workspaceId": "main", "workspaceRole": "admin", "products": [{"product": "stream", "role": "admin"}]}]}, "createdBy": "user@example.com", "createdDate": "2024-08-15T12:34:56Z", "lastUpdatedBy": "user@example.com", "lastUpdatedDate": "2024-08-15T12:34:56Z", "clientSecret": "clientSecretabcd1234EXAMPLE"}
         default:
           application/json: {"statusCode": 9282.56, "message": "<value>"}
+        "422":
+          application/json: {"statusCode": 400, "message": "Bad Request"}
   v1.apiCredentials.updateApiCredential:
     speakeasy-default-v1-api-credentials-update-api-credential:
       parameters:
@@ -634,7 +644,7 @@ examples:
           apiCredentialId: "<id>"
       responses:
         "200":
-          application/json: {"name": "Auto-Manage-Workspaces", "description": "Used for automated Workspace management", "enabled": true, "organizationId": "org-123", "clientId": "clientIdabcd1234EXAMPLE", "roles": {"organizationRole": "admin", "workspaces": [{"workspaceId": "main", "workspaceRole": "admin", "products": [{"product": "stream", "role": "admin"}]}]}, "createdBy": "user@example.com", "createdDate": "2024-08-15T12:34:56Z", "lastUpdatedBy": "user@example.com", "lastUpdatedDate": "2024-08-15T12:34:56Z", "clientSecret": "clientSecretabcd1234EXAMPLE"}
+          application/json: {"name": "Auto-Manage-Workspaces", "description": "Used for automated Workspace management", "enabled": true, "organizationId": "org-123", "clientId": "clientIdabcd1234EXAMPLE", "roles": {"organizationRole": "admin", "workspaces": [{"workspaceId": "main", "workspaceRole": "admin", "products": [{"product": "stream", "role": "admin"}]}]}, "createdBy": "user@example.com", "createdDate": "2024-08-15T12:34:56Z", "lastUpdatedBy": "user@example.com", "lastUpdatedDate": "2024-08-15T12:34:56Z"}
         default:
           application/json: {"statusCode": 6805.09, "message": "<value>"}
 examplesVersion: 1.0.2
@@ -642,14 +652,17 @@ generatedTests:
   dummyServiceStatus: "2025-07-02T19:49:08+02:00"
 releaseNotes: |
   ## Python SDK Changes:
+  * `cribl_mgmt_plane.health.get()`:  `response.status_code` **Changed** (Breaking ⚠️)
+  * `cribl_mgmt_plane.workspaces.create()`:  `response` **Changed** (Breaking ⚠️)
+  * `cribl_mgmt_plane.workspaces.list()`:  `response` **Changed** (Breaking ⚠️)
+  * `cribl_mgmt_plane.workspaces.update()`:  `response.status_code` **Changed** (Breaking ⚠️)
+  * `cribl_mgmt_plane.workspaces.delete()`:  `response.status_code` **Changed** (Breaking ⚠️)
+  * `cribl_mgmt_plane.workspaces.get()`:  `response` **Changed** (Breaking ⚠️)
   * `cribl_mgmt_plane.api_credentials.list()`: **Added**
   * `cribl_mgmt_plane.api_credentials.create()`: **Added**
   * `cribl_mgmt_plane.api_credentials.update()`: **Added**
   * `cribl_mgmt_plane.api_credentials.delete()`: **Added**
   * `cribl_mgmt_plane.api_credentials.get()`: **Added**
-  * `cribl_mgmt_plane.workspaces.create()`:  `response.region` **Changed**
-  * `cribl_mgmt_plane.workspaces.list()`:  `response.items[].region` **Changed**
-  * `cribl_mgmt_plane.workspaces.get()`:  `response.region` **Changed**
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
