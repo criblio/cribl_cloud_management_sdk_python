@@ -5,9 +5,9 @@ from .apicredentialcreaterequestdto import (
     APICredentialCreateRequestDTO,
     APICredentialCreateRequestDTOTypedDict,
 )
-from .apicredentialresponseschema import (
-    APICredentialResponseSchema,
-    APICredentialResponseSchemaTypedDict,
+from .apicredentialcreateresponseschema import (
+    APICredentialCreateResponseSchema,
+    APICredentialCreateResponseSchemaTypedDict,
 )
 from .defaulterrordto import DefaultErrorDTO, DefaultErrorDTOTypedDict
 from cribl_mgmt_plane.types import BaseModel
@@ -39,11 +39,11 @@ class V1APICredentialsCreateAPICredentialRequest(BaseModel):
 
 V1APICredentialsCreateAPICredentialResponseTypedDict = TypeAliasType(
     "V1APICredentialsCreateAPICredentialResponseTypedDict",
-    Union[DefaultErrorDTOTypedDict, APICredentialResponseSchemaTypedDict],
+    Union[DefaultErrorDTOTypedDict, APICredentialCreateResponseSchemaTypedDict],
 )
 
 
 V1APICredentialsCreateAPICredentialResponse = TypeAliasType(
     "V1APICredentialsCreateAPICredentialResponse",
-    Union[DefaultErrorDTO, APICredentialResponseSchema],
+    Union[DefaultErrorDTO, APICredentialCreateResponseSchema],
 )

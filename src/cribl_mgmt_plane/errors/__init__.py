@@ -7,18 +7,23 @@ from cribl_mgmt_plane.utils.dynamic_imports import lazy_getattr, lazy_dir
 
 if TYPE_CHECKING:
     from .apierror import APIError
+    from .defaulterrordto import DefaultErrorDTO, DefaultErrorDTOData
     from .no_response_error import NoResponseError
     from .responsevalidationerror import ResponseValidationError
 
 __all__ = [
     "APIError",
     "CriblMgmtPlaneError",
+    "DefaultErrorDTO",
+    "DefaultErrorDTOData",
     "NoResponseError",
     "ResponseValidationError",
 ]
 
 _dynamic_imports: dict[str, str] = {
     "APIError": ".apierror",
+    "DefaultErrorDTO": ".defaulterrordto",
+    "DefaultErrorDTOData": ".defaulterrordto",
     "NoResponseError": ".no_response_error",
     "ResponseValidationError": ".responsevalidationerror",
 }
