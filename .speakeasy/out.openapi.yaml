@@ -80,6 +80,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ApiCredentialCreateResponseSchema"
+        "409":
+          description: Could not create API Credential because it already exists
         "422":
           description: API Credential limit reached
           content:
@@ -124,6 +126,10 @@ paths:
       responses:
         "204":
           description: API Credential updated
+        "404":
+          description: API Credential not found
+        "409":
+          description: Could not update API Credential because the name is already in use
         default:
           description: Default error response
           content:
@@ -155,6 +161,8 @@ paths:
       responses:
         "204":
           description: API Credential deleted
+        "404":
+          description: API Credential not found
         default:
           description: Default error response
           content:
@@ -190,6 +198,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ApiCredentialResponseSchema"
+        "404":
+          description: API Credential not found
         default:
           description: Default error response
           content:
@@ -493,6 +503,7 @@ components:
         name:
           type: string
           description: Human-readable name of the API Credential.
+          maxLength: 140
           pattern: ^[A-Za-z0-9-]+$
           example: Auto-Manage-Workspaces
         description:
@@ -567,6 +578,7 @@ components:
         name:
           type: string
           description: Human-readable name of the API Credential.
+          maxLength: 140
           pattern: ^[A-Za-z0-9-]+$
           example: Auto-Manage-Workspaces
         description:
@@ -636,6 +648,7 @@ components:
         name:
           type: string
           description: Human-readable name of the API Credential.
+          maxLength: 140
           pattern: ^[A-Za-z0-9-]+$
           example: Auto-Manage-Workspaces
         description:
@@ -663,6 +676,7 @@ components:
         name:
           type: string
           description: Human-readable name of the API Credential.
+          maxLength: 140
           pattern: ^[A-Za-z0-9-]+$
           example: Auto-Manage-Workspaces
         description:
