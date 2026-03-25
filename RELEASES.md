@@ -329,3 +329,13 @@ Based on:
 - [python v0.3.0rc9] .
 ### Releases
 - [PyPI v0.3.0rc9] https://pypi.org/project/cribl-mgmt-plane/0.3.0rc9 - .
+
+## 2026-03-25 10:20:47
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.759.2 (2.869.23) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v0.3.0] .
+### Releases
+- [PyPI v0.3.0] https://pypi.org/project/cribl-mgmt-plane/0.3.0 - .
