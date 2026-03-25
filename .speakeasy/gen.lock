@@ -5,15 +5,15 @@ management:
   docVersion: "1.0"
   speakeasyVersion: 1.759.2
   generationVersion: 2.869.23
-  releaseVersion: 0.3.0rc9
-  configChecksum: 26a4a387c702b55762d2d1d95a6aa535
+  releaseVersion: 0.3.0
+  configChecksum: af17295f6c73cd4b83c8aa853fe0ab67
   repoURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   installationURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   published: true
 persistentEdits:
-  generation_id: 7d1072dd-4c9e-40ba-8746-700156e42ccb
-  pristine_commit_hash: 85fa44114edf49e3e92b8b543b371b56c4764a9b
-  pristine_tree_hash: f2ac2bfa08f5846ff98631cb0816cbff3429055f
+  generation_id: e2eaeb64-3796-4f8c-bd89-c929488edcfe
+  pristine_commit_hash: ca2f99006869aaaca431cc5cd7ccde3684fe0b51
+  pristine_tree_hash: 90bc182b3e3ddeffee5be5823bc1a70955f836a8
 features:
   python:
     additionalDependencies: 1.0.0
@@ -250,8 +250,8 @@ trackedFiles:
     pristine_git_object: fde5e0418e98324b2b3b2a8e02559e575b2f6cfa
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:45ecea21979454fbd4100afc41a15bb43580a04e
-    pristine_git_object: 39c068335d6a5b1799506d66da8951fac7e1f57e
+    last_write_checksum: sha1:bd56e79b332feca0e918f2930741c5501fc5de2c
+    pristine_git_object: 99704d458900755b8f05c3209c558af82dd1a331
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:24bfcb3bc609310d0b86cb75ca844b42d4c9c248
@@ -282,8 +282,8 @@ trackedFiles:
     pristine_git_object: 8660a4d81ec54cbc43bcb4ed058985af8dcc715b
   src/cribl_mgmt_plane/_version.py:
     id: 8ec199fcd31a
-    last_write_checksum: sha1:26481f8c848dae1fb8b44f2486739e400b53c30f
-    pristine_git_object: 56c245617035999aa0116448aa42bf2204f3c89c
+    last_write_checksum: sha1:1d2c085e79388d498e5eedb13bb7edb626e79cb6
+    pristine_git_object: 667e857bdd10be66437eb0d910dfefa217ee7fdc
   src/cribl_mgmt_plane/apicredentials.py:
     id: d344dfa0de1f
     last_write_checksum: sha1:d7866a3b5eedc24fece57dc06bbc24603ce2875d
@@ -651,18 +651,20 @@ examplesVersion: 1.0.2
 generatedTests:
   dummyServiceStatus: "2025-07-02T19:49:08+02:00"
 releaseNotes: |
-  ## Python SDK Changes:
-  * `cribl_mgmt_plane.health.get()`:  `response.status_code` **Changed** (Breaking ⚠️)
-  * `cribl_mgmt_plane.workspaces.create()`:  `response` **Changed** (Breaking ⚠️)
-  * `cribl_mgmt_plane.workspaces.list()`:  `response` **Changed** (Breaking ⚠️)
-  * `cribl_mgmt_plane.workspaces.update()`:  `response.status_code` **Changed** (Breaking ⚠️)
-  * `cribl_mgmt_plane.workspaces.delete()`:  `response.status_code` **Changed** (Breaking ⚠️)
-  * `cribl_mgmt_plane.workspaces.get()`:  `response` **Changed** (Breaking ⚠️)
-  * `cribl_mgmt_plane.api_credentials.list()`: **Added**
-  * `cribl_mgmt_plane.api_credentials.create()`: **Added**
-  * `cribl_mgmt_plane.api_credentials.update()`: **Added**
-  * `cribl_mgmt_plane.api_credentials.delete()`: **Added**
-  * `cribl_mgmt_plane.api_credentials.get()`: **Added**
+  ## Python SDK Changes
+
+  This version of the SDK is generated for Cribl.Cloud.
+
+  ### Added new endpoints
+  * API Credentials:
+  * `CriblMgmtPlane.api_credentials.list()` - List API Credentials for an Organization
+  * `CriblMgmtPlane.api_credentials.create()` - Create an API Credential
+  * `CriblMgmtPlane.api_credentials.update()` - Update an API Credential
+  * `CriblMgmtPlane.api_credentials.delete()` - Delete an API Credential
+  * `CriblMgmtPlane.api_credentials.get()` - Get an API Credential
+  *
+  ### Region enum
+  * Extended with additional AWS regions: `ap-northeast-1`, `sa-east-1`, `eu-west-1`, `eu-west-3`
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
