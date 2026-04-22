@@ -96,7 +96,9 @@ with CriblMgmtPlane(
                 ],
             },
         ],
-    })
+    }, ip_allowlist=[
+        "10.0.0.1/32",
+    ])
 
     # Handle response
     print(res)
@@ -112,6 +114,7 @@ with CriblMgmtPlane(
 | `description`                                                                        | *str*                                                                                | :heavy_check_mark:                                                                   | Brief description of the purpose and usage for the API Credential.                   | Used for automated Workspace management                                              |
 | `enabled`                                                                            | *bool*                                                                               | :heavy_check_mark:                                                                   | If <code>true</code>, the API Credential is enabled. Otherwise, <code>false</code>.  | true                                                                                 |
 | `roles`                                                                              | [models.APICredentialRolesSchema](../../models/apicredentialrolesschema.md)          | :heavy_check_mark:                                                                   | Role assignments for the API Credential.                                             |                                                                                      |
+| `ip_allowlist`                                                                       | List[*str*]                                                                          | :heavy_minus_sign:                                                                   | CIDR range enforced as the IP allowlist for the API Credential.                      | [<br/>"10.0.0.1/32"<br/>]                                                            |
 | `retries`                                                                            | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                     | :heavy_minus_sign:                                                                   | Configuration to override the default retry behavior of the client.                  |                                                                                      |
 
 ### Response
@@ -162,7 +165,9 @@ with CriblMgmtPlane(
                 ],
             },
         ],
-    })
+    }, ip_allowlist=[
+        "10.0.0.1/32",
+    ])
 
     assert res is not None
 
@@ -181,6 +186,7 @@ with CriblMgmtPlane(
 | `description`                                                                         | *Optional[str]*                                                                       | :heavy_minus_sign:                                                                    | Brief description of the purpose and usage for the API Credential.                    | Used for automated Workspace management                                               |
 | `enabled`                                                                             | *Optional[bool]*                                                                      | :heavy_minus_sign:                                                                    | If <code>true</code>, the API Credential is enabled. Otherwise, <code>false</code>.   | true                                                                                  |
 | `roles`                                                                               | [Optional[models.APICredentialRolesSchema]](../../models/apicredentialrolesschema.md) | :heavy_minus_sign:                                                                    | Role assignments for the API Credential.                                              |                                                                                       |
+| `ip_allowlist`                                                                        | List[*str*]                                                                           | :heavy_minus_sign:                                                                    | Omit to leave unchanged. Pass an empty array to clear the stored IP allowlist.        | [<br/>"10.0.0.1/32"<br/>]                                                             |
 | `retries`                                                                             | [Optional[utils.RetryConfig]](../../models/utils/retryconfig.md)                      | :heavy_minus_sign:                                                                    | Configuration to override the default retry behavior of the client.                   |                                                                                       |
 
 ### Response

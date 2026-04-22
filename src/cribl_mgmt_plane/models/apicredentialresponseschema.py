@@ -8,6 +8,7 @@ from .apicredentialrolesschema import (
 from cribl_mgmt_plane.types import BaseModel
 from datetime import datetime
 import pydantic
+from typing import List
 from typing_extensions import Annotated, TypedDict
 
 
@@ -24,6 +25,8 @@ class APICredentialResponseSchemaTypedDict(TypedDict):
     r"""Client ID for the API Credential."""
     roles: APICredentialRolesSchemaTypedDict
     r"""Role assignments for the API Credential."""
+    ip_allowlist: List[str]
+    r"""CIDR range enforced as the IP allowlist for the API Credential. An empty array means that the API Credential has no IP restrictions."""
     created_by: str
     r"""Member who created the API Credential."""
     created_date: datetime
@@ -52,6 +55,9 @@ class APICredentialResponseSchema(BaseModel):
 
     roles: APICredentialRolesSchema
     r"""Role assignments for the API Credential."""
+
+    ip_allowlist: Annotated[List[str], pydantic.Field(alias="ipAllowlist")]
+    r"""CIDR range enforced as the IP allowlist for the API Credential. An empty array means that the API Credential has no IP restrictions."""
 
     created_by: Annotated[str, pydantic.Field(alias="createdBy")]
     r"""Member who created the API Credential."""
