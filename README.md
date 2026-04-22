@@ -326,7 +326,9 @@ with CriblMgmtPlane(
                     ],
                 },
             ],
-        })
+        }, ip_allowlist=[
+            "10.0.0.1/32",
+        ])
 
         # Handle response
         print(res)

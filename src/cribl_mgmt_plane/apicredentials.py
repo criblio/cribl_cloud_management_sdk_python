@@ -6,7 +6,7 @@ from cribl_mgmt_plane._hooks import HookContext
 from cribl_mgmt_plane.types import OptionalNullable, UNSET
 from cribl_mgmt_plane.utils import get_security_from_env
 from cribl_mgmt_plane.utils.unmarshal_json_response import unmarshal_json_response
-from typing import Any, Mapping, Optional, Union
+from typing import Any, List, Mapping, Optional, Union
 
 
 class APICredentials(BaseSDK):
@@ -85,7 +85,7 @@ class APICredentials(BaseSDK):
                 ),
             ),
             request=req,
-            error_status_codes=["4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -177,7 +177,7 @@ class APICredentials(BaseSDK):
                 ),
             ),
             request=req,
-            error_status_codes=["4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -206,6 +206,7 @@ class APICredentials(BaseSDK):
         roles: Union[
             models.APICredentialRolesSchema, models.APICredentialRolesSchemaTypedDict
         ],
+        ip_allowlist: Optional[List[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -220,6 +221,7 @@ class APICredentials(BaseSDK):
         :param description: Brief description of the purpose and usage for the API Credential.
         :param enabled: If <code>true</code>, the API Credential is enabled. Otherwise, <code>false</code>.
         :param roles: Role assignments for the API Credential.
+        :param ip_allowlist: CIDR range enforced as the IP allowlist for the API Credential.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -242,6 +244,7 @@ class APICredentials(BaseSDK):
                 description=description,
                 enabled=enabled,
                 roles=utils.get_pydantic_model(roles, models.APICredentialRolesSchema),
+                ip_allowlist=ip_allowlist,
             ),
         )
 
@@ -292,7 +295,7 @@ class APICredentials(BaseSDK):
                 ),
             ),
             request=req,
-            error_status_codes=["409", "422", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -327,6 +330,7 @@ class APICredentials(BaseSDK):
         roles: Union[
             models.APICredentialRolesSchema, models.APICredentialRolesSchemaTypedDict
         ],
+        ip_allowlist: Optional[List[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -341,6 +345,7 @@ class APICredentials(BaseSDK):
         :param description: Brief description of the purpose and usage for the API Credential.
         :param enabled: If <code>true</code>, the API Credential is enabled. Otherwise, <code>false</code>.
         :param roles: Role assignments for the API Credential.
+        :param ip_allowlist: CIDR range enforced as the IP allowlist for the API Credential.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -363,6 +368,7 @@ class APICredentials(BaseSDK):
                 description=description,
                 enabled=enabled,
                 roles=utils.get_pydantic_model(roles, models.APICredentialRolesSchema),
+                ip_allowlist=ip_allowlist,
             ),
         )
 
@@ -413,7 +419,7 @@ class APICredentials(BaseSDK):
                 ),
             ),
             request=req,
-            error_status_codes=["409", "422", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -452,6 +458,7 @@ class APICredentials(BaseSDK):
                 models.APICredentialRolesSchemaTypedDict,
             ]
         ] = None,
+        ip_allowlist: Optional[List[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -467,6 +474,7 @@ class APICredentials(BaseSDK):
         :param description: Brief description of the purpose and usage for the API Credential.
         :param enabled: If <code>true</code>, the API Credential is enabled. Otherwise, <code>false</code>.
         :param roles: Role assignments for the API Credential.
+        :param ip_allowlist: Omit to leave unchanged. Pass an empty array to clear the stored IP allowlist.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -492,6 +500,7 @@ class APICredentials(BaseSDK):
                 roles=utils.get_pydantic_model(
                     roles, Optional[models.APICredentialRolesSchema]
                 ),
+                ip_allowlist=ip_allowlist,
             ),
         )
 
@@ -542,7 +551,7 @@ class APICredentials(BaseSDK):
                 ),
             ),
             request=req,
-            error_status_codes=["404", "409", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -573,6 +582,7 @@ class APICredentials(BaseSDK):
                 models.APICredentialRolesSchemaTypedDict,
             ]
         ] = None,
+        ip_allowlist: Optional[List[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -588,6 +598,7 @@ class APICredentials(BaseSDK):
         :param description: Brief description of the purpose and usage for the API Credential.
         :param enabled: If <code>true</code>, the API Credential is enabled. Otherwise, <code>false</code>.
         :param roles: Role assignments for the API Credential.
+        :param ip_allowlist: Omit to leave unchanged. Pass an empty array to clear the stored IP allowlist.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -613,6 +624,7 @@ class APICredentials(BaseSDK):
                 roles=utils.get_pydantic_model(
                     roles, Optional[models.APICredentialRolesSchema]
                 ),
+                ip_allowlist=ip_allowlist,
             ),
         )
 
@@ -663,7 +675,7 @@ class APICredentials(BaseSDK):
                 ),
             ),
             request=req,
-            error_status_codes=["404", "409", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -756,7 +768,7 @@ class APICredentials(BaseSDK):
                 ),
             ),
             request=req,
-            error_status_codes=["404", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -849,7 +861,7 @@ class APICredentials(BaseSDK):
                 ),
             ),
             request=req,
-            error_status_codes=["404", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -942,7 +954,7 @@ class APICredentials(BaseSDK):
                 ),
             ),
             request=req,
-            error_status_codes=["404", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
@@ -1035,7 +1047,7 @@ class APICredentials(BaseSDK):
                 ),
             ),
             request=req,
-            error_status_codes=["404", "4XX", "5XX"],
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
             retry_config=retry_config,
         )
 
