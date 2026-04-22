@@ -6,9 +6,10 @@ from .apicredentialrolesschema import (
     APICredentialRolesSchemaTypedDict,
 )
 from cribl_mgmt_plane.types import BaseModel, UNSET_SENTINEL
+import pydantic
 from pydantic import model_serializer
-from typing import Optional
-from typing_extensions import NotRequired, TypedDict
+from typing import List, Optional
+from typing_extensions import Annotated, NotRequired, TypedDict
 
 
 class APICredentialUpdateRequestDTOTypedDict(TypedDict):
@@ -20,6 +21,8 @@ class APICredentialUpdateRequestDTOTypedDict(TypedDict):
     r"""If <code>true</code>, the API Credential is enabled. Otherwise, <code>false</code>."""
     roles: NotRequired[APICredentialRolesSchemaTypedDict]
     r"""Role assignments for the API Credential."""
+    ip_allowlist: NotRequired[List[str]]
+    r"""Omit to leave unchanged. Pass an empty array to clear the stored IP allowlist."""
 
 
 class APICredentialUpdateRequestDTO(BaseModel):
@@ -35,9 +38,16 @@ class APICredentialUpdateRequestDTO(BaseModel):
     roles: Optional[APICredentialRolesSchema] = None
     r"""Role assignments for the API Credential."""
 
+    ip_allowlist: Annotated[
+        Optional[List[str]], pydantic.Field(alias="ipAllowlist")
+    ] = None
+    r"""Omit to leave unchanged. Pass an empty array to clear the stored IP allowlist."""
+
     @model_serializer(mode="wrap")
     def serialize_model(self, handler):
-        optional_fields = set(["name", "description", "enabled", "roles"])
+        optional_fields = set(
+            ["name", "description", "enabled", "roles", "ipAllowlist"]
+        )
         serialized = handler(self)
         m = {}
 
@@ -50,3 +60,9 @@ class APICredentialUpdateRequestDTO(BaseModel):
                     m[k] = val
 
         return m
+
+
+try:
+    APICredentialUpdateRequestDTO.model_rebuild()
+except NameError:
+    pass
