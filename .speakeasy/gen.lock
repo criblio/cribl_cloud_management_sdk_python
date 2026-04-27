@@ -5,15 +5,15 @@ management:
   docVersion: "1.0"
   speakeasyVersion: 1.761.9
   generationVersion: 2.881.4
-  releaseVersion: 0.3.1rc1
-  configChecksum: 5a8cbbd09d68b0e20eab7af92e42b531
+  releaseVersion: 0.3.1
+  configChecksum: 0ffe3a6fad91754af4cab7bb8a6be1e6
   repoURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   installationURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   published: true
 persistentEdits:
-  generation_id: f2d24edc-21d2-494a-9b1b-859a36d26ce4
-  pristine_commit_hash: a8652f7e477176e1660daebc2c6d39cc6b9ddd95
-  pristine_tree_hash: 71ccf64d775715c5c8e5bae6a125eb3dbf25fdec
+  generation_id: 861964fc-6c49-439c-8bc5-2e25bc9ab6c7
+  pristine_commit_hash: f33925ba856139d650650c3aa9034bd7341d2d86
+  pristine_tree_hash: 9dc6307eb8659c35a2b556911442236262efc8bb
 features:
   python:
     additionalDependencies: 1.0.0
@@ -250,8 +250,8 @@ trackedFiles:
     pristine_git_object: fde5e0418e98324b2b3b2a8e02559e575b2f6cfa
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:c9631d1a4cb34d00913546c1ae372bcad3c6f2ac
-    pristine_git_object: 700d15195b205c9da22e5a07efe6d3ba26b83b02
+    last_write_checksum: sha1:599078c7d085e65429e5684022f52a776e59a681
+    pristine_git_object: af28195bd6f2f6132a0741eb9abb7c2dfd8a0f0d
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:24bfcb3bc609310d0b86cb75ca844b42d4c9c248
@@ -282,8 +282,8 @@ trackedFiles:
     pristine_git_object: 8660a4d81ec54cbc43bcb4ed058985af8dcc715b
   src/cribl_mgmt_plane/_version.py:
     id: 8ec199fcd31a
-    last_write_checksum: sha1:8ba81bf7a670d7413b8b73e4d847214fa32036a4
-    pristine_git_object: abdf1dbfb1fa5174501d17a8e332513233bd5f3d
+    last_write_checksum: sha1:92cf720c84e586fbaeebbc38cb72ebbd072fa0a2
+    pristine_git_object: 54f4bc2a4a0afba23172a74719c8efe99fe997ae
   src/cribl_mgmt_plane/apicredentials.py:
     id: d344dfa0de1f
     last_write_checksum: sha1:c0a16485bb38d472aa6972c79a3d6a88efd10861
@@ -650,7 +650,19 @@ examples:
 examplesVersion: 1.0.2
 generatedTests:
   dummyServiceStatus: "2025-07-02T19:49:08+02:00"
-releaseNotes: "## Python SDK Changes:\n* `cribl_mgmt_plane.api_credentials.list()`:  `response.items[].ip_allowlist` **Added**\n* `cribl_mgmt_plane.api_credentials.create()`: \n  *  `request.ip_allowlist` **Added**\n  *  `response.ip_allowlist` **Added**\n* `cribl_mgmt_plane.api_credentials.update()`:  `request.ip_allowlist` **Added**\n* `cribl_mgmt_plane.api_credentials.get()`:  `response.ip_allowlist` **Added**\n"
+releaseNotes: |
+  ## Python SDK Changes
+
+  This version of the SDK is generated for Cribl.Cloud.
+
+  ### API Credentials — IP allowlist
+
+  Optional CIDR-based IP restrictions on API credentials: set on create and update; returned on list and get.
+
+  * `cribl_mgmt_plane.api_credentials.list()` — `response.items[].ip_allowlist`
+  * `cribl_mgmt_plane.api_credentials.create()` — `request.ip_allowlist`; `response.ip_allowlist`
+  * `cribl_mgmt_plane.api_credentials.update()` — `request.ip_allowlist`
+  * `cribl_mgmt_plane.api_credentials.get()` — `response.ip_allowlist`
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
