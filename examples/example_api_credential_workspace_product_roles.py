@@ -48,8 +48,20 @@ ALL_CRIBL_PRODUCTS = (
 
 def main():
     main_workspace_editor_products = [
-        {"product": product, "role": models.Role.EDITOR} for product in ALL_CRIBL_PRODUCTS
+        models.ProductRoleSchema(product=product, role=models.Role.EDITOR)
+        for product in ALL_CRIBL_PRODUCTS
     ]
+
+    roles = models.APICredentialRolesSchema(
+        organization_role=models.OrganizationRole.USER,
+        workspaces=[
+            models.WorkspaceRoleSchema(
+                workspace_id="main",
+                workspace_role=models.WorkspaceRole.USER,
+                products=main_workspace_editor_products,
+            ),
+        ],
+    )
 
     # Create authenticated SDK client with OAuth2
     with CriblMgmtPlane(
@@ -62,29 +74,24 @@ def main():
             ),
         ),
     ) as cmp_client:
-        created = cmp_client.api_credentials.create(
+        response = cmp_client.api_credentials.create(
             organization_id=ORG_ID,
             name="Product-Editor",
             description="Editor Role on all Cribl Products",
             enabled=True,
-            roles={
-                "organization_role": models.OrganizationRole.USER,
-                "workspaces": [
-                    {
-                        "workspace_id": "main",
-                        "workspace_role": models.WorkspaceRole.USER,
-                        "products": main_workspace_editor_products,
-                    },
-                ],
-            },
+            roles=roles,
             ip_allowlist=IP_ALLOWLIST,
         )
-        # client_secret is returned only on create; store it securely (do not log it).
-        _ = created.client_secret
-        print(
-            "✅ Created API Credential "
-            f"name={created.name!r} client_id={created.client_id!r}"
-        )
+        if isinstance(response, models.APICredentialCreateResponseSchema):
+            created = response
+            # client_secret is returned only on create; store it securely (do not log it).
+            _ = created.client_secret
+            print(
+                "✅ Created API Credential "
+                f"name={created.name!r} client_id={created.client_id!r}"
+            )
+        else:
+            print(f"❌ API error: {response.message} (status {response.status_code})")
 
 
 if __name__ == "__main__":

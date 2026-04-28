@@ -49,7 +49,7 @@ def main():
             ),
         ),
     ) as cmp_client:
-        created = cmp_client.api_credentials.create(
+        response = cmp_client.api_credentials.create(
             organization_id=ORG_ID,
             name="Auto-Manage-WorkspacesAuto-Manage-Workspaces",
             description="Used for automated Workspace management",
@@ -57,12 +57,16 @@ def main():
             roles={"organization_role": models.OrganizationRole.ADMIN},
             ip_allowlist=IP_ALLOWLIST,
         )
-        # client_secret is returned only on create; store it securely (do not log it).
-        _ = created.client_secret
-        print(
-            "✅ Created API Credential "
-            f"name={created.name!r} client_id={created.client_id!r}"
-        )
+        if isinstance(response, models.APICredentialCreateResponseSchema):
+            created = response
+            # client_secret is returned only on create; store it securely (do not log it).
+            _ = created.client_secret
+            print(
+                "✅ Created API Credential "
+                f"name={created.name!r} client_id={created.client_id!r}"
+            )
+        else:
+            print(f"❌ API error: {response.message} (status {response.status_code})")
 
 
 if __name__ == "__main__":
