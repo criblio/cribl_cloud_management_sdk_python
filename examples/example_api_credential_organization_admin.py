@@ -27,7 +27,7 @@ construct the CriblMgmtPlane client for later SDK calls.
 Client Secrets are sensitive information and should be kept private.
 """
 
-from cribl_mgmt_plane import CriblMgmtPlane, models
+from cribl_mgmt_plane import CriblMgmtPlane, errors, models
 
 # Cribl.Cloud configuration: Replace the placeholder values
 CLIENT_ID = "your-client-id"  # Replace with the OAuth2 Client ID for an existing API Credential
@@ -53,28 +53,28 @@ def main():
             ),
         ),
     ) as cmp_client:
-        response = cmp_client.api_credentials.create(
-            organization_id=ORG_ID,
-            name="Auto-Manage-WorkspacesAuto-Manage-Workspaces",
-            description="Used for automated Workspace management",
-            enabled=True,
-            roles={"organization_role": models.OrganizationRole.ADMIN},
-            ip_allowlist=IP_ALLOWLIST,
-        )
-        print(
-            "✅ Created API Credential "
-            f"name={response.name!r} client_id={response.client_id!r}"
-        )
+        try:
+            response = cmp_client.api_credentials.create(
+                organization_id=ORG_ID,
+                name="Auto-Manage-WorkspacesAuto-Manage-Workspaces",
+                description="Used for automated Workspace management",
+                enabled=True,
+                roles={"organization_role": models.OrganizationRole.ADMIN},
+                ip_allowlist=IP_ALLOWLIST,
+            )
+            print(
+                "✅ Created API Credential "
+                f"name={response.name!r} client_id={response.client_id!r}"  # type: ignore
+            )
+
+        except errors.CriblMgmtPlaneError as e:
+            if e.status_code == 401:
+                print("⚠️ Authentication failed! Check your CLIENT_ID and CLIENT_SECRET.")
+            elif e.status_code == 429:
+                print("⚠️ Uh oh, you've reached the rate limit! Try again in a few seconds.")
+            else:
+                print(f"❌ Something went wrong: {e.message}")
 
 
 if __name__ == "__main__":
-    try:
-        main()
-    except Exception as error:
-        STATUS_CODE = getattr(error, "status_code", None)
-        if STATUS_CODE == 401:
-            print("⚠️ Authentication failed! Check your CLIENT_ID and CLIENT_SECRET.")
-        elif STATUS_CODE == 429:
-            print("⚠️ Uh oh, you've reached the rate limit! Try again in a few seconds.")
-        else:
-            print(f"❌ Something went wrong: {error}")
+    main()
