@@ -9,18 +9,22 @@ all Workspaces and all products (no Workspace or product matrix is required).
 2. Create a new API Credential with Organization-level Admin and an optional IP allowlist 
    to restrict API access for the API Credential to the specified IPv4 CIDR range.
 
-Use the returned client_id and client_secret for the new API Credential in subsequent
-requests. The client_secret is only returned on create.
-
 Prerequisites: Replace the placeholder values for ORG_ID, CLIENT_ID, and CLIENT_SECRET with
 your Organization ID and the Client ID and Secret for an existing API Credential. You need
 these values for an existing API Credential to authenticate this script.
 
 To get the Client ID and Secret for an existing API Credential, follow the steps at
 https://docs.cribl.io/cribl-as-code/sdks-auth/#sdks-auth-cloud.
-Your Client ID and Secret are sensitive information and should be kept private.
 
-NOTE: This example is for Cribl.Cloud only.
+To use the new API Credential for later SDK calls, you need its client_id and client_secret.
+When create succeeds, the object returned from api_credentials.create(...) includes client_id,
+client_secret, name, and the other APICredentialCreateResponseSchema fields. Read the new
+client_secret as response.client_secret on that same object. The API returns client_secret
+only in the create response (not in GET responses). Do not print or log the client_secret. 
+Pass the client_id and client_secret for the new API Credential into client_oauth when you 
+construct the CriblMgmtPlane client for later SDK calls.
+
+Client Secrets are sensitive information and should be kept private.
 """
 
 from cribl_mgmt_plane import CriblMgmtPlane, models
@@ -57,16 +61,10 @@ def main():
             roles={"organization_role": models.OrganizationRole.ADMIN},
             ip_allowlist=IP_ALLOWLIST,
         )
-        if isinstance(response, models.APICredentialCreateResponseSchema):
-            created = response
-            # client_secret is returned only on create; store it securely (do not log it).
-            _ = created.client_secret
-            print(
-                "✅ Created API Credential "
-                f"name={created.name!r} client_id={created.client_id!r}"
-            )
-        else:
-            print(f"❌ API error: {response.message} (status {response.status_code})")
+        print(
+            "✅ Created API Credential "
+            f"name={response.name!r} client_id={response.client_id!r}"
+        )
 
 
 if __name__ == "__main__":
