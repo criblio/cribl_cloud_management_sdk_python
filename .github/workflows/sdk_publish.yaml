@@ -1,9 +1,4 @@
 name: Publish SDK
-permissions:
-  checks: write
-  contents: write
-  pull-requests: write
-  statuses: write
 
 on:
   push:
@@ -17,12 +12,16 @@ on:
 jobs:
   check-branch:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     outputs:
       branch: ${{ steps.branch-info.outputs.branch }}
       is-production: ${{ steps.branch-info.outputs.is-production }}
     steps:
       - name: Checkout code
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
 
       - name: Get branch information
         id: branch-info
@@ -55,6 +54,11 @@ jobs:
 
   publish:
     needs: check-branch
+    permissions:
+      checks: write
+      contents: write
+      pull-requests: write
+      statuses: write
     uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@b823adc6be7d30b25198529f99f46303bc083534
     with:
       target: cribl-mgmt-plane
@@ -66,9 +70,11 @@ jobs:
   restore-workflow-lock:
     needs: [check-branch, publish]
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout code
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # zizmor: ignore[artipacked]
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -85,40 +91,42 @@ jobs:
           sudo chmod +x /usr/local/bin/yq
 
       - name: Restore workflow.lock from GA tag
+        env:
+          GH_REPOSITORY: ${{ github.repository }}
+          CURRENT_BRANCH: ${{ needs.check-branch.outputs.branch }}
         run: |
           set -euo pipefail
-          
+
           # Example: curl -s https://api.github.com/repos/criblio/cribl_cloud_management_sdk_python/releases/latest | jq -r '.tag_name'
           echo "Fetching latest GA release from GitHub..."
-          LAST_GA_TAG=$(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r '.tag_name')
+          LAST_GA_TAG=$(curl -s "https://api.github.com/repos/${GH_REPOSITORY}/releases/latest" | jq -r '.tag_name')
           echo "✅ Latest GA tag: ${LAST_GA_TAG}"
-          
+
           echo "Fetching tags from repository..."
           git fetch --tags --quiet || true
-          
+
           # Save current speakeasyVersion and inputs.location before restoring
           echo "Saving current speakeasyVersion and inputs.location..."
           CURRENT_SPEAKEASY_VERSION=$(yq '.speakeasyVersion' .speakeasy/workflow.lock)
           CURRENT_INPUTS_LOCATION=$(yq '.workflow.sources["Cribl Cloud Management API"].inputs[0].location' .speakeasy/workflow.lock)
           echo "Current speakeasyVersion: ${CURRENT_SPEAKEASY_VERSION}"
           echo "Current inputs.location: ${CURRENT_INPUTS_LOCATION}"
-          
+
           echo "Restoring workflow.lock from tag: ${LAST_GA_TAG}"
           git restore --source="${LAST_GA_TAG}" .speakeasy/workflow.lock
-          
+
           # Restore speakeasyVersion (in both places) and inputs.location to current values
           echo "Restoring speakeasyVersion and inputs.location to current values..."
           yq -i --indent 4 ".speakeasyVersion = \"${CURRENT_SPEAKEASY_VERSION}\"" .speakeasy/workflow.lock
           yq -i --indent 4 ".workflow.speakeasyVersion = \"${CURRENT_SPEAKEASY_VERSION}\"" .speakeasy/workflow.lock
           yq -i --indent 4 ".workflow.sources[\"Cribl Cloud Management API\"].inputs[0].location = \"${CURRENT_INPUTS_LOCATION}\"" .speakeasy/workflow.lock
-          
+
           echo "Staging workflow.lock changes..."
           git add .speakeasy/workflow.lock
-          
+
           echo "Committing workflow.lock restoration..."
           git commit -m "Revert workflow.lock to ${LAST_GA_TAG} for GA release" || echo "No changes to commit, workflow.lock already in sync"
-          
-          CURRENT_BRANCH="${{ needs.check-branch.outputs.branch }}"
+
           echo "Pushing changes to ${CURRENT_BRANCH} branch..."
-          git push origin ${CURRENT_BRANCH}
+          git push origin "${CURRENT_BRANCH}"
           echo "✅ Successfully restored workflow.lock from ${LAST_GA_TAG}"

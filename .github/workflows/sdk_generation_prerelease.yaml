@@ -1,9 +1,4 @@
 name: Generate RC SDK (Prerelease)
-permissions:
-  checks: write
-  contents: write
-  pull-requests: write
-  statuses: write
 
 on:
   workflow_dispatch: {}
@@ -13,6 +8,8 @@ on:
 jobs:
   check-branch:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Ensure workflow is run from openapi-prerelease branch
         run: |
@@ -24,6 +21,8 @@ jobs:
   compute-version:
     needs: check-branch
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     outputs:
       version: ${{ steps.ver.outputs.version }}
     steps:
@@ -32,6 +31,7 @@ jobs:
         with:
           ref: openapi-prerelease
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Install yq
         run: |
@@ -91,6 +91,11 @@ jobs:
 
   generate:
     needs: [check-branch, compute-version]
+    permissions:
+      checks: write
+      contents: write
+      pull-requests: write
+      statuses: write
     uses: speakeasy-api/sdk-generation-action/.github/workflows/workflow-executor.yaml@b823adc6be7d30b25198529f99f46303bc083534
     with:
       force: true
