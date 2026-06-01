@@ -1,9 +1,4 @@
 name: Generate Prod SDK
-permissions:
-  checks: write
-  contents: write
-  pull-requests: write
-  statuses: write
 "on":
   workflow_dispatch:
     inputs:
@@ -23,6 +18,8 @@ permissions:
 jobs:
   check-branch:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Ensure workflow is run from main branch
         run: |
@@ -33,6 +30,11 @@ jobs:
 
   generate:
     needs: check-branch
+    permissions:
+      checks: write
+      contents: write
+      pull-requests: write
+      statuses: write
     uses: speakeasy-api/sdk-generation-action/.github/workflows/workflow-executor.yaml@b823adc6be7d30b25198529f99f46303bc083534
     with:
       force: ${{ github.event.inputs.force }}
