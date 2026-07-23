@@ -6,7 +6,7 @@ from cribl_mgmt_plane._hooks import HookContext
 from cribl_mgmt_plane.types import OptionalNullable, UNSET
 from cribl_mgmt_plane.utils import get_security_from_env
 from cribl_mgmt_plane.utils.unmarshal_json_response import unmarshal_json_response
-from typing import List, Mapping, Optional
+from typing import Iterable, List, Mapping, Optional
 
 
 class Workspaces(BaseSDK):
@@ -19,7 +19,7 @@ class Workspaces(BaseSDK):
         workspace_id: str,
         alias: Optional[str] = None,
         description: Optional[str] = None,
-        tags: Optional[List[str]] = None,
+        tags: Optional[Iterable[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -55,7 +55,7 @@ class Workspaces(BaseSDK):
                 workspace_id=workspace_id,
                 alias=alias,
                 description=description,
-                tags=tags,
+                tags=utils.unmarshal(tags, Optional[List[str]]),
             ),
         )
 
@@ -104,6 +104,8 @@ class Workspaces(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["workspaces"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -130,7 +132,7 @@ class Workspaces(BaseSDK):
         workspace_id: str,
         alias: Optional[str] = None,
         description: Optional[str] = None,
-        tags: Optional[List[str]] = None,
+        tags: Optional[Iterable[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -166,7 +168,7 @@ class Workspaces(BaseSDK):
                 workspace_id=workspace_id,
                 alias=alias,
                 description=description,
-                tags=tags,
+                tags=utils.unmarshal(tags, Optional[List[str]]),
             ),
         )
 
@@ -215,6 +217,8 @@ class Workspaces(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["workspaces"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -305,6 +309,8 @@ class Workspaces(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["workspaces"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -395,6 +401,8 @@ class Workspaces(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["workspaces"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -421,7 +429,7 @@ class Workspaces(BaseSDK):
         workspace_id: str,
         alias: Optional[str] = None,
         description: Optional[str] = None,
-        tags: Optional[List[str]] = None,
+        tags: Optional[Iterable[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -457,7 +465,7 @@ class Workspaces(BaseSDK):
             workspace_patch_request_dto=models.WorkspacePatchRequestDTO(
                 alias=alias,
                 description=description,
-                tags=tags,
+                tags=utils.unmarshal(tags, Optional[List[str]]),
             ),
         )
 
@@ -506,6 +514,8 @@ class Workspaces(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["workspaces"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -532,7 +542,7 @@ class Workspaces(BaseSDK):
         workspace_id: str,
         alias: Optional[str] = None,
         description: Optional[str] = None,
-        tags: Optional[List[str]] = None,
+        tags: Optional[Iterable[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -568,7 +578,7 @@ class Workspaces(BaseSDK):
             workspace_patch_request_dto=models.WorkspacePatchRequestDTO(
                 alias=alias,
                 description=description,
-                tags=tags,
+                tags=utils.unmarshal(tags, Optional[List[str]]),
             ),
         )
 
@@ -617,6 +627,8 @@ class Workspaces(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["workspaces"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -710,6 +722,8 @@ class Workspaces(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["workspaces"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -803,6 +817,8 @@ class Workspaces(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["workspaces"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -896,6 +912,8 @@ class Workspaces(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["workspaces"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -989,6 +1007,8 @@ class Workspaces(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["workspaces"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
