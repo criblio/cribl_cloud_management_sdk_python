@@ -6,34 +6,35 @@ from cribl_mgmt_plane._hooks import HookContext
 from cribl_mgmt_plane.types import OptionalNullable, UNSET
 from cribl_mgmt_plane.utils import get_security_from_env
 from cribl_mgmt_plane.utils.unmarshal_json_response import unmarshal_json_response
-from typing import Iterable, List, Mapping, Optional
+from datetime import datetime
+from typing import Mapping, Optional
 
 
-class Workspaces(BaseSDK):
-    r"""Operations related to Workspaces"""
+class Billing(BaseSDK):
+    r"""Operations related to Billing and FinOps data"""
 
-    def create(
+    def get_contracts_utilization(
         self,
         *,
         organization_id: str,
-        workspace_id: str,
-        alias: Optional[str] = None,
-        description: Optional[str] = None,
-        tags: Optional[Iterable[str]] = None,
+        starting_on: datetime,
+        ending_before: datetime,
+        window: models.BillingWindow,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.V1WorkspacesCreateWorkspaceResponse:
-        r"""Create a Workspace in the specified Organization
+    ) -> models.V1BillingGetContractsUtilizationResponse:
+        r"""[In development] Get contract credit utilization
 
-        Create a new Workspace in the specified Organization.
+        **This endpoint is in development with restricted availability**. We do not recommend using this endpoint in production. Functionality might change without notice. Contact [Cribl Support](https://cribl.io/support/) to request access.
 
-        :param organization_id: The <code>id</code> of the Organization where you want to create the Workspace.
-        :param workspace_id: Unique identifier for the Workspace.
-        :param alias: User-friendly alias for the Workspace.
-        :param description: Brief description of the Workspace.
-        :param tags: Tags associated with the Workspace.
+        Get cumulative credit utilization data grouped by contract period for the specified Organization.
+
+        :param organization_id: The <code>id</code> of the Organization.
+        :param starting_on: Inclusive start of the query date range in ISO 8601 format.
+        :param ending_before: Exclusive end of the query date range in ISO 8601 format.
+        :param window: Aggregation granularity for credit utilization data.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -49,227 +50,16 @@ class Workspaces(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.V1WorkspacesCreateWorkspaceRequest(
+        request = models.V1BillingGetContractsUtilizationRequest(
             organization_id=organization_id,
-            workspace_create_request_dto=models.WorkspaceCreateRequestDTO(
-                workspace_id=workspace_id,
-                alias=alias,
-                description=description,
-                tags=utils.unmarshal(tags, Optional[List[str]]),
-            ),
-        )
-
-        req = self._build_request(
-            method="POST",
-            path="/v1/organizations/{organizationId}/workspaces",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=True,
-            request_has_path_params=True,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            http_headers=http_headers,
-            security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(
-                request.workspace_create_request_dto,
-                False,
-                False,
-                "json",
-                models.WorkspaceCreateRequestDTO,
-            ),
-            allow_empty_value=None,
-            timeout_ms=timeout_ms,
-        )
-
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-            else:
-                retries = utils.RetryConfig(
-                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
-                )
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, ["502", "503", "504"])
-
-        http_res = self.do_request(
-            hook_ctx=HookContext(
-                config=self.sdk_configuration,
-                base_url=base_url or "",
-                operation_id="v1.workspaces.createWorkspace",
-                oauth2_scopes=[],
-                security_source=get_security_from_env(
-                    self.sdk_configuration.security, models.Security
-                ),
-            ),
-            request=req,
-            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
-            retry_config=retry_config,
-        )
-
-        if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.WorkspaceSchema, http_res)
-        if utils.match_response(http_res, "4XX", "*"):
-            http_res_text = utils.stream_to_text(http_res)
-            raise errors.APIError("API error occurred", http_res, http_res_text)
-        if utils.match_response(http_res, "5XX", "*"):
-            http_res_text = utils.stream_to_text(http_res)
-            raise errors.APIError("API error occurred", http_res, http_res_text)
-        if utils.match_response(http_res, "default", "application/json"):
-            return unmarshal_json_response(models.DefaultErrorDTO, http_res)
-
-        raise errors.APIError("Unexpected response received", http_res)
-
-    async def create_async(
-        self,
-        *,
-        organization_id: str,
-        workspace_id: str,
-        alias: Optional[str] = None,
-        description: Optional[str] = None,
-        tags: Optional[Iterable[str]] = None,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-        http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.V1WorkspacesCreateWorkspaceResponse:
-        r"""Create a Workspace in the specified Organization
-
-        Create a new Workspace in the specified Organization.
-
-        :param organization_id: The <code>id</code> of the Organization where you want to create the Workspace.
-        :param workspace_id: Unique identifier for the Workspace.
-        :param alias: User-friendly alias for the Workspace.
-        :param description: Brief description of the Workspace.
-        :param tags: Tags associated with the Workspace.
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        :param http_headers: Additional headers to set or replace on requests.
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-
-        if server_url is not None:
-            base_url = server_url
-        else:
-            base_url = self._get_url(base_url, url_variables)
-
-        request = models.V1WorkspacesCreateWorkspaceRequest(
-            organization_id=organization_id,
-            workspace_create_request_dto=models.WorkspaceCreateRequestDTO(
-                workspace_id=workspace_id,
-                alias=alias,
-                description=description,
-                tags=utils.unmarshal(tags, Optional[List[str]]),
-            ),
-        )
-
-        req = self._build_request_async(
-            method="POST",
-            path="/v1/organizations/{organizationId}/workspaces",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=True,
-            request_has_path_params=True,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            http_headers=http_headers,
-            security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(
-                request.workspace_create_request_dto,
-                False,
-                False,
-                "json",
-                models.WorkspaceCreateRequestDTO,
-            ),
-            allow_empty_value=None,
-            timeout_ms=timeout_ms,
-        )
-
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-            else:
-                retries = utils.RetryConfig(
-                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
-                )
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, ["502", "503", "504"])
-
-        http_res = await self.do_request_async(
-            hook_ctx=HookContext(
-                config=self.sdk_configuration,
-                base_url=base_url or "",
-                operation_id="v1.workspaces.createWorkspace",
-                oauth2_scopes=[],
-                security_source=get_security_from_env(
-                    self.sdk_configuration.security, models.Security
-                ),
-            ),
-            request=req,
-            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
-            retry_config=retry_config,
-        )
-
-        if utils.match_response(http_res, "201", "application/json"):
-            return unmarshal_json_response(models.WorkspaceSchema, http_res)
-        if utils.match_response(http_res, "4XX", "*"):
-            http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.APIError("API error occurred", http_res, http_res_text)
-        if utils.match_response(http_res, "5XX", "*"):
-            http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.APIError("API error occurred", http_res, http_res_text)
-        if utils.match_response(http_res, "default", "application/json"):
-            return unmarshal_json_response(models.DefaultErrorDTO, http_res)
-
-        raise errors.APIError("Unexpected response received", http_res)
-
-    def list(
-        self,
-        *,
-        organization_id: str,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-        http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.V1WorkspacesListWorkspacesResponse:
-        r"""List all Workspaces for the specified Organization
-
-        Get a list of all Workspaces for the specified Organization.
-
-        :param organization_id: The <code>id</code> of the Organization that contains the Workspaces.
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        :param http_headers: Additional headers to set or replace on requests.
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-
-        if server_url is not None:
-            base_url = server_url
-        else:
-            base_url = self._get_url(base_url, url_variables)
-
-        request = models.V1WorkspacesListWorkspacesRequest(
-            organization_id=organization_id,
+            starting_on=starting_on,
+            ending_before=ending_before,
+            window=window,
         )
 
         req = self._build_request(
             method="GET",
-            path="/v1/organizations/{organizationId}/workspaces",
+            path="/v1/organizations/{organizationId}/billing/credits/contracts-utilization",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -300,7 +90,7 @@ class Workspaces(BaseSDK):
             hook_ctx=HookContext(
                 config=self.sdk_configuration,
                 base_url=base_url or "",
-                operation_id="v1.workspaces.listWorkspaces",
+                operation_id="v1.billing.getContractsUtilization",
                 oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
@@ -312,11 +102,13 @@ class Workspaces(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.WorkspacesListResponseDTO, http_res)
+            return unmarshal_json_response(
+                models.ContractsUtilizationResponseDTO, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.APIError("API error occurred", http_res, http_res_text)
-        if utils.match_response(http_res, "5XX", "*"):
+        if utils.match_response(http_res, ["503", "5XX"], "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.APIError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "default", "application/json"):
@@ -324,20 +116,28 @@ class Workspaces(BaseSDK):
 
         raise errors.APIError("Unexpected response received", http_res)
 
-    async def list_async(
+    async def get_contracts_utilization_async(
         self,
         *,
         organization_id: str,
+        starting_on: datetime,
+        ending_before: datetime,
+        window: models.BillingWindow,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.V1WorkspacesListWorkspacesResponse:
-        r"""List all Workspaces for the specified Organization
+    ) -> models.V1BillingGetContractsUtilizationResponse:
+        r"""[In development] Get contract credit utilization
 
-        Get a list of all Workspaces for the specified Organization.
+        **This endpoint is in development with restricted availability**. We do not recommend using this endpoint in production. Functionality might change without notice. Contact [Cribl Support](https://cribl.io/support/) to request access.
 
-        :param organization_id: The <code>id</code> of the Organization that contains the Workspaces.
+        Get cumulative credit utilization data grouped by contract period for the specified Organization.
+
+        :param organization_id: The <code>id</code> of the Organization.
+        :param starting_on: Inclusive start of the query date range in ISO 8601 format.
+        :param ending_before: Exclusive end of the query date range in ISO 8601 format.
+        :param window: Aggregation granularity for credit utilization data.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -353,13 +153,16 @@ class Workspaces(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.V1WorkspacesListWorkspacesRequest(
+        request = models.V1BillingGetContractsUtilizationRequest(
             organization_id=organization_id,
+            starting_on=starting_on,
+            ending_before=ending_before,
+            window=window,
         )
 
         req = self._build_request_async(
             method="GET",
-            path="/v1/organizations/{organizationId}/workspaces",
+            path="/v1/organizations/{organizationId}/billing/credits/contracts-utilization",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -390,7 +193,7 @@ class Workspaces(BaseSDK):
             hook_ctx=HookContext(
                 config=self.sdk_configuration,
                 base_url=base_url or "",
-                operation_id="v1.workspaces.listWorkspaces",
+                operation_id="v1.billing.getContractsUtilization",
                 oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
@@ -402,11 +205,13 @@ class Workspaces(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.WorkspacesListResponseDTO, http_res)
+            return unmarshal_json_response(
+                models.ContractsUtilizationResponseDTO, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.APIError("API error occurred", http_res, http_res_text)
-        if utils.match_response(http_res, "5XX", "*"):
+        if utils.match_response(http_res, ["503", "5XX"], "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.APIError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "default", "application/json"):
@@ -414,28 +219,28 @@ class Workspaces(BaseSDK):
 
         raise errors.APIError("Unexpected response received", http_res)
 
-    def update(
+    def get_credits_timeseries(
         self,
         *,
         organization_id: str,
-        workspace_id: str,
-        alias: Optional[str] = None,
-        description: Optional[str] = None,
-        tags: Optional[Iterable[str]] = None,
+        starting_on: datetime,
+        ending_before: datetime,
+        window: models.BillingWindow,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[models.DefaultErrorDTO]:
-        r"""Update a Workspace
+    ) -> models.V1BillingGetCreditsTimeseriesResponse:
+        r"""[In development] Get credits timeseries
 
-        Update the specified Workspace.
+        **This endpoint is in development with restricted availability**. We do not recommend using this endpoint in production. Functionality might change without notice. Contact [Cribl Support](https://cribl.io/support/) to request access.
 
-        :param organization_id: The <code>id</code> of the Organization that contains the Workspace.
-        :param workspace_id: The <code>id</code> of the Workspace to update.
-        :param alias: User-friendly alias for the Workspace.
-        :param description: Brief description of the Workspace.
-        :param tags: Tags associated with the Workspace.
+        Get credit consumption timeseries data for the specified Organization, broken down by dimensions such as product and usage type.
+
+        :param organization_id: The <code>id</code> of the Organization.
+        :param starting_on: Inclusive start of the query date range in ISO 8601 format.
+        :param ending_before: Exclusive end of the query date range in ISO 8601 format.
+        :param window: Aggregation granularity for timeseries data.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -451,230 +256,16 @@ class Workspaces(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.V1WorkspacesUpdateWorkspaceRequest(
+        request = models.V1BillingGetCreditsTimeseriesRequest(
             organization_id=organization_id,
-            workspace_id=workspace_id,
-            workspace_patch_request_dto=models.WorkspacePatchRequestDTO(
-                alias=alias,
-                description=description,
-                tags=utils.unmarshal(tags, Optional[List[str]]),
-            ),
+            starting_on=starting_on,
+            ending_before=ending_before,
+            window=window,
         )
 
         req = self._build_request(
-            method="PATCH",
-            path="/v1/organizations/{organizationId}/workspaces/{workspaceId}",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=True,
-            request_has_path_params=True,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            http_headers=http_headers,
-            security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(
-                request.workspace_patch_request_dto,
-                False,
-                False,
-                "json",
-                models.WorkspacePatchRequestDTO,
-            ),
-            allow_empty_value=None,
-            timeout_ms=timeout_ms,
-        )
-
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-            else:
-                retries = utils.RetryConfig(
-                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
-                )
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, ["502", "503", "504"])
-
-        http_res = self.do_request(
-            hook_ctx=HookContext(
-                config=self.sdk_configuration,
-                base_url=base_url or "",
-                operation_id="v1.workspaces.updateWorkspace",
-                oauth2_scopes=[],
-                security_source=get_security_from_env(
-                    self.sdk_configuration.security, models.Security
-                ),
-            ),
-            request=req,
-            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
-            retry_config=retry_config,
-        )
-
-        if utils.match_response(http_res, "204", "*"):
-            return None
-        if utils.match_response(http_res, "4XX", "*"):
-            http_res_text = utils.stream_to_text(http_res)
-            raise errors.APIError("API error occurred", http_res, http_res_text)
-        if utils.match_response(http_res, "5XX", "*"):
-            http_res_text = utils.stream_to_text(http_res)
-            raise errors.APIError("API error occurred", http_res, http_res_text)
-        if utils.match_response(http_res, "default", "application/json"):
-            return unmarshal_json_response(models.DefaultErrorDTO, http_res)
-
-        raise errors.APIError("Unexpected response received", http_res)
-
-    async def update_async(
-        self,
-        *,
-        organization_id: str,
-        workspace_id: str,
-        alias: Optional[str] = None,
-        description: Optional[str] = None,
-        tags: Optional[Iterable[str]] = None,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-        http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[models.DefaultErrorDTO]:
-        r"""Update a Workspace
-
-        Update the specified Workspace.
-
-        :param organization_id: The <code>id</code> of the Organization that contains the Workspace.
-        :param workspace_id: The <code>id</code> of the Workspace to update.
-        :param alias: User-friendly alias for the Workspace.
-        :param description: Brief description of the Workspace.
-        :param tags: Tags associated with the Workspace.
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        :param http_headers: Additional headers to set or replace on requests.
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-
-        if server_url is not None:
-            base_url = server_url
-        else:
-            base_url = self._get_url(base_url, url_variables)
-
-        request = models.V1WorkspacesUpdateWorkspaceRequest(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-            workspace_patch_request_dto=models.WorkspacePatchRequestDTO(
-                alias=alias,
-                description=description,
-                tags=utils.unmarshal(tags, Optional[List[str]]),
-            ),
-        )
-
-        req = self._build_request_async(
-            method="PATCH",
-            path="/v1/organizations/{organizationId}/workspaces/{workspaceId}",
-            base_url=base_url,
-            url_variables=url_variables,
-            request=request,
-            request_body_required=True,
-            request_has_path_params=True,
-            request_has_query_params=True,
-            user_agent_header="user-agent",
-            accept_header_value="application/json",
-            http_headers=http_headers,
-            security=self.sdk_configuration.security,
-            get_serialized_body=lambda: utils.serialize_request_body(
-                request.workspace_patch_request_dto,
-                False,
-                False,
-                "json",
-                models.WorkspacePatchRequestDTO,
-            ),
-            allow_empty_value=None,
-            timeout_ms=timeout_ms,
-        )
-
-        if retries == UNSET:
-            if self.sdk_configuration.retry_config is not UNSET:
-                retries = self.sdk_configuration.retry_config
-            else:
-                retries = utils.RetryConfig(
-                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
-                )
-
-        retry_config = None
-        if isinstance(retries, utils.RetryConfig):
-            retry_config = (retries, ["502", "503", "504"])
-
-        http_res = await self.do_request_async(
-            hook_ctx=HookContext(
-                config=self.sdk_configuration,
-                base_url=base_url or "",
-                operation_id="v1.workspaces.updateWorkspace",
-                oauth2_scopes=[],
-                security_source=get_security_from_env(
-                    self.sdk_configuration.security, models.Security
-                ),
-            ),
-            request=req,
-            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
-            retry_config=retry_config,
-        )
-
-        if utils.match_response(http_res, "204", "*"):
-            return None
-        if utils.match_response(http_res, "4XX", "*"):
-            http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.APIError("API error occurred", http_res, http_res_text)
-        if utils.match_response(http_res, "5XX", "*"):
-            http_res_text = await utils.stream_to_text_async(http_res)
-            raise errors.APIError("API error occurred", http_res, http_res_text)
-        if utils.match_response(http_res, "default", "application/json"):
-            return unmarshal_json_response(models.DefaultErrorDTO, http_res)
-
-        raise errors.APIError("Unexpected response received", http_res)
-
-    def delete(
-        self,
-        *,
-        organization_id: str,
-        workspace_id: str,
-        retries: OptionalNullable[utils.RetryConfig] = UNSET,
-        server_url: Optional[str] = None,
-        timeout_ms: Optional[int] = None,
-        http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[models.DefaultErrorDTO]:
-        r"""Delete a Workspace
-
-        Delete the specified Workspace in the specified Organization.
-
-        :param organization_id: The <code>id</code> of the Organization that contains the Workspace.
-        :param workspace_id: The <code>id</code> of the Workspace to delete.
-        :param retries: Override the default retry configuration for this method
-        :param server_url: Override the default server URL for this method
-        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
-        :param http_headers: Additional headers to set or replace on requests.
-        """
-        base_url = None
-        url_variables = None
-        if timeout_ms is None:
-            timeout_ms = self.sdk_configuration.timeout_ms
-
-        if server_url is not None:
-            base_url = server_url
-        else:
-            base_url = self._get_url(base_url, url_variables)
-
-        request = models.V1WorkspacesDeleteWorkspaceRequest(
-            organization_id=organization_id,
-            workspace_id=workspace_id,
-        )
-
-        req = self._build_request(
-            method="DELETE",
-            path="/v1/organizations/{organizationId}/workspaces/{workspaceId}",
+            method="GET",
+            path="/v1/organizations/{organizationId}/billing/credits/timeseries",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -705,7 +296,7 @@ class Workspaces(BaseSDK):
             hook_ctx=HookContext(
                 config=self.sdk_configuration,
                 base_url=base_url or "",
-                operation_id="v1.workspaces.deleteWorkspace",
+                operation_id="v1.billing.getCreditsTimeseries",
                 oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
@@ -716,12 +307,14 @@ class Workspaces(BaseSDK):
             retry_config=retry_config,
         )
 
-        if utils.match_response(http_res, "202", "*"):
-            return None
+        if utils.match_response(http_res, "200", "application/json"):
+            return unmarshal_json_response(
+                models.CreditsTimeseriesResponseDTO, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.APIError("API error occurred", http_res, http_res_text)
-        if utils.match_response(http_res, "5XX", "*"):
+        if utils.match_response(http_res, ["503", "5XX"], "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.APIError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "default", "application/json"):
@@ -729,22 +322,28 @@ class Workspaces(BaseSDK):
 
         raise errors.APIError("Unexpected response received", http_res)
 
-    async def delete_async(
+    async def get_credits_timeseries_async(
         self,
         *,
         organization_id: str,
-        workspace_id: str,
+        starting_on: datetime,
+        ending_before: datetime,
+        window: models.BillingWindow,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> Optional[models.DefaultErrorDTO]:
-        r"""Delete a Workspace
+    ) -> models.V1BillingGetCreditsTimeseriesResponse:
+        r"""[In development] Get credits timeseries
 
-        Delete the specified Workspace in the specified Organization.
+        **This endpoint is in development with restricted availability**. We do not recommend using this endpoint in production. Functionality might change without notice. Contact [Cribl Support](https://cribl.io/support/) to request access.
 
-        :param organization_id: The <code>id</code> of the Organization that contains the Workspace.
-        :param workspace_id: The <code>id</code> of the Workspace to delete.
+        Get credit consumption timeseries data for the specified Organization, broken down by dimensions such as product and usage type.
+
+        :param organization_id: The <code>id</code> of the Organization.
+        :param starting_on: Inclusive start of the query date range in ISO 8601 format.
+        :param ending_before: Exclusive end of the query date range in ISO 8601 format.
+        :param window: Aggregation granularity for timeseries data.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -760,14 +359,16 @@ class Workspaces(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.V1WorkspacesDeleteWorkspaceRequest(
+        request = models.V1BillingGetCreditsTimeseriesRequest(
             organization_id=organization_id,
-            workspace_id=workspace_id,
+            starting_on=starting_on,
+            ending_before=ending_before,
+            window=window,
         )
 
         req = self._build_request_async(
-            method="DELETE",
-            path="/v1/organizations/{organizationId}/workspaces/{workspaceId}",
+            method="GET",
+            path="/v1/organizations/{organizationId}/billing/credits/timeseries",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -798,7 +399,7 @@ class Workspaces(BaseSDK):
             hook_ctx=HookContext(
                 config=self.sdk_configuration,
                 base_url=base_url or "",
-                operation_id="v1.workspaces.deleteWorkspace",
+                operation_id="v1.billing.getCreditsTimeseries",
                 oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
@@ -809,12 +410,14 @@ class Workspaces(BaseSDK):
             retry_config=retry_config,
         )
 
-        if utils.match_response(http_res, "202", "*"):
-            return None
+        if utils.match_response(http_res, "200", "application/json"):
+            return unmarshal_json_response(
+                models.CreditsTimeseriesResponseDTO, http_res
+            )
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.APIError("API error occurred", http_res, http_res_text)
-        if utils.match_response(http_res, "5XX", "*"):
+        if utils.match_response(http_res, ["503", "5XX"], "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.APIError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "default", "application/json"):
@@ -822,22 +425,28 @@ class Workspaces(BaseSDK):
 
         raise errors.APIError("Unexpected response received", http_res)
 
-    def get(
+    def get_credits_stats(
         self,
         *,
         organization_id: str,
-        workspace_id: str,
+        starting_on: datetime,
+        ending_before: datetime,
+        window: models.BillingWindow,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.V1WorkspacesGetWorkspaceResponse:
-        r"""Get a Workspace
+    ) -> models.V1BillingGetCreditsStatsResponse:
+        r"""[In development] Get credit balance and consumption
 
-        Get the specified Workspace.
+        **This endpoint is in development with restricted availability**. We do not recommend using this endpoint in production. Functionality might change without notice. Contact [Cribl Support](https://cribl.io/support/) to request access.
 
-        :param organization_id: The <code>id</code> of the Organization that contains the Workspace.
-        :param workspace_id: The <code>id</code> of the Workspace to get.
+        Get credit balance totals, consumption totals, and contract date ranges for the specified Organization.
+
+        :param organization_id: The <code>id</code> of the Organization.
+        :param starting_on: Inclusive start of the query date range in ISO 8601 format.
+        :param ending_before: Exclusive end of the query date range in ISO 8601 format.
+        :param window: Aggregation granularity for credit balance and consumption.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -853,14 +462,16 @@ class Workspaces(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.V1WorkspacesGetWorkspaceRequest(
+        request = models.V1BillingGetCreditsStatsRequest(
             organization_id=organization_id,
-            workspace_id=workspace_id,
+            starting_on=starting_on,
+            ending_before=ending_before,
+            window=window,
         )
 
         req = self._build_request(
             method="GET",
-            path="/v1/organizations/{organizationId}/workspaces/{workspaceId}",
+            path="/v1/organizations/{organizationId}/billing/credits/stats",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -891,7 +502,7 @@ class Workspaces(BaseSDK):
             hook_ctx=HookContext(
                 config=self.sdk_configuration,
                 base_url=base_url or "",
-                operation_id="v1.workspaces.getWorkspace",
+                operation_id="v1.billing.getCreditsStats",
                 oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
@@ -903,11 +514,11 @@ class Workspaces(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.WorkspaceSchema, http_res)
+            return unmarshal_json_response(models.CreditsStatsResponseDTO, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.APIError("API error occurred", http_res, http_res_text)
-        if utils.match_response(http_res, "5XX", "*"):
+        if utils.match_response(http_res, ["503", "5XX"], "*"):
             http_res_text = utils.stream_to_text(http_res)
             raise errors.APIError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "default", "application/json"):
@@ -915,22 +526,28 @@ class Workspaces(BaseSDK):
 
         raise errors.APIError("Unexpected response received", http_res)
 
-    async def get_async(
+    async def get_credits_stats_async(
         self,
         *,
         organization_id: str,
-        workspace_id: str,
+        starting_on: datetime,
+        ending_before: datetime,
+        window: models.BillingWindow,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
         http_headers: Optional[Mapping[str, str]] = None,
-    ) -> models.V1WorkspacesGetWorkspaceResponse:
-        r"""Get a Workspace
+    ) -> models.V1BillingGetCreditsStatsResponse:
+        r"""[In development] Get credit balance and consumption
 
-        Get the specified Workspace.
+        **This endpoint is in development with restricted availability**. We do not recommend using this endpoint in production. Functionality might change without notice. Contact [Cribl Support](https://cribl.io/support/) to request access.
 
-        :param organization_id: The <code>id</code> of the Organization that contains the Workspace.
-        :param workspace_id: The <code>id</code> of the Workspace to get.
+        Get credit balance totals, consumption totals, and contract date ranges for the specified Organization.
+
+        :param organization_id: The <code>id</code> of the Organization.
+        :param starting_on: Inclusive start of the query date range in ISO 8601 format.
+        :param ending_before: Exclusive end of the query date range in ISO 8601 format.
+        :param window: Aggregation granularity for credit balance and consumption.
         :param retries: Override the default retry configuration for this method
         :param server_url: Override the default server URL for this method
         :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
@@ -946,14 +563,16 @@ class Workspaces(BaseSDK):
         else:
             base_url = self._get_url(base_url, url_variables)
 
-        request = models.V1WorkspacesGetWorkspaceRequest(
+        request = models.V1BillingGetCreditsStatsRequest(
             organization_id=organization_id,
-            workspace_id=workspace_id,
+            starting_on=starting_on,
+            ending_before=ending_before,
+            window=window,
         )
 
         req = self._build_request_async(
             method="GET",
-            path="/v1/organizations/{organizationId}/workspaces/{workspaceId}",
+            path="/v1/organizations/{organizationId}/billing/credits/stats",
             base_url=base_url,
             url_variables=url_variables,
             request=request,
@@ -984,7 +603,7 @@ class Workspaces(BaseSDK):
             hook_ctx=HookContext(
                 config=self.sdk_configuration,
                 base_url=base_url or "",
-                operation_id="v1.workspaces.getWorkspace",
+                operation_id="v1.billing.getCreditsStats",
                 oauth2_scopes=[],
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
@@ -996,11 +615,213 @@ class Workspaces(BaseSDK):
         )
 
         if utils.match_response(http_res, "200", "application/json"):
-            return unmarshal_json_response(models.WorkspaceSchema, http_res)
+            return unmarshal_json_response(models.CreditsStatsResponseDTO, http_res)
         if utils.match_response(http_res, "4XX", "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.APIError("API error occurred", http_res, http_res_text)
-        if utils.match_response(http_res, "5XX", "*"):
+        if utils.match_response(http_res, ["503", "5XX"], "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise errors.APIError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "default", "application/json"):
+            return unmarshal_json_response(models.DefaultErrorDTO, http_res)
+
+        raise errors.APIError("Unexpected response received", http_res)
+
+    def get_credits_grants(
+        self,
+        *,
+        organization_id: str,
+        starting_on: datetime,
+        ending_before: datetime,
+        window: models.BillingWindow,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V1BillingGetCreditsGrantsResponse:
+        r"""[In development] Get credit grants
+
+        **This endpoint is in development with restricted availability**. We do not recommend using this endpoint in production. Functionality might change without notice. Contact [Cribl Support](https://cribl.io/support/) to request access.
+
+        Get credit grants (purchases, rollovers, and refunds) for the specified Organization.
+
+        :param organization_id: The <code>id</code> of the Organization.
+        :param starting_on: Inclusive start of the query date range in ISO 8601 format.
+        :param ending_before: Exclusive end of the query date range in ISO 8601 format.
+        :param window: Aggregation granularity for credit grant data.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V1BillingGetCreditsGrantsRequest(
+            organization_id=organization_id,
+            starting_on=starting_on,
+            ending_before=ending_before,
+            window=window,
+        )
+
+        req = self._build_request(
+            method="GET",
+            path="/v1/organizations/{organizationId}/billing/credits/grants",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+            else:
+                retries = utils.RetryConfig(
+                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
+                )
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["502", "503", "504"])
+
+        http_res = self.do_request(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v1.billing.getCreditsGrants",
+                oauth2_scopes=[],
+                security_source=get_security_from_env(
+                    self.sdk_configuration.security, models.Security
+                ),
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        if utils.match_response(http_res, "200", "application/json"):
+            return unmarshal_json_response(models.CreditGrantsResponseDTO, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise errors.APIError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, ["503", "5XX"], "*"):
+            http_res_text = utils.stream_to_text(http_res)
+            raise errors.APIError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, "default", "application/json"):
+            return unmarshal_json_response(models.DefaultErrorDTO, http_res)
+
+        raise errors.APIError("Unexpected response received", http_res)
+
+    async def get_credits_grants_async(
+        self,
+        *,
+        organization_id: str,
+        starting_on: datetime,
+        ending_before: datetime,
+        window: models.BillingWindow,
+        retries: OptionalNullable[utils.RetryConfig] = UNSET,
+        server_url: Optional[str] = None,
+        timeout_ms: Optional[int] = None,
+        http_headers: Optional[Mapping[str, str]] = None,
+    ) -> models.V1BillingGetCreditsGrantsResponse:
+        r"""[In development] Get credit grants
+
+        **This endpoint is in development with restricted availability**. We do not recommend using this endpoint in production. Functionality might change without notice. Contact [Cribl Support](https://cribl.io/support/) to request access.
+
+        Get credit grants (purchases, rollovers, and refunds) for the specified Organization.
+
+        :param organization_id: The <code>id</code> of the Organization.
+        :param starting_on: Inclusive start of the query date range in ISO 8601 format.
+        :param ending_before: Exclusive end of the query date range in ISO 8601 format.
+        :param window: Aggregation granularity for credit grant data.
+        :param retries: Override the default retry configuration for this method
+        :param server_url: Override the default server URL for this method
+        :param timeout_ms: Override the default request timeout configuration for this method in milliseconds
+        :param http_headers: Additional headers to set or replace on requests.
+        """
+        base_url = None
+        url_variables = None
+        if timeout_ms is None:
+            timeout_ms = self.sdk_configuration.timeout_ms
+
+        if server_url is not None:
+            base_url = server_url
+        else:
+            base_url = self._get_url(base_url, url_variables)
+
+        request = models.V1BillingGetCreditsGrantsRequest(
+            organization_id=organization_id,
+            starting_on=starting_on,
+            ending_before=ending_before,
+            window=window,
+        )
+
+        req = self._build_request_async(
+            method="GET",
+            path="/v1/organizations/{organizationId}/billing/credits/grants",
+            base_url=base_url,
+            url_variables=url_variables,
+            request=request,
+            request_body_required=False,
+            request_has_path_params=True,
+            request_has_query_params=True,
+            user_agent_header="user-agent",
+            accept_header_value="application/json",
+            http_headers=http_headers,
+            security=self.sdk_configuration.security,
+            allow_empty_value=None,
+            timeout_ms=timeout_ms,
+        )
+
+        if retries == UNSET:
+            if self.sdk_configuration.retry_config is not UNSET:
+                retries = self.sdk_configuration.retry_config
+            else:
+                retries = utils.RetryConfig(
+                    "backoff", utils.BackoffStrategy(500, 60000, 1.5, 3600000), True
+                )
+
+        retry_config = None
+        if isinstance(retries, utils.RetryConfig):
+            retry_config = (retries, ["502", "503", "504"])
+
+        http_res = await self.do_request_async(
+            hook_ctx=HookContext(
+                config=self.sdk_configuration,
+                base_url=base_url or "",
+                operation_id="v1.billing.getCreditsGrants",
+                oauth2_scopes=[],
+                security_source=get_security_from_env(
+                    self.sdk_configuration.security, models.Security
+                ),
+            ),
+            request=req,
+            is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
+            retry_config=retry_config,
+        )
+
+        if utils.match_response(http_res, "200", "application/json"):
+            return unmarshal_json_response(models.CreditGrantsResponseDTO, http_res)
+        if utils.match_response(http_res, "4XX", "*"):
+            http_res_text = await utils.stream_to_text_async(http_res)
+            raise errors.APIError("API error occurred", http_res, http_res_text)
+        if utils.match_response(http_res, ["503", "5XX"], "*"):
             http_res_text = await utils.stream_to_text_async(http_res)
             raise errors.APIError("API error occurred", http_res, http_res_text)
         if utils.match_response(http_res, "default", "application/json"):

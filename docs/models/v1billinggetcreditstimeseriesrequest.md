@@ -1,0 +1,11 @@
+# V1BillingGetCreditsTimeseriesRequest
+
+
+## Fields
+
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          | Example                                                              |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `organization_id`                                                    | *str*                                                                | :heavy_check_mark:                                                   | The <code>id</code> of the Organization.                             |                                                                      |
+| `starting_on`                                                        | [date](https://docs.python.org/3/library/datetime.html#date-objects) | :heavy_check_mark:                                                   | Inclusive start of the query date range in ISO 8601 format.          | 2025-05-01 00:00:00 +0000 UTC                                        |
+| `ending_before`                                                      | [date](https://docs.python.org/3/library/datetime.html#date-objects) | :heavy_check_mark:                                                   | Exclusive end of the query date range in ISO 8601 format.            | 2025-06-01 00:00:00 +0000 UTC                                        |
+| `window`                                                             | [models.BillingWindow](../models/billingwindow.md)                   | :heavy_check_mark:                                                   | Aggregation granularity for timeseries data.                         |                                                                      |
