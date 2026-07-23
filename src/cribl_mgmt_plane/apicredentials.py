@@ -6,7 +6,7 @@ from cribl_mgmt_plane._hooks import HookContext
 from cribl_mgmt_plane.types import OptionalNullable, UNSET
 from cribl_mgmt_plane.utils import get_security_from_env
 from cribl_mgmt_plane.utils.unmarshal_json_response import unmarshal_json_response
-from typing import Any, List, Mapping, Optional, Union
+from typing import Any, Iterable, List, Mapping, Optional, Union
 
 
 class APICredentials(BaseSDK):
@@ -83,6 +83,8 @@ class APICredentials(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["apiCredentials"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -175,6 +177,8 @@ class APICredentials(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["apiCredentials"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -206,7 +210,7 @@ class APICredentials(BaseSDK):
         roles: Union[
             models.APICredentialRolesSchema, models.APICredentialRolesSchemaTypedDict
         ],
-        ip_allowlist: Optional[List[str]] = None,
+        ip_allowlist: Optional[Iterable[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -244,7 +248,7 @@ class APICredentials(BaseSDK):
                 description=description,
                 enabled=enabled,
                 roles=utils.get_pydantic_model(roles, models.APICredentialRolesSchema),
-                ip_allowlist=ip_allowlist,
+                ip_allowlist=utils.unmarshal(ip_allowlist, Optional[List[str]]),
             ),
         )
 
@@ -293,6 +297,8 @@ class APICredentials(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["apiCredentials"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -330,7 +336,7 @@ class APICredentials(BaseSDK):
         roles: Union[
             models.APICredentialRolesSchema, models.APICredentialRolesSchemaTypedDict
         ],
-        ip_allowlist: Optional[List[str]] = None,
+        ip_allowlist: Optional[Iterable[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -368,7 +374,7 @@ class APICredentials(BaseSDK):
                 description=description,
                 enabled=enabled,
                 roles=utils.get_pydantic_model(roles, models.APICredentialRolesSchema),
-                ip_allowlist=ip_allowlist,
+                ip_allowlist=utils.unmarshal(ip_allowlist, Optional[List[str]]),
             ),
         )
 
@@ -417,6 +423,8 @@ class APICredentials(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["apiCredentials"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -458,7 +466,7 @@ class APICredentials(BaseSDK):
                 models.APICredentialRolesSchemaTypedDict,
             ]
         ] = None,
-        ip_allowlist: Optional[List[str]] = None,
+        ip_allowlist: Optional[Iterable[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -500,7 +508,7 @@ class APICredentials(BaseSDK):
                 roles=utils.get_pydantic_model(
                     roles, Optional[models.APICredentialRolesSchema]
                 ),
-                ip_allowlist=ip_allowlist,
+                ip_allowlist=utils.unmarshal(ip_allowlist, Optional[List[str]]),
             ),
         )
 
@@ -549,6 +557,8 @@ class APICredentials(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["apiCredentials"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -582,7 +592,7 @@ class APICredentials(BaseSDK):
                 models.APICredentialRolesSchemaTypedDict,
             ]
         ] = None,
-        ip_allowlist: Optional[List[str]] = None,
+        ip_allowlist: Optional[Iterable[str]] = None,
         retries: OptionalNullable[utils.RetryConfig] = UNSET,
         server_url: Optional[str] = None,
         timeout_ms: Optional[int] = None,
@@ -624,7 +634,7 @@ class APICredentials(BaseSDK):
                 roles=utils.get_pydantic_model(
                     roles, Optional[models.APICredentialRolesSchema]
                 ),
-                ip_allowlist=ip_allowlist,
+                ip_allowlist=utils.unmarshal(ip_allowlist, Optional[List[str]]),
             ),
         )
 
@@ -673,6 +683,8 @@ class APICredentials(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["apiCredentials"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -766,6 +778,8 @@ class APICredentials(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["apiCredentials"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -859,6 +873,8 @@ class APICredentials(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["apiCredentials"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -952,6 +968,8 @@ class APICredentials(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["apiCredentials"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
@@ -1045,6 +1063,8 @@ class APICredentials(BaseSDK):
                 security_source=get_security_from_env(
                     self.sdk_configuration.security, models.Security
                 ),
+                tags=["apiCredentials"],
+                extensions=None,
             ),
             request=req,
             is_error_status_code=lambda c: utils.match_status_codes(["4XX", "5XX"], c),
