@@ -56,7 +56,7 @@ def main():
         try:
             response = cmp_client.api_credentials.create(
                 organization_id=ORG_ID,
-                name="Auto-Manage-WorkspacesAuto-Manage-Workspaces",
+                name="Auto-Manage-Workspaces",
                 description="Used for automated Workspace management",
                 enabled=True,
                 roles={"organization_role": models.OrganizationRole.ADMIN},
