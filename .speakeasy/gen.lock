@@ -654,6 +654,20 @@ examples:
 examplesVersion: 1.0.2
 generatedTests:
   dummyServiceStatus: "2025-07-02T19:49:08+02:00"
+releaseNotes: |
+  ## Python SDK Changes
+
+  This version of the SDK is generated for Cribl.Cloud.
+
+  ### API Credentials — Insights product
+
+  `insights` is now a valid product on API credential workspace roles: set on create and update; returned on list and get.
+
+  * `cribl_mgmt_plane.api_credentials.list()` — `response.items[].roles.workspaces[].products[].product` (`insights`)
+  * `cribl_mgmt_plane.api_credentials.create()` — `request.roles.workspaces[].products[].product`; `response.roles.workspaces[].products[].product` (`insights`)
+  * `cribl_mgmt_plane.api_credentials.update()` — `request.roles.workspaces[].products[].product` (`insights`)
+  * `cribl_mgmt_plane.api_credentials.get()` — `response.roles.workspaces[].products[].product` (`insights`)
+
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
