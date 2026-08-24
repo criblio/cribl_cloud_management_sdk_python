@@ -3,17 +3,17 @@ id: 897b2045-55e2-49ca-a37b-2daf10d4e6ea
 management:
   docChecksum: 4353aad0a1f8d81581b43bdce3806df7
   docVersion: "1.0"
-  speakeasyVersion: 1.795.2
+  speakeasyVersion: 1.795.1
   generationVersion: 2.932.9
-  releaseVersion: 0.5.0
-  configChecksum: 472a910954f5a15b8cadfca259274c3f
+  releaseVersion: 0.5.1
+  configChecksum: 3915af418dfcaa603e18e98b2ead771e
   repoURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   installationURL: https://github.com/criblio/cribl_cloud_management_sdk_python.git
   published: true
 persistentEdits:
-  generation_id: b7536947-c5e4-4983-8d79-67d8646c85ca
-  pristine_commit_hash: 733a83582536440adc8fa818cc2bfb8104dec381
-  pristine_tree_hash: 84f96db8fcd3d29377cfe74e3b02d1b943a38d71
+  generation_id: 504fe599-3ccd-422f-96d4-9392a4dad5c2
+  pristine_commit_hash: 53772b83289f027a4253bc424f1b38a55a383cb2
+  pristine_tree_hash: d5895d4860022da1f9661fe13fed3e2b196c9a0e
 features:
   python:
     additionalDependencies: 1.1.0
@@ -250,8 +250,8 @@ trackedFiles:
     pristine_git_object: fde5e0418e98324b2b3b2a8e02559e575b2f6cfa
   pyproject.toml:
     id: 5d07e7d72637
-    last_write_checksum: sha1:233cd39744c45c64f28ff31323c4294f3b463187
-    pristine_git_object: 9dca51ddcf109d052ff300feb73d71bd480a0e0f
+    last_write_checksum: sha1:273e3da8b0869d5286b3ff25a4ea97734d74f760
+    pristine_git_object: 03d34c00540183e391dd6753c3914da96bb42c42
   scripts/prepare_readme.py:
     id: e0c5957a6035
     last_write_checksum: sha1:24bfcb3bc609310d0b86cb75ca844b42d4c9c248
@@ -282,8 +282,8 @@ trackedFiles:
     pristine_git_object: c4dbfc9dc2f712029811f523ecfa50bebebb13fc
   src/cribl_mgmt_plane/_version.py:
     id: 8ec199fcd31a
-    last_write_checksum: sha1:e0e72ed6eaa48b2aa178764a9588b518efe5bdbe
-    pristine_git_object: 61e620a6593e19e76da700ce321b357f386b87f8
+    last_write_checksum: sha1:11e1ae260ddea69893b07ebfc15e9fc2bd5f3259
+    pristine_git_object: 23c24c1d918608c1dd35e19594f296a1f51810dc
   src/cribl_mgmt_plane/apicredentials.py:
     id: d344dfa0de1f
     last_write_checksum: sha1:ba1681e1e3515d0fcdfe1b49e24c47f6eb2b6058
@@ -654,20 +654,6 @@ examples:
 examplesVersion: 1.0.2
 generatedTests:
   dummyServiceStatus: "2025-07-02T19:49:08+02:00"
-releaseNotes: |
-  ## Python SDK Changes
-
-  This version of the SDK is generated for Cribl.Cloud.
-
-  ### API Credentials — Insights product
-
-  `insights` is now a valid product on API credential workspace roles: set on create and update; returned on list and get.
-
-  * `cribl_mgmt_plane.api_credentials.list()` — `response.items[].roles.workspaces[].products[].product` (`insights`)
-  * `cribl_mgmt_plane.api_credentials.create()` — `request.roles.workspaces[].products[].product`; `response.roles.workspaces[].products[].product` (`insights`)
-  * `cribl_mgmt_plane.api_credentials.update()` — `request.roles.workspaces[].products[].product` (`insights`)
-  * `cribl_mgmt_plane.api_credentials.get()` — `response.roles.workspaces[].products[].product` (`insights`)
-
 generatedFiles:
   - .devcontainer/README.md
   - .devcontainer/devcontainer.json
