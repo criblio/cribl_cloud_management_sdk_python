@@ -1,0 +1,9 @@
+# CreditsTimeseriesResponseDTO
+
+
+## Fields
+
+| Field                                                                                | Type                                                                                 | Required                                                                             | Description                                                                          | Example                                                                              |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `items`                                                                              | List[[models.CreditsTimeseriesItemSchema](../models/creditstimeseriesitemschema.md)] | :heavy_check_mark:                                                                   | Credit timeseries data points.                                                       |                                                                                      |
+| `count`                                                                              | *float*                                                                              | :heavy_check_mark:                                                                   | Total number of items in the response.                                               | 12                                                                                   |
