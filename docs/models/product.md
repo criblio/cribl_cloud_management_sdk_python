@@ -15,9 +15,10 @@ value = Product.EDGE
 
 ## Values
 
-| Name     | Value    |
-| -------- | -------- |
-| `EDGE`   | edge     |
-| `SEARCH` | search   |
-| `STREAM` | stream   |
-| `LAKE`   | lake     |
+| Name       | Value      |
+| ---------- | ---------- |
+| `EDGE`     | edge       |
+| `SEARCH`   | search     |
+| `STREAM`   | stream     |
+| `LAKE`     | lake       |
+| `INSIGHTS` | insights   |

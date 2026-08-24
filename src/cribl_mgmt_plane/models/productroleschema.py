@@ -15,6 +15,7 @@ class Product(str, Enum, metaclass=utils.OpenEnumMeta):
     SEARCH = "search"
     STREAM = "stream"
     LAKE = "lake"
+    INSIGHTS = "insights"
 
 
 class Role(str, Enum, metaclass=utils.OpenEnumMeta):
