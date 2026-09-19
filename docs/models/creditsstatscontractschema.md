@@ -1,0 +1,9 @@
+# CreditsStatsContractSchema
+
+
+## Fields
+
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     | Example                                                                         |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `start_date`                                                                    | [date](https://docs.python.org/3/library/datetime.html#date-objects)            | :heavy_check_mark:                                                              | Contract start date in ISO 8601 format.                                         | 2025-09-17 00:00:00 +0000 UTC                                                   |
+| `end_date`                                                                      | [date](https://docs.python.org/3/library/datetime.html#date-objects)            | :heavy_minus_sign:                                                              | Contract end date in ISO 8601 format. Present only when the contract is closed. | 2026-08-02 00:00:00 +0000 UTC                                                   |
