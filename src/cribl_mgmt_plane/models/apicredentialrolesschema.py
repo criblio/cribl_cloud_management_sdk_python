@@ -16,6 +16,7 @@ class OrganizationRole(str, Enum, metaclass=utils.OpenEnumMeta):
 
     OWNER = "owner"
     ADMIN = "admin"
+    BILLING_READER = "billing_reader"
     USER = "user"
 
 
