@@ -206,6 +206,22 @@ The [Cribl.Cloud Authentication Example](https://github.com/criblio/cribl_contro
 * [delete](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/docs/sdks/apicredentials/README.md#delete) - Delete an API Credential
 * [get](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/docs/sdks/apicredentials/README.md#get) - Get an API Credential
 
+### [Billing.Credits.ContractsUtilization](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/docs/sdks/contractsutilization/README.md)
+
+* [list](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/docs/sdks/contractsutilization/README.md#list) - Get contract credit utilization
+
+### [Billing.Credits.Grants](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/docs/sdks/grants/README.md)
+
+* [list](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/docs/sdks/grants/README.md#list) - Get credit grants
+
+### [Billing.Credits.Stats](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/docs/sdks/stats/README.md)
+
+* [list](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/docs/sdks/stats/README.md#list) - Get credit balance and consumption
+
+### [Billing.Credits.Timeseries](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/docs/sdks/timeseries/README.md)
+
+* [list](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/docs/sdks/timeseries/README.md#list) - Get credits timeseries
+
 ### [Health](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/docs/sdks/health/README.md)
 
 * [get](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/docs/sdks/health/README.md#get) - Get the health status of the application
@@ -363,7 +379,7 @@ with CriblMgmtPlane(
 
 
 **Inherit from [`CriblMgmtPlaneError`](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/./src/cribl_mgmt_plane/errors/criblmgmtplaneerror.py)**:
-* [`DefaultErrorDTO`](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/./src/cribl_mgmt_plane/errors/defaulterrordto.py): API Credential limit reached. Status code `422`. Applicable to 1 of 11 methods.*
+* [`DefaultErrorDTO`](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/./src/cribl_mgmt_plane/errors/defaulterrordto.py): API Credential limit reached. Status code `422`. Applicable to 1 of 15 methods.*
 * [`ResponseValidationError`](https://github.com/criblio/cribl_cloud_management_sdk_python/blob/master/./src/cribl_mgmt_plane/errors/responsevalidationerror.py): Type mismatch between the response data and the expected Pydantic model. Provides access to the Pydantic validation error via the `cause` attribute.
 
 </details>
