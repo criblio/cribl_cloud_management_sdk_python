@@ -15,8 +15,9 @@ value = OrganizationRole.OWNER
 
 ## Values
 
-| Name    | Value   |
-| ------- | ------- |
-| `OWNER` | owner   |
-| `ADMIN` | admin   |
-| `USER`  | user    |
+| Name             | Value            |
+| ---------------- | ---------------- |
+| `OWNER`          | owner            |
+| `ADMIN`          | admin            |
+| `BILLING_READER` | billing_reader   |
+| `USER`           | user             |
