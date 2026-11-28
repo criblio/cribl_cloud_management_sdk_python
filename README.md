@@ -206,6 +206,22 @@ The [Cribl.Cloud Authentication Example](https://github.com/criblio/cribl_contro
 * [delete](docs/sdks/apicredentials/README.md#delete) - Delete an API Credential
 * [get](docs/sdks/apicredentials/README.md#get) - Get an API Credential
 
+### [Billing.Credits.ContractsUtilization](docs/sdks/contractsutilization/README.md)
+
+* [list](docs/sdks/contractsutilization/README.md#list) - Get contract credit utilization
+
+### [Billing.Credits.Grants](docs/sdks/grants/README.md)
+
+* [list](docs/sdks/grants/README.md#list) - Get credit grants
+
+### [Billing.Credits.Stats](docs/sdks/stats/README.md)
+
+* [list](docs/sdks/stats/README.md#list) - Get credit balance and consumption
+
+### [Billing.Credits.Timeseries](docs/sdks/timeseries/README.md)
+
+* [list](docs/sdks/timeseries/README.md#list) - Get credits timeseries
+
 ### [Health](docs/sdks/health/README.md)
 
 * [get](docs/sdks/health/README.md#get) - Get the health status of the application
@@ -363,7 +379,7 @@ with CriblMgmtPlane(
 
 
 **Inherit from [`CriblMgmtPlaneError`](./src/cribl_mgmt_plane/errors/criblmgmtplaneerror.py)**:
-* [`DefaultErrorDTO`](./src/cribl_mgmt_plane/errors/defaulterrordto.py): API Credential limit reached. Status code `422`. Applicable to 1 of 11 methods.*
+* [`DefaultErrorDTO`](./src/cribl_mgmt_plane/errors/defaulterrordto.py): API Credential limit reached. Status code `422`. Applicable to 1 of 15 methods.*
 * [`ResponseValidationError`](./src/cribl_mgmt_plane/errors/responsevalidationerror.py): Type mismatch between the response data and the expected Pydantic model. Provides access to the Pydantic validation error via the `cause` attribute.
 
 </details>
